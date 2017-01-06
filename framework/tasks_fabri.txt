@@ -1,0 +1,448 @@
+Diario di programmazione
+
+01/12/2005 - 03:43
+---------------------------
+> La funzione get_all_news() deve restituire un array contenente tutte le news secondo il formato corretto e non un'unica stringa che
+contiene tutti i dati, perchè sarà poi il chiamante a sapere come utilizzare ogni testo dell'array.
+> A questo proposito potrei creare una funzione che crea direttamente l'output a partire dal template globale delle news; ma mi
+sorge il dubbio che poi non sia più tanto necessario il pattern che utilizza la funzione get_all_news() perchè potrei sostituirlo
+direttamente nel template elaborato da smarty. Devo verificare cosa mi conviene, ma allora oggi avrei solo sprecato tempo ?
+Ovviamente questo prevede di studiarsi un po' Smarty.
+
+01/12/2005 - 17:18
+---------------------------
+>Ho risolto il problema in questo modo: nel template di una singola news si possono inserire più news alla volta utilizzando
+indici di un array (che però ancora devo implementare). Successivamente questo box della news verrà ripetuto saltando ovviamente
+le news gia inserite al suo interno. E' quindi possibile creare box con tre news disposte come si vuole, magari una sopra
+e due sotto, e poi questo box viene ripetuto per tutte le news. Fatto questo le news create vengono inserite in un altro
+template che le comprende tutte.
+
+02/12/2005 - 02:33
+---------------------------
+Ho scaricato phpDocumentor, ora devo vedere come si produce la documentazione, poi devo aggiungere una descrizione dettagliata
+dei metodi creati.
+
+03/12/2005 - 01:15
+---------------------------
+> L'unico modo che ho trovato per passare il numero di news da mettere in un template è quello di dirlo nella stringa del
+pattern. E' un metodo che non mi piace per niente perchè deve essere una procedura automatica, ma è la cosa funzionale
+>più veloce che ho trovato. Altrimenti avevo pensato di fare un parsing del template, ma sarebbe stato troppo per questo tipo
+di sito, quindi l'ho scartata (anche se un po' lo rimpiango).
+Oggi non ho lavorato praticamente niente al sito. Sono un po' indietro perchè sto complicando un po' le cose e sto cercando
+di fare una buona documentazione per il mantenimento del sito (ma che sto dicendo, una volta on line il tizio di sicuro non
+lo toccherà mai più)
+
+04/12/2005 - 02:18
+---------------------------
+Finito il sistema per la visualizzazione delle news
+
+04/12/2005 - 16:52
+---------------------------
+In effetti non ho poprio finito il sistema delle news, mi manca la pagina che fa vedere una news per intero, ma è proprio una
+stupidata, la parte più complessa è finita, e forse era la parte più complessa di tutto il sito. Ora sto mettendo a posto la
+documentazione del sito. Non avevo mai fatto una documentazione così dettagliata di un mio lavoro, mi ero sempre limitato a
+commentare il codice e mai a descrivere le interfacce delle funzioni. A questo proposito credo fosse stato melgio usare delle
+classi, ma poi non potevo più garantire la compatibilità con PHP 4, che ancora non so quanti provider supportano.
+> Ho inserito un sistema di prevenzione di SQL Injiection nelle funzioni del database. Per quanto mi riguarda credo sia
+la prima volta che lo faccio e spero che funzioni come dovrebbe. Non mi vengono in mente altre situazioni pericolose
+
+05/12/2005 - 01:58
+---------------------------
+Ok, ora la sezione news è veramente completa, funziona bene e a dovere. Ho anche finalmente trovato un formato che mi piace
+per la documentazione e così potrò iniziare ad utilizzare sempre quello. I documenti risultanti non sono come quelli di MSDN,
+ma non sono nemmeno come quelli di Java, e vanno benissimo. PhpDoc è un ottimo e versatile strumento.
+> Ho iniziato a creare un abbozzo di pagina principale (index.php). La pagina verrà utilizzata per richiamare tutte le
+funzionalità del caso, ovverosia anzichè creare una pagina per ogni cosa index.php si occuperà di richiamare le giuste
+funzioni. Però non so se creare tutto li dentro (comprese le form) oppure fare semplicemente in modo che vengano
+inserite ed usate quando necessario. Il primo approccio consente di creare meno pagine e centralizzare tutto in un file
+senza contare che è più logico. La logica sarebbe questa: le funzionalità sono esposte dal kernel e vengono usate da un file
+che si occupa di richiamare quelle necessarie. Però ci sono i seguenti difetti (wow, questo è un discorso da vero ingegnere!):
+il file index.php si inzeppa di roba e diventa difficile il mantenimento e la scalabilità, index.php si troverà ad avere più
+mansioni di quelle che dovrebbe avere, come il controllo dei dati. L'opzione in cui l'uso di index.php è ridotto non mi è
+ben chiaro e per questo ho scritto le mie valutazioni. In questo caso si creeranno delle pagine al cui interno ci sarà il
+codice che deve gestire il suo comportamento e che utilizzerà le funzioni del kernel, in pratica come se non ci fosse
+il file index.php. Ma queste pagine non avranno niente all'infuori di ciò che gli compete e verranno incluse dalla pagine
+index.php in base alle richieste di GET. In questo caso il compito di index.php è solo quello di centro smistatore di funzionalità
+e quindi il suo compito e la sua grandezza saranno ridotti. Potrà comunque effettuare dei controlli sui dati che può rendere
+disponibile alla pagina chiamata, può inserire header e footer (cosa a cui non avevo pensato prima) e gestire le connessioni.
+I difetti sono: un minor bisogno del file index.php (che cmq può risultare utile). Anche all'interno dei singo file-pagina
+il codice sarà molto poco, in quanto alla parte grafica penseranno le funzioni del kernel e il codice sarà quindi poco.
+> Pensandoci questa soluzione è più adatta a siti di maggiori dimensioni, ma voglio cmq utilizzarla per provare qualcosa
+di nuovo e vedere cosa succede.
+Ora che ci penso la seconda soluzione ha anche un'altro vantaggio. Posso estrapolare TOTALMENTE un singolo servizio poichè le
+pagine che ne fanno uso sono svincolate dalla parte grafica e da tutto il resto. Bene.
+
+05/12/2005 - 02:39
+---------------------------
+Sto revisionando la struttura dei file facendo in modo che non serva più il file kernel/main.php che rappresentava il punto
+di unione di tutti gli include ed inizializzava Smarty. Ora sto inserendo dei require_once() all'interno di ogni file
+del kernel in modo che ogni file possa recuperae autonomamente le proprie dipendenze rendendo possibile il trasporto di questa
+applicazione su un'altro sito con il minimo sforzo (sto pensando proprio al riutilizzo del codice).
+Inoltre ho creato un'altro file per l'inizializzazione del template engine in modo che si possa creare da solo.
+NOTA: è più lungo e complesso di quanto avevo pensato, infatti in tutti i file Smarty è praticamente integrato, al contrario
+del database che era gia stato pensato separatamente.
+OSSERVAZIONE: in pratica, sto notando, che il sito sta venendo come una sorta di applicazione (index.php e le sue pagine
+correlate) che utilizza delle librerie, cioè i file del kernel. Mi piace perchè è altamente portabile e scalabile, non mi
+piace perchè questo stile assomiglia troppo a quello del C.
+Sarebbe un'ottima cosa portare tutto ad oggetti.
+
+05/12/2005 - 03:03
+---------------------------
+Ma quanto scrivo questa sera ?
+Tirando le somme questo è un sito il cui valore io reputo attorno ai 1000€, non per quello che è o fa, ma per come è e per
+come lo fa. La commissione iniziale era stata valuta per 300€, successivamente alle nuove richieste rivalutata a 400€.
+Per mia natura cerco di rendere le cose il più interessante possibile cercando di migliorare sempre me stesso. Per questo
+un sitarello iniziale si sta trasformando nel sito probabilmente da me meglio progettato in assoluto. Punto di forza: grande
+scalabilità, portabilità, mantenimento. Punto di debolezza: inutile per le esigenze del cliente, tempi di sviluppo molto
+più lunghi.
+
+Classifica evoluzione stile di programmazione:
+ 1. Amministrazione forum Ratataplan
+ 2. E-Learning (non completato)
+ 3. Ratataplan v.1
+ 4. Ricerca personale
+ 5. Ratataplan v.2
+ 6. Debug.asp
+ 7. Enrico
+
+12/12/2005 - 20:51
+---------------------------
+Sono fermo da diversi giorni perchè sono andato al GdV. Comunque mi aspetta un problema da risolvere: non funzionano le
+inclusioni relative e nemmeno quelle assolute, perchè tutte si rifersicono alla pagina a cui vengono incluse, dovrò fare un
+sistema che mi trovi un percorso assoluto e fisso da includere in ogni pagina. Non è una cosa molto bella.
+Poi in questa settimana mi aspettano degli esami, quindi immagino che farò fatica a proseguire. Enrico ha scelto proprio un
+bel momento per darmi il materiale, e pensare che erano mesi che me ne parlava.
+
+13/12/2005 - 23:58
+---------------------------
+Come soluzione ho recuperato il percorso assoluto del file in cui sto eseguendo il codice e ci aggiungo il percorso relativo
+da cui devo recuperare il file
+
+14/12/2005 - 02:04
+---------------------------
+Ok, la struttura è finalmente stata riorganizzata a dovere e tutta funzionante. Avevo fatto veramente degli errori stupdi, meno
+male che li ho risolti.
+> Ora sto passando alla creazione del menu di navigazione che ha anche bisogno della pagina principale. Allora ho creato con
+Dreamweaver una pagina da un suo template e la devo riportare lì. Creerò quindi anche il sistema per la visualizzazione
+di una pagina principale.
+
+14/12/2005 - 02:42
+---------------------------
+Spararsi a tutto volume un pacco di death metal è molto utile, aiuta a liberare la mente e ad isolarsi.
+In questo stato stavo riflettendo su come strutturare le funzioni per il templating, perchè, procedendo con lo sviluppo, sto
+vedendo che viene fuori parecchia ridondanza. In particolare ho trovato una struttura ridondante nel sistema di template
+> Molto spesso capita di dover (1) recuperare una lista di informazioni dal database, (2) doverle inserire in un template,
+(3) inserire tutti i template creati in uno unico più grande. Questo meccanismo viene usato nelle news (gia sviluppato),
+nel menu (in fase di progettazione) sia destro che sinistro, nella gallery di foto. Quindi è inutile doverlo ripetere ogni volta.
+Solo che ogni settore ha le sue necessità e quindi o si progettano delle funzioni generali e si specializzano nelle varie
+sezioni, oppure si crea una struttura di funzioni in cui cambiando i parametri si svolgono tutte le funzionalità necessarie.
+La seconda soluzione è più professionale e più generale, ma richiede uno sforzo notevole (ed è quella a cui sono orientato)
+Innanzitutto bisogna mettere a fuoco quali sono le necessità comuni delle quattro sezioni, e poi bisogna vedere come
+specializzarle.
+Ora proviamo a ragionare tenendo conto di quattro differenti utilizzi: le news, il menu di navigazione e di presentazione, e
+la photogallery. Ci vuole parecchio ad individuare le comunioni e le specializzazioni.
+Mi conviene passare alla funzione tutti i valori gia pronti da essere impacchettati nell'unico template, o è meglio se le
+passo i valori, i nomi dei template e lei se li va a creare ? La prima soluzione comporta l'utilizzo di funzioni esterne per
+il recupero dei dati, ma è semplce a livello di codice, la seconda invece permette una personalizzazione più fine e migliore
+ma richiede una logica più complessa.
+
+08/01/2006 - 20:32
+---------------------------
+Mi sono accorto che potrei costruire dei menu utilizzando le stesse funzioni (o quasi) utilizzate per la creazione delle news
+ma ora è tardi per modificare tutto, anche perchè la modifica costerebbe troppo tempo (che non ho). In pratica i problemi
+visti con la nota precedente si risolvono con un solo set di comandi.
+Da patacca che sono avevo gia predisposto per avere questo risultato, ma non è stato applicato al sistema di news perchè
+costerebbe troppo tempo. Avevo gia fatto tutto quindi. Quando avrò tempo penserò a rifare il sistema delle news.
+
+> DA FARE ASSOLUTAMENTE ENTRO DOMANI:
+- Visualizzazione pagina generica (OK)
+  - Recupero e visualizzazione di un contenuto testuale (OK)
+  - Inserimento contenuto dinamico di una sezione (OK)
+- Almeno una pagina amministrativa per le news.
+
+09/01/2006 - 00:19
+---------------------------
+Pensavo di passare alla funzione che crea le pagine un elenco di nomi di variabili e di funzioni da chiamare. Questa pagina
+chiamerà tutte le funzioni e sostituirà le variabili all'interno del template.
+> Pensavo anche di migliorare il sistema di gestione delle dipendenze tramite l'utilizzo di define e tramite il controllo
+delle signature delle pagine. Si vedrà, ora ho molta fretta per domani.
+Ho creato un file PHP che contiene tutte le funzioni per la personalizzazione dell'interfaccia grafica. Non potendola creare
+automaticamente tramite template perchè sarebbe troppo lungo e comlplesso, la struttura delle pagine viene determinata dal
+codice PHP, che in questo caso è incluso tutto nella pagina std_interface.php. La pagina non contiene altro che delle
+ridefinizioni delle funzioni principale per la creazione grafica utilizzando i valori prestabiliti per ottenere la struttura
+di default. Il sistema di news non viene incluso in questa pagina perchè è pensato come una libreria autonoma e quindi non
+deve avere bisogno di una confiugrazione tramite codice. In seguito dovrò vedere se mantenere il sistema, perchè sembra che
+cmq sia limitato a pochissime funzioni che possono essere incluse nelle rispettive categorie.
+
+09/01/2006 - 16:15
+---------------------------
+> Bisogna mettere a posto il sistema di visualizzazione degli errori. Ora viene gestito solamente la parte di debug, mentre
+invece bisogna far vedere un grazioso messaggio all'utente all'interno della pagina. Se potessi utilizzare il sistema try
+catch, ma sfortunatamente non posso e non voglio nemmeno usare gli oggetti perchè non ricordo la compatibilità con PHP 4 (e
+poi mi sembrerebbe un lavoraccio). In pratica in debug viene visualizzato l'errore grezzo e il debugging, in modalità normale
+se la funzione non restituisce niente non ci sono stati errori, se restituisce qualcosa c'è stato un errore e bisogna provveder
+Solo che non ho a disposizione la reflection degli oggetti e viene fuori un casino. Mi devo inventare qualcosa, ora devo
+mettere a posto alcune cose.
+
+12/01/2006 - 19:30
+---------------------------
+Sto lavorando ad alcune idee che ho preso guardando il codice della wikipedia.
+> Come prima cosa sto riunendo le funzioni relative al sito (che per bellezza chiamo funzioni dell'applicazione) in un unico file,
+ovvero sono le funzioni che riguardano l'inizializzazione ed il termine del sito (per adesso). Le altre cose importanti che sto
+facendo sono l'aggiunta di un sistema di buffering e della compressione dei dati. La compressione mi sta creando dei problemi
+perchè sembra non essere accettata dai browser e non riesco a visualizzare niente, ma ho in mente un paio di modi per verificare
+dov'è il problema.
+
+17/01/2006 - 03:39
+---------------------------
+Riflettendo per strada mi sono reso conto che il buffering è inutile per come viene inteso. Il sito fa pochissimi echo, a dire
+la verità ne fa soltanto uno alla fine della pagina index, quindi il buffering è inutile.
+Ci sono due però: se non abilito il buffering non sono sicuro che la compressione venga attivata o meno anche se posso farla cmq
+> manualmente anche se non è una buona idea). Poi voglio provare un nuovo sistema per la gestione dei contenuti: l'utilizzo del
+buffer mi permette di definire una o più funzioni di callback che vengono richiamate quando il buffer sta per essere inviato. Con
+questo sistema posso utilizzare una funzione che prende l'ouput e lo inserisce all'interno del template standard della pagina
+evitando così di chiamare appositamente la funzione per che crea l'output generale. Ovverosia creo un sistema trasparente per la
+gestione delle skin della pagina. Per esempio per fare la home page posso fare semplicemente echo( "Benvenuti sul mio sito" );
+e il mio sistema di output creerà tutto il resto (menu, grafica, tabelle, ecc.).
+Ora mi rimane il dubbio se mettere l'opzione per il buffering oppure no. Se la metto dovrò scrivere due funzioni, uno per il
+buffering e l'altro senza. Ma se poi continuo a fare come adesso che faccio un solo echo posso farlo. Io sono dell'idea di non
+mettere l'opzione, ma ne va del mio spirito per la completezza. A conti fatti il buffering non viene usato praticamente, quindi
+posso tenerlo sempre abilitato.
+
+18/12/2005 - 04:10
+---------------------------
+Devono essere gestiti i seguenti errori: gli errori del database (non si connette, query sbagliata, zero risultati), l'errore di
+pagina non trovata.
+Rinominare adv_smarty_class.php in adv_smarty.php e smarty.php in template_engine.php con i conseguenti cambi di inclusione nelle
+pagine
+
+19/01/2006 - 23:55
+---------------------------
+Ho aggiunto diverse opzioni per l'utilizzo del database, vedere il file di configurazione.
+Ho esteso la classe di smarty affichè mi restituisca le variabili contenute in un template. Ora posso andare a recuperare dal
+template i componenti che servono e caricarli dinamicamente. Smarty permette di inserire delle chiamate a funzione all'interno del
+template ma non ho usato il suo sistema perchè è poco intuitivo e va a svantaggio del graphic designer
+
+21/01/2006 - 03:48
+---------------------------
+Ho messo a posto il sistema degli errori, ora utilizza una funzione personalizzata per la gestione degli errori, così possi
+tranquillamente sollevare un errore che viene chiamato il mio gestore e utilizzare il sistema a livelli di buffer per cancellare il
+vecchio contenuto senza preoccuparmi di perdere anche l'intestazione di pagina, è tutto trasparente! E' fortissimo!
+Ora stavo dando la possibilità di registrare le variabili di ambiente (get, post, session, ...) come variabili normali, ovvero quello
+che faceva l'opzione register_globals che è stata disabilitata (e a giusto motivo). Ritengo che il mio sistema invece sia sicuro
+perchè non crea dei nomi a caso nel file, ma vi antepone un certo prefisso e così non possono andare a sovrascrivere altre variabili
+> importanti. Ho introdotto di nuovo questo sistema perchè al programmatore che deve usare le mie librerie tutto deve risultare
+trasparente e non deve utilizzare altre funzioni per fare cose banali come decidere l'azione da intraprendere o leggere un parametro.
+La pagina principale ormai contiene solo tre cose app_start(), app_end() e uno switch che ridireziona la gestione.
+Questo URL da troppi errori: http://localhost/enrico/?r=show_page
+
+25/01/2006 - 02:09
+---------------------------
+Ho finito diverse parti principali e non so dove proseguire, cioè posso fare diverse cose tutte ugualmente importanti e non so quale
+scegliere. Che dilemma
+
+27/01/2006
+---------------------------
+Ho tantissimi problemi con il computer, è impossibile lavorare, non riesco ad andare avanti, non volevo pensare ad una formattazione,
+mi porta via troppo tempo. Forse lazza mi aiuta a fare qualcosa.
+
+29/01/2006
+---------------------------
+Mi è passata per la testa l'idea di generalizzare la gestione delle variabili di un template che ho scritto per il template principale.
+Quando è necessario creare la pagina viene creata una lista di tutte le variabili presenti nel template, e per ognuna di esse viene
+chiamata una funzione che ha lo stesso nome della variabile. Alla variabile viene poi sostituito il valore di ritorno dalla funzione.
+Se la funzione non esiste allora viene lasciato perdere il meccanismo e si cerca di valorizzare la variabile con gli assegnamenti
+che usa Smarty passando un valore all'interno di un array.
+> Generalizzare il sistema, ovvero spostarlo dalla creazione della pagina fin dentro la funzione build_template(), cuore di ogni
+elaborazione con template, permette di personalizzare ogni singolo template. E non dovrebbe nemmeno richiedere troppo lavoro, e il
+codice che lo fa è gia presente. Bisogna solo trovare un modo per risolvere dei possibili conflitti di nomi, cioè sarebbe di estrema
+utilità creare un namespace privato per ogni template.
+
+30/01/2006 - 23:57
+---------------------------
+Stavo lavorando al punto descritto ieri. Si, il sistema in se è veloce da progettare, ma c'è un problema. Pensavo di associare ad
+ogni template un file di codice che contiene le funzioni a lui associate. Questo porta diversi vantaggi. Innanzitutto evita conflitti
+di nomi tra fuzioni di più template. Permette di personalizzare le funzioni per ogni template. Il naturale problema che sorge è
+evitare il conflitto di nomi all'interno del codice di PHP. Se includo tutti i file di codice dei template possono crearsi conflitti.
+La soluzione che sto adottando è caricare le funzioni dal file in un array tramite le regular expression, in modo da mantenere tutto
+separato, e magari permettere di effettuare chiamate tra i template
+
+02/02/2006
+---------------------------
+Ho finito di mettere a posto... non so come chiamarla, la possibilità dai template di richiamare funzioni personalizzate per ogni
+variabile. Possiamo chiamarla assegnazione a richiesta, o anche assegnazione dinamica. Il risultato è ottimo, ho fatto una prova
+con lazza per creare la lista delle pagine nel database e ci abbiamo messo veramente poco.
+Stasera ho descritto a lazza le funzionalità principali del prodotto e gli ho spiegato come utlizzare le funzioni per iniziare a
+lavorare, così, speriamo, il progetto andrà avanti più velocemente. Grazie a lui ho fatto nuovi test mettendo in evidenza alcuni
+problemi e alcune caratteristiche del sito che non avevo notato.
+Io invece mi sto occupando di definire la struttura per il login degli utenti e lo smistamento delle azioni di amministrazione.
+> Il sistema di login, per come l'ho pensato, deve mettere a disposizione disposizione di tutte le altre pagine due informazioni:
+l'avvenuto login e quale utente ha effettuato il login.
+Io pensavo di inserire una funzione che effettua il login prima dello switch di selezione dell'azione
+
+05/02/2006
+---------------------------
+Stavo sviluppando ancora l'idea. Mi sto allargando troppo, come mio solito.
+> Lo scopo del programma è quello di fornire al programmatore una serie di librerie per agevolare la creazione di siti web dinamici;
+quindi volevo che fosse possibile controllare nei minimi dettagli il comportamento delle librerie. Quindi, per esempio, deve essere
+possibile per il programmatore poter riscrivere il comportamento delle funzioni che accedono al database, oppure della funzione
+app_start(). Non ho ancora pensato a quale sistema adottare, sto ancora sviluppando il login per l'utente.
+
+30/03/2006
+---------------------------
+Finalmente il computer ha ripreso ad andare. Mi sa che era ora.
+Ho sviluppato il concetto di "azione" nella pagina principale. Potrebbe non essere una cattiva idea creare una pagina in cui vengono
+descritte le possibili azioni permesse nel sito, e la home page si occupa appunto di gestire. Una azione potrebbe essere la visualizzazione
+delle news o di una pagina testuale, un redirect o quant'altro. Deve essere possibile attribuire degli attributi alle azioni come per
+esempio la proprietà "amministrativa" che deve far si che venga richiesto il login. Mmmm.... cioè potrei associare ad un qualsiasi
+attributo di una azione un'altra azione. Dopo devo definire quando eseguire l'azione dell'attributo.
+
+02/05/2006
+---------------------------
+Porca puttana sono incazzato nero. Non va un cazzo in questa merda di computer. Ho avuto un bordello di problemi per un mese intero
+dopo che ho scritto l'ultima entry nel diario. Sono incazzato nero perchè ora che doveva essere tutto a posto ancora quella merda di
+IIS non funziona. Porca puttana, non riesco a lavorare!
+
+29/05/2006
+---------------------------
+Piano piano sta ripartendo tutto. Ci sono problemi con la compressione dell'output
+
+31/05/2006
+---------------------------
+Finalmente sembra che tutto abbia ripreso a funzionare. Bene. Ma lazza nn collabora :S
+
+02/06/2006
+---------------------------
+Risolti i problemi con la compressione e fatto ripartire il sistema di login. Ora tutto sembra OK.
+
+05/06/2006 - 02:26
+---------------------------
+Per fare le cose fatte per bene dovrei creare una cartella chiamata config dentro kernel in cui ci vanno i file di configurazione
+per ogni modulo o pacchetto invece che averne uno globale in cui si ammassa tutto.
+
+05/06/2006 - 15.39
+---------------------------
+Stavo riguardando un punto precedente, del giorno 30/01/2006. E' giustissimo quello che dico riguardo al conflitto dei nomi, ma poi
+lo risolvo solo a metà: effettivamente il file di codice lo tratto come ho descritto, ma poi è necessario fare le stesse inclusioni
+che fa quel file e quindi il problema si ripropone su quel file e in questo caso non lo risolvo. La prima soluzione è di fregarmene
+dei problemi di confligtti e fare un include semplice per ogni file, oppure posso lasciare com'è garantendo una mezza protezione e
+magari dando dei vincoli agli sviluppatori, oppure posso caricare tutte le funzioni anzichè in un array utilizzando le funzioni di
+creazione runtime delle funzioni e dando altri nomi, oppure caricare come faccio ora anche le funzioni degli altri file, ma dopo
+diventerebbe troppo complicato! Mi sa che lascio le cose così o al massimo faccio dei plain include
+
+27/01/2007 - 02.33
+---------------------------
+Bisogna rifare la documentazione. E' tutta incasinata, non rispetta una formattazione standard e non è corretta. Fa riferimento
+a vecchio codice, oppure a volte non c'è perchè è solo un copia-incolla. Le cose da controllare, per tutti i commenti è la
+seguente:
+- Presenza dei tag Author, Data
+- Estensione del commento max 100 colonne
+- Spaziatura di 6tab dal bordo dei nomi delle variabili
+- Controllare la correttezza dei riferimenti ai parametri
+- Controllare la descrizione dell'output
+- Controllare la descrizione delle variabili globale
+
+28/01/2006 - 02.27
+---------------------------
+Sembra che durante l'esecuzione della visualizzazione di debug viene a crearsi un loop infinito. Penso che ciò sia causato dal
+fatto che aggiungo informazioni di debug (in particolare visualizzo i tempi di esecuzione) in alcune chiamate annidate dentro
+debug_show. E' solo una prima ipotesi che devo verificare, ma ora non ho tempo
+
+28/01/2006 - 04.52
+---------------------------
+Proprio come pensavo. Succede che a volte avvengono degli errori, e quindi parte il gestore degli errori che inserisce un nuovo
+elemento da visualizzare nella lista di debug e così il debugger non termina mai. Devo impostare un blocco sull'aggiunta degli
+elementi quandi la visualizzazione è attiva
+
+06/02/2007
+---------------------------
+Ho finito il sistema di debugging. Ci sarebbero ancora alcune sottigliezze da finire, ma posso tranquillamente dire che è a 
+posto... e funziona a meraviglia! Ho gia avuto modo di provarlo ed è molto buono. Certo, il debugger ASP era meglio, ma questo
+è gia molto valido.
+> Volevo permettere di specificare quali template assegnare a quali dati. Il problema nasce da diverse ipotesi. Per esempio è molto
+comune voler creare tabelle con righe a colori diversi, oppure, come succede anche a me, di dover fare il sistema di news con
+tre tipi diversi di template. Pensavo di legare gli indici dell'array dati ad una o ad un'altra funzione tramite la risoluzione
+di una funzione matematica.
+
+18/03/2007 - 02.54
+---------------------------
+Pensavo che sarebbe molto utile creare una mia versione di Smarty, meno complessa ma più efficiente, che gestisca giusto le cose
+che servono al mio progetto e poco altro, ma che massimizzi le prestazioni (dato che quelle attuali non sono poi il massimo).
+Ovviamente si da al programmatore la libertà di scegliere quale usare
+
+10/05/2007 - 14.23
+---------------------------
+Il sistema di database non è fatto bene, può aprire solo il database di config! Non va mica bene. Devo poter specificare a mio
+piacere quale database usare
+
+15/09/2007 - 26.56
+---------------------------
+Intanto che aspetto di fare la doccia scriviamo un po'.
+C'è da risolvere un problema che si presenta col debugger quando si chiede di visualizzare una pagina ma non la si specifica e
+si è in modalità amministrativa (cioè si è loggati). Ho trovato che sembra dovuto al print_r dell'array GLOBALS. Ho eliminato
+l'array, ma continua a dare errore. Devo fare ulteriori controlli, ma devo anche aspettare di riavviare.
+
+05/10/2007 - 13:03
+---------------------------
+Ho finito di aggiungere il filtro al debugger. Non è un sistema perfetto, ci sono alcune stringhe che non possono essere valutate,
+per esempio non è possibile inserire in alcun modo le doppie virgolette all'interno di una stringa.
+Per il resto funziona molto bene ed è molto versatile. Si potrebbero aggiungere alcuni pattern anche all'R-Value, per fare dei 
+match più estesi, ma non penso che, al momento, ne valga la pena.
+> Altra considerazione: una soluzione migliore sarebbe stata usare strumenti come LEX e YACC per sviluppare una propria sintassi,
+ma penso che per un semplice debug sia esageratamente eccessivo. Comunque se la cosa dovesse ripresentarsi non è da escludere questa
+versatile idea.
+> Ecco, ricordo una cosa molto importante che pensavo di implementare. Chris era molto propenso ad riscrivere tutto in PHP5, ovvero
+con un buon paradigma ad oggetti ( e gia qui posso dire mare e monti, perchè io di sicuro, per quanto ne sapppia degli oggetti non
+ho un'ottima esperienza e filosofia, e nemmeno christian penso, ma so cm'è la mia fisolofia verso un codice modulare), mentre io
+continuo a preferire il vecchio metodo procedurale, sia per dare compatibilità con PHP4 (ancora molto diffuso) che per la maggior
+pulizia di codice che si ottiene (sicuramente astrattamente e probabilmente anche funzionalmente è meglio la OOP, ma io ho la mania
+della chiarezza). Noi avevamo risolto di mantenere il kernel tutto com'è e di scrivere i nuovi packages ad oggetti. Ora mi è venuta in
+mente un'altra soluzione: creare degli oggetti wrapper per ogni modulo del kernel in modo da ottenere due vantaggi: il primo è quello
+di organizzare meglio la struttura del kernel e inserirci un sistema per modularizzarlo facilmente e in modo pratico, e secondo in
+questo modo è possibile fornire un supporto per il subclassing e/o overriding delle funzioni del kernel (e solo quelle) semplicemente
+andando a cambiare i riferimenti all'interno degli oggetti con delle proprie funzioni.
+Il vantaggio, secondo me grande, offerto dall'overriding come lo intendo io, è quello di poter cambiare funzioni basilari del kernel
+secondo le proprie esigenze, senza toccare il kernel gia scritto, senza cambiare i riferimenti a nuovi oggetti/metodi/funzioni nei
+packages; è quello di poter switchare tra funzioni personali e funzioni predefinite del kernel in ogni momento. Altra cosa, cercando di
+mantenere una cerca conformità, con questa soluzione è possibile avere un comodissimo versioning del kernel
+
+09/10/2007 - 20.57
+---------------------------
+Sarebbe da dividere le funzioni per la gestione dell'output dal file application.php, che in teoria dovrebbe solo avere il compito di
+contenere le funzioni per lo start/stop dell'applicazione
+
+12/10/2007 - 13.45
+---------------------------
+Sono molto indeciso sul da farsi per i file di configurazione. Non so come gestirli.
+Sicuramente per i packages è da crearsi un'altra directory config in cui mettere i file omonimi dei relativi pacchetti. Invece non so
+come fare per suddividere i config. Forse, visto che il kernel dovrebbe essere una cosa unica, indivisibile e che i programmatori non
+dovrebbero toccare, forse basta un solo file di configurazione.
+Pensavo anche che si potrebbe automatizzare l'inclusione dei file in packages/config, per esempio si potrebbe aggiungere delle funzioni
+per lavorare sull'array delle configurazioni, oppure il file config va in automatico ad includere i file in quella directory.
+
+
+IDEE A GETTO
+---------------------------
+utilizzare buffering ob_start()
+utilizzare compressione
+includere i file modificando a runtime le impostazioni del file ini ini_get()
+permettere al sistema di news di gestiri n differenti tipi di visualizzazione
+usare la funzione set_error_handler() per gestire gli errori
+
+Funzione per la crittografia delle password
+	$user = "Administrator";
+	$pwd = "Administrator";
+	mt_srand(time());
+	$rnd1 = mt_rand(0, 99999);
+	$rnd2 = mt_rand(0, 9999);
+	$rnd = $rnd1 . $rnd2;
+	$data = "$user:$pwd:$rnd";
+	$data = sha1( $data );
+	echo( "\n\n\n$data\n\n\n$rnd\n\n\n" );
+
+CANZONI ASCOLTATE ALLA RADIO DA SCARICARE
+------------------------------------------
+Ubiqua - Being in the water
+
+XOOPS
+evaimitico@hotmail.com

@@ -1,0 +1,21 @@
+{*
+ * Template per la visualizzazione del riquadro complessivo delle news. Gli indici
+ * dell'array news_box corrispondono alle sezioni della variabile $CONFIG["news_pattern"]
+ *}
+<table width="500px" cellspacing="0" cellpadding="0" align="center">
+  <tr>
+    <td width="100%">
+      <p>{$news_box[0]}{* News in formato completo *}</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="100%">
+      <p>{$news_box[1]}{* News in formato ridotto *}</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="100%">
+      <p>{$news_box[2]}{* News in formato lista *}</p>
+    </td>
+  </tr>
+</table>

@@ -1,0 +1,64 @@
+Struttura delle directory del sito
+===================================
+
+root (Directory principale)
+  |
+  +---- images (Immagini utente)
+  |
+  +---- kernel (Funzioni del kernel del sito)
+  |       |
+  |       +---- admin (Librerie di basso livello)
+  |       |       |
+  |       |       +----- adv_smarty.php (Estensione della classe Smarty)
+  |       |       |
+  |       |       +----- components.php (Creazione di componenti HTML)
+  |       |       |
+  |       |       +----- config.php (Variabili di configurazione del sito)
+  |       |       |
+  |       |       +----- database.php (Funzioni di elaborazioni del database)
+  |       |       |
+  |       |       +----- debug.php (Funzioni per il debugging dell'applicazione)
+  |       |       |
+  |       |       +----- errors.php (Funzioni di gestione personalizzata degli errori)
+  |       |       |
+  |       |       +----- queries.php (Queries per l'accesso ai dati nel database)
+  |       |       |
+  |       |       +----- template_engine.php (Funzioni per l'elaborazione dei template)
+  |       |
+  |       +---- cache (Cache per i template)
+  |       |
+  |       +---- database (Definizioni del database)
+  |       |       |
+  |       |       +----- database_structure_dummy.sql (Struttura e dati fittizi del database)
+  |       |       |
+  |       |       +----- database_structure_install.sql (Struttura del database)
+  |       |
+  |       +---- docs (Documentazione delle funzioni)
+  |       |
+  |       +---- libs (Librerie esterne)
+  |       |       |
+  |       |       +----- smarty (Template engine)
+  |       |       |
+  |       |       +----- phpmailer (Invio email)
+  |       |
+  |       +---- user (Funzioni per l'utente e funzioni grafiche)
+  |       |       |
+  |       |       +----- login.php (Funzioni per effettuare il login degli utenti/amministratori)
+  |       |       |
+  |       |       +----- menu.php (Funzioni per la visualizzazione del menu)
+  |       |       |
+  |       |       +----- news.php (Funzioni per la visualizzazione delle news)
+  |       |       |
+  |       |       +----- page_view.php (Funzioni per la visualizzazione della pagina)
+  |       |
+  |       +---- applicazione.php (Funzioni generali di gestione dell'applicazione web)
+  |       |
+  |       +---- general.php (Funzioni di utilizzo generico)
+  |
+  +---- templates (Template grafici del sito)
+  |
+  +---- index.php (Inizializza l'applicazione e smista le azioni)
+  |
+  +---- news.php (Lavorare con le news)
+  |
+  +---- text_page.php (Lavorare con le pagine dai contenuti statici)

@@ -1,0 +1,66 @@
+{* Template del log degli errori *}
+<html>
+  <head>
+    <title>Errore sul sito</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <style type="text/css">
+    {literal}
+    BODY {
+	    font-family: Verdana, Arial, Helvetica, sans-serif;
+	    font-size: 10pt;
+    }
+    .Codice {
+		font-family: "Courier New", Courier, mono;
+		font-size: 12px;
+		background-color: #CCCCCC;
+		width: 95%;
+		position: relative;
+		top: auto;
+		text-align: left;
+	}
+    {/literal}
+    </style>
+  </head>
+  <body>
+    <div>
+      <div align="center">
+        <h2><span class="style1">Errore - Dump del {$smarty.now|date_format:"%d-%m-%Y - %H:%M:%S"}</span></h2>
+      </div>
+      
+      <hr noshade>
+      
+      <h3>Informazioni generali</h3>
+      <p>
+        Messaggio di errore: {$error_msg}<br/>
+        Codice errore: {$error_num}
+        <br>
+        Errore nel file: {$error_file}
+        <br>
+        Linea dell'errore: {$error_line}
+      </p>
+      
+      <h3>Contesto dell'errore</h3>
+      <div align="center">
+        <div class="Codice">
+          {$error_context}
+        </div>
+      </div>
+      
+      <h3>Stack delle chiamate</h3>
+      <div align="center">
+        <div class="Codice">
+          {$error_callstack}
+        </div>
+      </div>
+      
+      <h3>Variabili di ambiente</h3>
+      <div align="center">
+        <div class="Codice">
+          {$error_globals}
+        </div>
+      </div>
+      
+      <hr noshade>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Docs for page buffer_handlers.php</title>
+	<link rel="stylesheet" type="text/css" href="../../media/style.css">
+	<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+</head>
+<body>
+
+<table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
+  <tr>
+	<td class="header-top-left"><img src="../../media/logo.png" border="0" alt="phpDocumentor " /></td>
+    <td class="header-top-right">Kernel<br /><div class="header-top-right-subpackage">Admin</div></td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="../../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <tr>
+    <td colspan="2" class="header-menu">
+  		  [ <a href="../../classtrees_Kernel.html" class="menu">class tree: Kernel</a> ]
+		  [ <a href="../../elementindex_Kernel.html" class="menu">index: Kernel</a> ]
+		  [ <a href="../../elementindex.html" class="menu">all elements</a> ]
+    </td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="../../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="195" class="menu">
+		<div class="package-title">Kernel</div>
+  <div class="package">
+	<div id="todolist">
+			<p><a href="../../todolist.html">Todo List</a></p>
+	</div>
+	</div>
+      <b>Packages:</b><br />
+  <div class="package">
+              <a href="../../li_Kernel.html">Kernel</a><br />
+              <a href="../../li_Main.html">Main</a><br />
+      	</div>
+      <br />
+                        <b>Files:</b><br />
+        <div class="package">
+				<span style="padding-left: 1em;"><a href="../../Kernel/_kernel_application_php.html">application.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/_kernel_modules_config_php.html">config.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/_kernel_modules_definitions_php.html">definitions.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/_kernel_general_php.html">general.php</a></span><br />
+	  </div>
+  <div class="package">
+	<strong>Admin</strong><br />			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_adv_smarty_php.html">adv_smarty.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_buffering_php.html">buffering.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_buffer_handlers_php.html">buffer_handlers.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_components_php.html">components.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_database_php.html">database.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_debug_php.html">debug.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_debug_gfx_php.html">debug_gfx.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_errors_php.html">errors.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_queries_php.html">queries.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_template_engine_php.html">template_engine.php</a></span><br />
+	  </div>
+  <div class="package">
+	<strong>User</strong><br />			<span style="padding-left: 1em;"><a href="../../Kernel/User/_kernel_packages_login_php.html">login.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/User/_kernel_packages_menu_php.html">menu.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/User/_kernel_packages_news_php.html">news.php</a></span><br />
+	  </div>
+            <br />
+            <b>Classes:</b><br />
+        <div class="package">
+	Admin<br />	    <span style="padding-left: 1em;">		<a href="../../Kernel/Admin/AdvSmarty.html">AdvSmarty</a>    </span>	 <br />
+	  </div>
+                </td>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
+
+<h1>Procedural File: buffer_handlers.php</h1>
+Source Location: /kernel/modules/buffer_handlers.php<br /><br />
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Page Details</div>
+	<div class="nav-bar">
+					<span class="disabled">Page Details</span> |
+											<a href="#sec-constants">Constants</a>
+			|									<a href="#sec-functions">Functions</a>
+			</div>
+	<div class="info-box-body">
+		<p align="center" class="short-description"><strong>Gestori dei buffer levels
+</strong></p>
+<span class="description"><p>Contiene le funzioni per la gestione dei livelli di buffer predefiniti, i livelli user e system.  Il livello user comprende la creazione del layout della pagina e dell'inserimento del contenuto. Il livello system  prevede l'aggiunta delle intestazioni di pagina al codice HTML.</p><p>Ogni gestore del buffer è una funzione che richiede un solo paramentro in cui verrà messo il contenuto del buffer  appena chiuso, e in output restituisce il nuovo contenuto del buffer:  <samp>String buffer_handler( String )</samp></p></span>		<table border="0" cellspacing="0" cellpadding="0">
+			<tr><td><strong>Filesource:</strong>&nbsp;&nbsp;</td><td><a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesbuffer_handlers.php.html">Source Code for this file</a></td></tr>
+			<tr><td><strong>Copyright:</strong>&nbsp;&nbsp;</td><td>Copyright 2007, Fabrizio Colonna</td></tr>
+			<tr><td><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna &lt;<a href="mailto:colofabrix@tin.it">colofabrix@tin.it</a>&gt;</td></tr>
+	</table>
+
+			</div>
+</div>
+
+
+
+	<a name="sec-constants"></a>
+	<div class="info-box">
+		<div class="info-box-title">Constants</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Page Details</a> |
+									<span class="disabled">Constants</span>
+			|										<a href="#sec-functions">Functions</a>
+					</div>
+		<div class="info-box-body">
+			<a name="defineKERNEL_BUFFER_HANDLERS"><!-- --></a>
+<div class="evenrow">
+
+	<div>
+		<span class="const-title">
+			<span class="const-name">KERNEL_BUFFER_HANDLERS</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesbuffer_handlers.php.html#a19">19</a>]</span>
+		</span>
+	</div>
+<br />
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>KERNEL_BUFFER_HANDLERS = 1</code>
+    </td></tr></table>
+    </td></tr></table>
+
+        
+	<br />
+
+		<div class="top">[ <a href="#top">Top</a> ]</div>
+	<br />
+</div>
+		</div>
+	</div><br />
+
+
+	<a name="sec-functions"></a>
+	<div class="info-box">
+		<div class="info-box-title">Functions</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Page Details</a> |
+													<a href="#sec-constants">Constants</a>
+				|									<span class="disabled">Functions</span>
+		</div>
+		<div class="info-box-body">
+			<a name="functioncan_compress" id="functioncan_compress"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="method-title">can_compress</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesbuffer_handlers.php.html#a130">130</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>Bool can_compress(
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Indica se è possibile usare la compressione dei dati in output.
+</strong></p>
+<span class="description"><p>Controlla se è possibile comprimere i dati prima di inviarli al client. Se manca una libreria la funzione tenta di  caricarla, se non vi riesce termina. La funzione non è considerata di utilizzo generale perchè il suo unico scopo è  relativo a questo file.</p></span>
+    
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Return:</strong>&nbsp;&nbsp;</td><td>TRUE se è possibile comprimere, FALSE altrimenti</td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functionsystem_buffer_handler" id="functionsystem_buffer_handler"><!-- --></a>
+<div class="evenrow">
+
+	<div>
+		<span class="method-title">system_buffer_handler</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesbuffer_handlers.php.html#a35">35</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>String system_buffer_handler(
+String $buffer&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Supervisione dell'output
+</strong></p>
+<span class="description"><p>La funzione si occupa di supervisionare l'output: utilizza la codifica specificata, comprime il contenuto se la  relativa opzione è attiva e invia le intestazioni HTTP standard (Content-Encoding, Content-Type, Content-Length,  Content-Language, Content-MD5, Date, Expires, Last-Modified, Pragma ).<br />  Attenzione, all'interno di questa fuzione non è possisibile utilizzare le funzioni di debug.</p></span>
+    		<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">String</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$buffer:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Il contenuto del buffer appena chiuso</span>			</td></tr>
+				</table>
+	
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Return:</strong>&nbsp;&nbsp;</td><td>L'output da inviare al browser</td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functionuser_buffer_handler" id="functionuser_buffer_handler"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="method-title">user_buffer_handler</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesbuffer_handlers.php.html#a106">106</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>String user_buffer_handler(
+String $buffer&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Gestione del contenuto
+</strong></p>
+<span class="description"><p>La funzione gestisce l'output inviato dal sito richiamando le funzioni standard per creare correttamente la struttura  grafica del sito.<br />  <strong>NOTA:</strong> all'interno di questa fuzione non è possisibile utilizzare le funzioni di debug.</p></span>
+    		<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">String</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$buffer:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Il contenuto del buffer</span>			</td></tr>
+				</table>
+	
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Return:</strong>&nbsp;&nbsp;</td><td>L'output da inviare al browser</td>
+  </tr>
+  <tr>
+    <td class="indent"><strong>Global:</strong>&nbsp;&nbsp;</td><td>Array $CONFIG: Parametri di configurazione</td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+		</div>
+	</div><br />
+
+        <div class="credit">
+		    <hr class="separator" />
+		    Documentation generated on Thu, 11 Oct 2007 13:27:50 +0200 by <a href="http://www.phpdoc.org">phpDocumentor 1.3.0RC3</a>
+	      </div>
+      </td></tr></table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Docs for page buffering.php</title>
+	<link rel="stylesheet" type="text/css" href="../../media/style.css">
+	<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+</head>
+<body>
+
+<table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
+  <tr>
+	<td class="header-top-left"><img src="../../media/logo.png" border="0" alt="phpDocumentor " /></td>
+    <td class="header-top-right">Kernel<br /><div class="header-top-right-subpackage">Admin</div></td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="../../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <tr>
+    <td colspan="2" class="header-menu">
+  		  [ <a href="../../classtrees_Kernel.html" class="menu">class tree: Kernel</a> ]
+		  [ <a href="../../elementindex_Kernel.html" class="menu">index: Kernel</a> ]
+		  [ <a href="../../elementindex.html" class="menu">all elements</a> ]
+    </td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="../../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="195" class="menu">
+		<div class="package-title">Kernel</div>
+  <div class="package">
+	<div id="todolist">
+			<p><a href="../../todolist.html">Todo List</a></p>
+	</div>
+	</div>
+      <b>Packages:</b><br />
+  <div class="package">
+              <a href="../../li_Kernel.html">Kernel</a><br />
+              <a href="../../li_Main.html">Main</a><br />
+      	</div>
+      <br />
+                        <b>Files:</b><br />
+        <div class="package">
+				<span style="padding-left: 1em;"><a href="../../Kernel/_kernel_application_php.html">application.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/_kernel_modules_config_php.html">config.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/_kernel_modules_definitions_php.html">definitions.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/_kernel_general_php.html">general.php</a></span><br />
+	  </div>
+  <div class="package">
+	<strong>Admin</strong><br />			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_adv_smarty_php.html">adv_smarty.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_buffering_php.html">buffering.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_buffer_handlers_php.html">buffer_handlers.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_components_php.html">components.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_database_php.html">database.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_debug_php.html">debug.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_debug_gfx_php.html">debug_gfx.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_errors_php.html">errors.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_queries_php.html">queries.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_template_engine_php.html">template_engine.php</a></span><br />
+	  </div>
+  <div class="package">
+	<strong>User</strong><br />			<span style="padding-left: 1em;"><a href="../../Kernel/User/_kernel_packages_login_php.html">login.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/User/_kernel_packages_menu_php.html">menu.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/User/_kernel_packages_news_php.html">news.php</a></span><br />
+	  </div>
+            <br />
+            <b>Classes:</b><br />
+        <div class="package">
+	Admin<br />	    <span style="padding-left: 1em;">		<a href="../../Kernel/Admin/AdvSmarty.html">AdvSmarty</a>    </span>	 <br />
+	  </div>
+                </td>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
+
+<h1>Procedural File: buffering.php</h1>
+Source Location: /kernel/modules/buffering.php<br /><br />
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Page Details</div>
+	<div class="nav-bar">
+					<span class="disabled">Page Details</span> |
+									<a href="#sec-includes">Includes</a>
+			|							<a href="#sec-constants">Constants</a>
+			|									<a href="#sec-functions">Functions</a>
+			</div>
+	<div class="info-box-body">
+		<p align="center" class="short-description"><strong>Sistema di buffering
+</strong></p>
+<span class="description"><p>In questo file sono racchiuse tutte le funzioni per creare e gestire componenti HTML, come possono  essere delle form o delle tabelle</p></span>		<table border="0" cellspacing="0" cellpadding="0">
+			<tr><td><strong>Filesource:</strong>&nbsp;&nbsp;</td><td><a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesbuffering.php.html">Source Code for this file</a></td></tr>
+			<tr><td><strong>Copyright:</strong>&nbsp;&nbsp;</td><td>Copyright 2005, Fabrizio Colonna</td></tr>
+			<tr><td><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna &lt;<a href="mailto:colofabrix@tin.it">colofabrix@tin.it</a>&gt;</td></tr>
+	</table>
+
+			</div>
+</div>
+
+
+	<a name="sec-includes"></a>
+	<div class="info-box">
+		<div class="info-box-title">Includes</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Page Details</a> |
+						<span class="disabled">Includes</span>
+			|							<a href="#sec-constants">Constants</a>
+				|													<a href="#sec-functions">Functions</a>
+					</div>
+		<div class="info-box-body">
+			<a name="_dirname(__FILE__)_/__/general_php"><!-- --></a>
+<div class="evenrow">
+
+	<div>
+		<span class="include-title">
+			<span class="include-type">require_once</span>
+			(<span class="include-name">dirname(__FILE__)."/../general.php"</span>)
+			<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesbuffering.php.html#a17">17</a>]</span>
+		</span>
+	</div>
+
+		
+		<div class="top">[ <a href="#top">Top</a> ]</div>
+		<br />
+</div>
+<a name="_dirname(__FILE__)_/debug_php"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="include-title">
+			<span class="include-type">require_once</span>
+			(<span class="include-name">dirname(__FILE__)."/debug.php"</span>)
+			<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesbuffering.php.html#a18">18</a>]</span>
+		</span>
+	</div>
+
+		
+		<div class="top">[ <a href="#top">Top</a> ]</div>
+		<br />
+</div>
+		</div>
+	</div><br />
+
+	<a name="sec-constants"></a>
+	<div class="info-box">
+		<div class="info-box-title">Constants</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Page Details</a> |
+										<a href="#sec-includes">Includes</a>
+				|						<span class="disabled">Constants</span>
+			|										<a href="#sec-functions">Functions</a>
+					</div>
+		<div class="info-box-body">
+			<a name="defineKERNEL_BUFFERING"><!-- --></a>
+<div class="evenrow">
+
+	<div>
+		<span class="const-title">
+			<span class="const-name">KERNEL_BUFFERING</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesbuffering.php.html#a15">15</a>]</span>
+		</span>
+	</div>
+<br />
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>KERNEL_BUFFERING = 1</code>
+    </td></tr></table>
+    </td></tr></table>
+
+        
+	<br />
+
+		<div class="top">[ <a href="#top">Top</a> ]</div>
+	<br />
+</div>
+		</div>
+	</div><br />
+
+
+	<a name="sec-functions"></a>
+	<div class="info-box">
+		<div class="info-box-title">Functions</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Page Details</a> |
+										<a href="#sec-includes">Includes</a>
+				|										<a href="#sec-constants">Constants</a>
+				|									<span class="disabled">Functions</span>
+		</div>
+		<div class="info-box-body">
+			<a name="functionbuffer_add_handler" id="functionbuffer_add_handler"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="method-title">buffer_add_handler</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesbuffering.php.html#a216">216</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void buffer_add_handler(
+String $handler, mixed $handler_file, [Integer $level = -1]&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Aggiunge un gestore di buffer
+</strong></p>
+<span class="description"><p>Aggiunge un gestore della terminazione di buffering del livello specificato. Tra tutti i gestori assegnati ad un  livello di buffer, l'ultimo inserito ha la priorità maggiore.  Se $level è inferiore a 1 viene impostato a 1, se superiore all'ultimo livello amissibile viene considerato pari a  questo.</p></span>
+    		<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">String</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$handler:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Il nome della funzione che gestisce il livello di buffering</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">Integer</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$level:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Il livello a cui assegnare l'handler</span>			</td></tr>
+				</table>
+	
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Global:</strong>&nbsp;&nbsp;</td><td>Array $buffer_handlers: L'insieme di tutti i gestori degli errori per i livelli di buffering</td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functionbuffer_add_level" id="functionbuffer_add_level"><!-- --></a>
+<div class="evenrow">
+
+	<div>
+		<span class="method-title">buffer_add_level</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesbuffering.php.html#a102">102</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void buffer_add_level(
+[String $initial_value = ""], [String $buffer_handler = ""], [String $handler_file = ""], [Integer $level = -1]&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Avvia il sistema di buffering dell'output
+</strong></p>
+
+    		<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">Integer</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$level:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Il livello al quale vogliamo inserire il nuovo buffer</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">String</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$initial_value:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> La stringa che contiene il valore iniziale del buffer</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">String</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$buffer_handler:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Il gestore associato al nuovo buffer</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">String</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$handler_file:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Il nome del file che contiene la funzione handler specificata</span>			</td></tr>
+				</table>
+	
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Global:</strong>&nbsp;&nbsp;</td><td>Array $buffer_handlers: L'insieme di tutti i gestori degli errori per i livelli di buffering</td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Marco Lazzaretti</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functionbuffer_call_handlers" id="functionbuffer_call_handlers"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="method-title">buffer_call_handlers</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesbuffering.php.html#a318">318</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>String buffer_call_handlers(
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Chiama i gestori del livello di buffer più elevato
+</strong></p>
+<span class="description"><p>La fuzione si occupa di richiamatre tutti i gestori dell'ultimo livello di buffer specificato, chiamando per primo il  gestore inserito per ultimo. Se siamo al primo livello, nel quale non è più possibile gestire il codice, viene creato un  buffer temporaneo.</p></span>
+    
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Return:</strong>&nbsp;&nbsp;</td><td>L'output di tutti i gestori chiamati per l'ultimo livello</td>
+  </tr>
+  <tr>
+    <td class="indent"><strong>Global:</strong>&nbsp;&nbsp;</td><td>Array $buffer_handlers: L'insieme di tutti i gestori degli errori per i livelli di buffering</td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functionbuffer_clear_level" id="functionbuffer_clear_level"><!-- --></a>
+<div class="evenrow">
+
+	<div>
+		<span class="method-title">buffer_clear_level</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesbuffering.php.html#a195">195</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void buffer_clear_level(
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Elimina il contenuto dell'ultimo livello di buffering
+</strong></p>
+
+    
+<br />
+	
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functionbuffer_commit" id="functionbuffer_commit"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="method-title">buffer_commit</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesbuffering.php.html#a46">46</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void buffer_commit(
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Commissiona l'esecuzione di tutti i livelli di buffering.
+</strong></p>
+<span class="description"><p>Una volta mandato eseguiti i suoi compiti riporta il sistema nelle condizioni iniziali.</p></span>
+    
+<br />
+	
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Marco Lazzaretti</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functionbuffer_commit_level" id="functionbuffer_commit_level"><!-- --></a>
+<div class="evenrow">
+
+	<div>
+		<span class="method-title">buffer_commit_level</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesbuffering.php.html#a173">173</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>String buffer_commit_level(
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Commissiona l'esecuzione di un livello di buffering
+</strong></p>
+
+    
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Return:</strong>&nbsp;&nbsp;</td><td>Il contenuto del livello di buffer.</td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Marco Lazzaretti</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functionbuffer_end" id="functionbuffer_end"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="method-title">buffer_end</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesbuffering.php.html#a77">77</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void buffer_end(
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Termina il sistema di buffering
+</strong></p>
+<span class="description"><p>La funzione elimina tutti i cambiamenti avvenuti dall'ultima commit e non reinizializza il sistema. Si rende necessaria  una nuova chiamata a buffer_start</p></span>
+    
+<br />
+	
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functionbuffer_remove_handler" id="functionbuffer_remove_handler"><!-- --></a>
+<div class="evenrow">
+
+	<div>
+		<span class="method-title">buffer_remove_handler</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesbuffering.php.html#a269">269</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void buffer_remove_handler(
+Integer $level, String $handler, [Bool $remove_all = false]&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Rimuove un gestore di buffer.
+</strong></p>
+<span class="description"><p>Rimuove un gestore del livello di buffer dall'insieme dei gestori per quel livello, oppure li elimina tutti.  Se $level è inferiore a 1 viene impostato a 1, se superiore all'ultimo livello amissibile viene considerato pari a  questo.</p></span>
+    		<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">Integer</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$level:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Il nome della funzione che gestisce il livello di buffering</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">String</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$handler:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Il livello a cui eliminare l'hander</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">Bool</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$remove_all:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Se TRUE elimina tutti i gestori del livello e non considera $handler</span>			</td></tr>
+				</table>
+	
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Global:</strong>&nbsp;&nbsp;</td><td>Array $buffer_handlers: L'insieme di tutti i gestori degli errori per i livelli di buffering</td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functionbuffer_start" id="functionbuffer_start"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="method-title">buffer_start</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesbuffering.php.html#a27">27</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void buffer_start(
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Avvia il sistema di buffering dell'output
+</strong></p>
+
+    
+<br />
+	
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+		</div>
+	</div><br />
+
+        <div class="credit">
+		    <hr class="separator" />
+		    Documentation generated on Thu, 11 Oct 2007 13:27:49 +0200 by <a href="http://www.phpdoc.org">phpDocumentor 1.3.0RC3</a>
+	      </div>
+      </td></tr></table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

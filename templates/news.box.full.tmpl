@@ -1,0 +1,20 @@
+{* Template per la visualizzazione di una news in formato completo *}
+<p><table cellspacing="2" cellpadding="2" style="border: 1px black solid; width="100%">
+  <tr>
+    <td width="100px">
+      <img height="50px" width="50px" src="images/{$news_image|default:"empty.jpg"}{* Immagine della news *}">
+    </td>
+    <td width="100%">
+      <span style="font-variant: small-caps;">
+        <b>{$news_section}{* Sezione di appartenza della news *}</b>
+      </span><br>
+      <b>{$news_date}{* Data di inserimento della news *}</b> - <b>{$news_title}{* Titolo della news *}</b>
+    </td>
+  </tr>
+  <tr>
+    <td width="100%" colspan="2">
+      &nbsp;{$news_content}{* Contenuto della news *}
+      <a href="index.php?r=show_news&id={$news_id_1}{* Id della news *}">Continua</a>
+    </td>
+  </tr>
+</table></p>

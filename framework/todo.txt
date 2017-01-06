@@ -1,0 +1,85 @@
+                                 REGOLE GENEARLI
+                              ---------------------
+- Mantenere *sempre* aggiornati i commenti e la descrizione delle funzioni. Ogni tanto è utile andare a riguardare le pagine maggiormente
+  modificate e aggiornare tutti i javadoc delle funzioni.
+- Ogni file del core deve contenere dei require_once a TUTTE le dipendenze, anche quelle gia incluse.
+
+                                   COSE DA FARE
+                                ------------------
+[priorità][sviluppatore][stato] Descrizione
+
+-- Componenti utente --
+[9][---][ ]  Dare un nome al framework
+[6][   ][ ]  Creare un modulo per la gallery fotografica. Ci voleva pensare lazza.
+[5][   ][ ]  Creare una funzione di database per le query di inserimento
+[5][   ][ ]  Creare una pagina amministrativa per il sistema di news
+[5][   ][ ]  Creare una pagina amministrativa per le pagine (crea, modifica, elimina pagine dal contenuto statico)
+[5][   ][ ]  Creare una pagina amministrativa per i menu
+[4][   ][ ]  Completare il logging degli errori salvandoli da qualche parte
+[4][   ][ ]  Permettere o no il taglio dei testi nelle news a discrezione del programmatore (da fare assieme al restyling delle news)
+[3][   ][ ]  Installare il componente per la gallery fotografica
+[1][   ][ ]  Correggere le chiamate al sistema di buffer (viene ancora usato ob_xxxx)
+[1][   ][ ]  Rifare il sistema di news più pulito (cioè con meno arzigogolamenti), che supporti un numero qualunque di sezioni e non
+             solo 3, che utilizzi il meno possibile dei parametri di configurazione statici per aumentare la portabilità
+       
+-- Componenti del kernel --
+[8][chr][ ]  Soppiantato l'uso di Smarty: è troppo lento, sostituirlo con uno più efficiente
+[7][   ][ ]  Aggiungere le informazioni sulla sezione ove necessario per farlo apparire nel debugger
+[7][   ][ ]  Spostare il file delle query, deve stare dentro i packages.
+[6][   ][ ]  Il file delle query non può stare com'è: il kernel non usa e non userà mai delle query: spostarlo.
+[6][   ][ ]  Permettere di redirigere la gestione del log degli errori (cioè solo la loro notifica) a una funzione personalizzata dell'utente
+[7][fbr][ ]  Permettere alla funzione build_cmplx_tmpl di poter gestire un numero arbitrario di liste da inserire nel template e fare in modo
+             che sia possibile annidare le chiamate per creare liste di sottoliste di sottoliste ...
+[5][   ][ ]  Permettere al core developer di poter redirigere, o subclassare, alcune, o anche tutte, le funzioni del sito, come per esempio
+             il gestore dell'output o del database a runtime
+[5][   ][ ]  Dovrebbe essere possibile rimodellare il sistema dei template, perchè si arriva ad avere una marea di file .tmpl in una sola
+             directory, tutto molto incasinato
+[5][   ][ ]  Efficienza codice: bisognerebbe riguardare tutte le funzioni e cercare di capire quanto sono efficienti, e in caso migliorarle
+             utilizzando file personalizzati per ogni template.
+[4][   ][ ]  Implementare app_cut(), cioè permettere di terminare forzatamente l'USO del framework senza interrompere il flusso della pagina
+[4][   ][ ]  Creare file di configurazione sparsi, ognuno per un file e tutti racchiusi in una cartella config per tutte le directory del progetto
+[4][   ][ ]  Un sistema di skin! In ogni cartella ci sono i template di una skin con i propri parametri di configurazioare ilne, nel sito c'è
+             il sistema che le va caricare, è ancora più bello se i templati sono compressi in formato gzip!
+[0][   ][ ]  Prevedere la connessione a più database, perchè può accadere che si debba lavorare su DB diversi
+             Forse è meglio dare un sistema per intercambiare i database, ma permettendone l'utilizzo di uno solo alla volta.
+
+                                      BUGS
+                                -----------------
+[X] Il filtro del debug non salva lo stato GET e POST. Aggiungere questo supporto
+[X] Nel debug tutto lo stack trace non visualizza i parametri.
+[X] Guardando l'output completo (compresi gli header) ho visto che appare sempre a fondo pagina il messaggio
+          <b>Notice</b>:  ob_end_clean() [<a href='ref.outcontrol'>ref.outcontrol</a>]: failed to delete buffer. No buffer to delete. in <b>C:\Inetpub\framework\kernel\modules\buffering.php</b> on line <b>80</b><br />
+    controllare di che si tratta, probabilmente ricontrollare tutto il funzionamento del sistema di buffering.
+[X] Utilizzando trigger_error non vengono visualizzate le informazioni sulla sua chiamata (file, riga, ...)
+[ ] Se faccio una regexp complessa php-cgi crasha.....
+[ ] Il framework lavora in diverse modalità. Sarebbe opportuno descriverle con un diagramma di stato. In particolare una è la modalità utente e l'altra
+    è la modalità di terminazione in cui si lavora con i buffer per creare i livelli. L'errore che è apparso nasce perchè non è confiugrato il database
+    quindi quando si genera la cornice del template andando a recuperare gli elementi del menu dal database viene scatenato un errore ma non viene terminata
+    l'esecuzione, perchè a conti fatti, app_end() è gia stata chiamata. L'esecuzione prosegue e viene sollevato un altro errore non gestito che termina
+    forzatamente php con un messaggio di errore. Questo è un grosso problema concettuale. Una soluzione, nemmeno troppo brutta sarebbe di far restituire
+    a pear_check true o false in relazione a quello che accade, ma questo non risolve il problema per altri tipi di errore. Quando si sta terminando gli
+    errori devono essere catturati ma visualizzati solo nel debug
+                                   
+                                   COSE FINITE
+                                -----------------
+[8][fbr][X] Eliminare la dipendenza da PEAR del database, cioè includere alcuni file di PEAR nel progetto
+[9][fbr][X] Creare un robusto sistema per la gestione degli errori
+[8][fbr][X] Portare l'array di configurazione ad array di array
+[7][fbr][X] Caricare dinamicamente i componenti del template principale
+[7][fbr][X] Controllare e migliorare la funzione build_cmplx_tmpl. Richiede troppi parametri e utilizza male le chiamate a funzione
+[7][fbr][X] Fare la stessa cosa del punto sopra con le funzioni che richiedono molti parametri
+[5][fbr][X] Creare il sistema di login per gli amministratori
+[5][fbr][X] Mettere i limiti al numero di news caricate
+[3][fbr][X] Permettere di registrare come variabili i parametri GET e POST
+[1][fbr][X] Rimodellare il sistema di debug per renderlo simile al sistema per il database o il template engine
+[1][fbr][X] Permettere di registrare gli eventi passati nell'URL a delle funzioni
+[0][fbr][X] Aggiungere la possibilità di filtrare l'output del debug, per esempio mettendo dei tag ad ogni messaggio
+[0][fbr][X] Estendere il sistema di assegnamento dinamico delle variabili (cioè tramite chiamate a funzioni) per ogni template
+[0][fbr][X] Personalizzare il sistema di callback dei buffer per poterne avere una migliore gestione e permettere al programmatore utente
+            di poter creare dei propri livelli e di aggiungere prorpri e diversi gestori dei buffer
+[0][fbr][X] Rimodellare la struttura delle directory secondo le definizioni date nei grafici e aggiornare tutti i collegamenti delle pagine
+
+ 
+                                  COSE ABBANDONATE
+                               ----------------------
+[0][fbr][?] Permettere dei "template condizionati", cioè di cambiare qualcosa del template dipendentemente da una condizione

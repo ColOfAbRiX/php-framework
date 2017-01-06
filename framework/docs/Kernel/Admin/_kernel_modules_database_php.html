@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Docs for page database.php</title>
+	<link rel="stylesheet" type="text/css" href="../../media/style.css">
+	<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+</head>
+<body>
+
+<table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
+  <tr>
+	<td class="header-top-left"><img src="../../media/logo.png" border="0" alt="phpDocumentor " /></td>
+    <td class="header-top-right">Kernel<br /><div class="header-top-right-subpackage">Admin</div></td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="../../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <tr>
+    <td colspan="2" class="header-menu">
+  		  [ <a href="../../classtrees_Kernel.html" class="menu">class tree: Kernel</a> ]
+		  [ <a href="../../elementindex_Kernel.html" class="menu">index: Kernel</a> ]
+		  [ <a href="../../elementindex.html" class="menu">all elements</a> ]
+    </td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="../../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="195" class="menu">
+		<div class="package-title">Kernel</div>
+  <div class="package">
+	<div id="todolist">
+			<p><a href="../../todolist.html">Todo List</a></p>
+	</div>
+	</div>
+      <b>Packages:</b><br />
+  <div class="package">
+              <a href="../../li_Kernel.html">Kernel</a><br />
+              <a href="../../li_Main.html">Main</a><br />
+      	</div>
+      <br />
+                        <b>Files:</b><br />
+        <div class="package">
+				<span style="padding-left: 1em;"><a href="../../Kernel/_kernel_application_php.html">application.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/_kernel_modules_config_php.html">config.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/_kernel_modules_definitions_php.html">definitions.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/_kernel_general_php.html">general.php</a></span><br />
+	  </div>
+  <div class="package">
+	<strong>Admin</strong><br />			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_adv_smarty_php.html">adv_smarty.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_buffering_php.html">buffering.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_buffer_handlers_php.html">buffer_handlers.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_components_php.html">components.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_database_php.html">database.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_debug_php.html">debug.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_debug_gfx_php.html">debug_gfx.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_errors_php.html">errors.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_queries_php.html">queries.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_template_engine_php.html">template_engine.php</a></span><br />
+	  </div>
+  <div class="package">
+	<strong>User</strong><br />			<span style="padding-left: 1em;"><a href="../../Kernel/User/_kernel_packages_login_php.html">login.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/User/_kernel_packages_menu_php.html">menu.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/User/_kernel_packages_news_php.html">news.php</a></span><br />
+	  </div>
+            <br />
+            <b>Classes:</b><br />
+        <div class="package">
+	Admin<br />	    <span style="padding-left: 1em;">		<a href="../../Kernel/Admin/AdvSmarty.html">AdvSmarty</a>    </span>	 <br />
+	  </div>
+                </td>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
+
+<h1>Procedural File: database.php</h1>
+Source Location: /kernel/modules/database.php<br /><br />
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Page Details</div>
+	<div class="nav-bar">
+					<span class="disabled">Page Details</span> |
+									<a href="#sec-includes">Includes</a>
+			|							<a href="#sec-constants">Constants</a>
+			|									<a href="#sec-functions">Functions</a>
+			</div>
+	<div class="info-box-body">
+		<p align="center" class="short-description"><strong>Funzioni di elaborazioni del database
+</strong></p>
+<span class="description"><p>Questo file espone le funzioni per l'utilizzo del database come la connessione  e l'esecuzioni di query sul database. Le funzioni di questo file memorizzano  una connessione nella variabile globale $DATABASE che usano come connessione di  default. E' comunque possibile non utilizzare questa variabile globale ed usare  una connessione alternativa. Se ne la connessione di default ne la connessione  alternativa sono specificate viene creta sul momento una nuova connessione non  persistente, ovvero la connessione viene utilizzata e poi subito richiusa.</p></span>		<table border="0" cellspacing="0" cellpadding="0">
+			<tr><td><strong>See:</strong>&nbsp;&nbsp;</td><td><a href="../../Kernel/Admin/_kernel_modules_queries_php.html">queries.php</a></td></tr>
+			<tr><td><strong>Filesource:</strong>&nbsp;&nbsp;</td><td><a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesdatabase.php.html">Source Code for this file</a></td></tr>
+			<tr><td><strong>See:</strong>&nbsp;&nbsp;</td><td><a href="../../Kernel/Admin/_kernel_modules_debug_php.html">debug.php</a></td></tr>
+			<tr><td><strong>See:</strong>&nbsp;&nbsp;</td><td><a href="../../Kernel/_kernel_modules_config_php.html">config.php</a></td></tr>
+			<tr><td><strong>Copyright:</strong>&nbsp;&nbsp;</td><td>Copyright 2005, Fabrizio Colonna</td></tr>
+			<tr><td><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna &lt;<a href="mailto:colofabrix@tin.it">colofabrix@tin.it</a>&gt;</td></tr>
+	</table>
+
+			</div>
+</div>
+
+
+	<a name="sec-includes"></a>
+	<div class="info-box">
+		<div class="info-box-title">Includes</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Page Details</a> |
+						<span class="disabled">Includes</span>
+			|							<a href="#sec-constants">Constants</a>
+				|													<a href="#sec-functions">Functions</a>
+					</div>
+		<div class="info-box-body">
+			<a name="_dirname(__FILE__)_/config_php"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="include-title">
+			<span class="include-type">require_once</span>
+			(<span class="include-name">dirname(__FILE__)."/config.php"</span>)
+			<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesdatabase.php.html#a26">26</a>]</span>
+		</span>
+	</div>
+
+		
+		<div class="top">[ <a href="#top">Top</a> ]</div>
+		<br />
+</div>
+<a name="_dirname(__FILE__)_/queries_php"><!-- --></a>
+<div class="evenrow">
+
+	<div>
+		<span class="include-title">
+			<span class="include-type">require_once</span>
+			(<span class="include-name">dirname(__FILE__)."/queries.php"</span>)
+			<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesdatabase.php.html#a27">27</a>]</span>
+		</span>
+	</div>
+
+		
+		<div class="top">[ <a href="#top">Top</a> ]</div>
+		<br />
+</div>
+<a name="_DB_php"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="include-title">
+			<span class="include-type">require_once</span>
+			(<span class="include-name">"DB.php"</span>)
+			<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesdatabase.php.html#a29">29</a>]</span>
+		</span>
+	</div>
+
+		
+		<div class="top">[ <a href="#top">Top</a> ]</div>
+		<br />
+</div>
+<a name="_dirname(__FILE__)_/debug_php"><!-- --></a>
+<div class="evenrow">
+
+	<div>
+		<span class="include-title">
+			<span class="include-type">require_once</span>
+			(<span class="include-name">dirname(__FILE__)."/debug.php"</span>)
+			<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesdatabase.php.html#a28">28</a>]</span>
+		</span>
+	</div>
+
+		
+		<div class="top">[ <a href="#top">Top</a> ]</div>
+		<br />
+</div>
+		</div>
+	</div><br />
+
+	<a name="sec-constants"></a>
+	<div class="info-box">
+		<div class="info-box-title">Constants</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Page Details</a> |
+										<a href="#sec-includes">Includes</a>
+				|						<span class="disabled">Constants</span>
+			|										<a href="#sec-functions">Functions</a>
+					</div>
+		<div class="info-box-body">
+			<a name="defineKERNEL_ADMIN_DATABASE"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="const-title">
+			<span class="const-name">KERNEL_ADMIN_DATABASE</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesdatabase.php.html#a23">23</a>]</span>
+		</span>
+	</div>
+<br />
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>KERNEL_ADMIN_DATABASE = 1</code>
+    </td></tr></table>
+    </td></tr></table>
+
+        
+	<br />
+
+		<div class="top">[ <a href="#top">Top</a> ]</div>
+	<br />
+</div>
+		</div>
+	</div><br />
+
+
+	<a name="sec-functions"></a>
+	<div class="info-box">
+		<div class="info-box-title">Functions</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Page Details</a> |
+										<a href="#sec-includes">Includes</a>
+				|										<a href="#sec-constants">Constants</a>
+				|									<span class="disabled">Functions</span>
+		</div>
+		<div class="info-box-body">
+			<a name="functiondb_connect" id="functiondb_connect"><!-- --></a>
+<div class="evenrow">
+
+	<div>
+		<span class="method-title">db_connect</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesdatabase.php.html#a49">49</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>PEAR::DB db_connect(
+[bool $set_global = true], [bool $hide_selective = false]&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Apre la connessione al database utilizzando i parametri di config.php.
+</strong></p>
+<span class="description"><p>La funzione crea una connessione al database utilizzando i parametri della sezione database nel file di configurazione  <a href="../../Kernel/_kernel_modules_config_php.html">config.php</a>. Viene scelto come modo di restituzione dei dati un array associativo e vengono abilitate tutte le  opzioni di portabilità di PEAR <a href="http://pear.php.net/manual/en/package.database.db.php">PEAR::DB</a>.  Se l'impostazione di connessione selettiva è attivata non è possibile collegarsi al database  tramite questa funzione,  a meno di passare $hide_selective = true. Nel caso di connessione selettiva è sufficiente richiamare una funzione per  il recupero dei dati come <a href="../../Kernel/Admin/_kernel_modules_database_php.html#functiondb_execute">db_execute</a><ul><li><a href="../../Kernel/Admin/_kernel_modules_database_php.html#functiondb_execute_array">db_execute_array</a>. Per disconnetters invece bisogna comunque</li></ul> chiamare <a href="../../Kernel/Admin/_kernel_modules_database_php.html#functiondb_disconnect">db_disconnect</a>.</p></span>
+    		<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">bool</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$set_global:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Indica se ipostare la connessione come default.</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">bool</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$hide_selective:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Serve per nascondere l'opzione della connessione selettiva.</span>			</td></tr>
+				</table>
+	
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Return:</strong>&nbsp;&nbsp;</td><td>La connessione al database</td>
+  </tr>
+  <tr>
+    <td class="indent"><strong>Global:</strong>&nbsp;&nbsp;</td><td>Array $CONFIG: Parametri di configurazione</td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functiondb_disconnect" id="functiondb_disconnect"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="method-title">db_disconnect</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesdatabase.php.html#a103">103</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void db_disconnect(
+[PEAR::DB &$db = null]&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Disconnessione dal database specificato.
+</strong></p>
+<span class="description"><p>La funzione chiude la connessione al database. Se non ne viene specificato uno viene utilizzato il database globale di  defalt, in caso contrario il database globale viene disconnesso solo se nelle impostazioni non è attiva l'opzione di  connessione persistente.</p></span>
+    		<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">PEAR::DB</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$db:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> L'oggetto che fa riferimento alla connessione aperta.</span>			</td></tr>
+				</table>
+	
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Global:</strong>&nbsp;&nbsp;</td><td>PEAR::DB $DATABASE: Connession di default al database</td>
+  </tr>
+  <tr>
+    <td class="indent"><strong>Global:</strong>&nbsp;&nbsp;</td><td>Array $CONFIG: Parametri di configurazione</td>
+  </tr>
+  <tr>
+    <td class="indent"><strong>See:</strong>&nbsp;&nbsp;</td><td><a href="../../Kernel/_kernel_modules_config_php.html">config.php</a></td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functiondb_execute" id="functiondb_execute"><!-- --></a>
+<div class="evenrow">
+
+	<div>
+		<span class="method-title">db_execute</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesdatabase.php.html#a189">189</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>PEAR::DB_Result db_execute(
+String $query, [Array $parameters = array()], [PEAR::DB $db = null]&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Esegue una query parametrizzata.
+</strong></p>
+<span class="description"><p>Esegue la query specificata sostituendoci i parametri indicati nel secondo parametro. Per il formato dei parametri  nella query vedere la documentazione di PEAR <a href="http://pear.php.net/manual/en/package.database.db.db-common.execute.php">DB-&gt;execute()</a>. Ogni parametro passato subisce un escaping al fine di evitare problemi con la sicurezza derivanti da  SQL-Injiection, e per questo i parametri passati. non devo avere gia subito un escapging.</p><p>Variabili di debug: $parameters, $executed_query.</p></span>
+    		<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">String</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$query:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> La query SQL da eseguire</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">Array</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$parameters:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Array di parametri da sostituire nella query</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">PEAR::DB</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$db:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Connessione al database da usare</span>			</td></tr>
+				</table>
+	
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Global:</strong>&nbsp;&nbsp;</td><td>PEAR::DB $DATABASE: Connession di default al database</td>
+  </tr>
+  <tr>
+    <td class="indent"><strong>Global:</strong>&nbsp;&nbsp;</td><td>Array $CONFIG: Parametri di configurazione</td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functiondb_execute_array" id="functiondb_execute_array"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="method-title">db_execute_array</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesdatabase.php.html#a242">242</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>Array db_execute_array(
+String $query, [Array $parameters = array()], [PEAR::DB $db = null]&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Esegue una query parametrizzata e restituisce il risultato come array.
+</strong></p>
+<span class="description"><p>La funzione esegue la stessa operazione di <a href="../../Kernel/Admin/_kernel_modules_database_php.html#functiondb_execute">db_execute</a> ma differisce per il formato restituito. Vedere le  considerazioni fatte in proposito a <a href="../../Kernel/Admin/_kernel_modules_database_php.html#functiondb_execute">db_execute</a>. Questa funzione restituisce un array di record.</p></span>
+    		<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">String</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$query:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> La query SQL da eseguire</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">Array</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$parameters:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Array di parametri da sostituire nella query</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">PEAR::DB</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$db:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Connessione al database da usare</span>			</td></tr>
+				</table>
+	
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Return:</strong>&nbsp;&nbsp;</td><td>L'array del set recuperato</td>
+  </tr>
+  <tr>
+    <td class="indent"><strong>See:</strong>&nbsp;&nbsp;</td><td><a href="../../Kernel/Admin/_kernel_modules_database_php.html#functiondb_execute">db_execute()</a></td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functiondb_execute_scalar" id="functiondb_execute_scalar"><!-- --></a>
+<div class="evenrow">
+
+	<div>
+		<span class="method-title">db_execute_scalar</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesdatabase.php.html#a273">273</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>Mixed db_execute_scalar(
+String $query, [Array $parameters = array()], [PEAR::DB $db = null]&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Esegue una query parametrizzata che restituisce uno scalare
+</strong></p>
+<span class="description"><p>La funzione esegue la stessa operazione di <a href="../../Kernel/Admin/_kernel_modules_database_php.html#functiondb_execute">db_execute</a> ma differisce per il formato restituito. Vedere le  considerazioni fatte in proposito a <a href="../../Kernel/Admin/_kernel_modules_database_php.html#functiondb_execute">db_execute</a>. Questa funzione restituisce un array di record.</p></span>
+    		<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">String</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$query:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> La query SQL da eseguire</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">Array</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$parameters:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Array di parametri da sostituire nella query</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">PEAR::DB</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$db:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Connessione al database da usare</span>			</td></tr>
+				</table>
+	
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Return:</strong>&nbsp;&nbsp;</td><td>Risultato scalare del valore recuperato</td>
+  </tr>
+  <tr>
+    <td class="indent"><strong>See:</strong>&nbsp;&nbsp;</td><td><a href="../../Kernel/Admin/_kernel_modules_database_php.html#functiondb_execute">db_execute()</a></td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functionget_global_db" id="functionget_global_db"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="method-title">get_global_db</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesdatabase.php.html#a155">155</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>PEAR::DB get_global_db(
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Recupera il database globale di default.
+</strong></p>
+<span class="description"><p>Se non esiste ancora un database di defaul la funzione si preoccupa di crearne uno e poi restituirlo. Predispone ad  upgradare il sito utilizzando i paradigmi della OOP.</p></span>
+    
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Return:</strong>&nbsp;&nbsp;</td><td>Il database di default</td>
+  </tr>
+  <tr>
+    <td class="indent"><strong>Global:</strong>&nbsp;&nbsp;</td><td>PEAR::DB $DATABASE: Connession di default al database</td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functionset_global_db" id="functionset_global_db"><!-- --></a>
+<div class="evenrow">
+
+	<div>
+		<span class="method-title">set_global_db</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesdatabase.php.html#a138">138</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void set_global_db(
+PEAR::DB $db&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Imposta come database di default il database specificato.
+</strong></p>
+
+    		<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">PEAR::DB</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$db:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> L'oggetto che fa riferimento alla connessione aperta.</span>			</td></tr>
+				</table>
+	
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Global:</strong>&nbsp;&nbsp;</td><td>PEAR::DB $DATABASE: Connession di default al database</td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+		</div>
+	</div><br />
+
+        <div class="credit">
+		    <hr class="separator" />
+		    Documentation generated on Thu, 11 Oct 2007 13:27:52 +0200 by <a href="http://www.phpdoc.org">phpDocumentor 1.3.0RC3</a>
+	      </div>
+      </td></tr></table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

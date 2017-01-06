@@ -1,0 +1,167 @@
+NOTAZIONE UTILIZZATA NEL PROGETTO - By ColOfAbRiX
+
+INTRODUZIONE
+------------------------------------
+  Per garantire la comprensibilità del codice ho prestato molta attenzione, come sempre, allo
+stile e alle notazioni utilizzate per scrivere. Lo stile che io uso cerca di rendere il codice
+uniforme e gradevole alla vista perchè così è più facile leggerlo e comprenderlo, basandosi
+su un teorema che afferma che "L'entropia del codice è in continuo aumento". Infatti un codice
+tutto compattato e appiccicato come può sicuramente venire fuori scrivendo un grosso e
+complesso programma, rende impossibile la sua comprensione. Per chi conosce l'IOCC ha capito di
+cosa sto parlando ;)
+  Il codice tipo C-like è sicuramente quello più diffuso (pensate al C/C++ stesso, a Java, a PHP,
+e anche a C#), e anche quello con cui mi trovo più facilmente a lavorare, quindi questa guida di
+riferimento ovviamente l'ho scritta cercando di risolvere le problematiche che emergono
+utilizzando questa sintassi, e di preciso questa guida è stata scritta confrontandola con un mio
+programma scritto in C puro la cui eleganza ha riscosso parecchio successo tra i miei amici.
+
+REGOLE GENERALI
+------------------------------------
+  Il codice sorgente deve essere gradevole alla vista, per esempio non deve trovarsi concentrato
+tutto da una parte della pagina o estendersi per duecento colonne, non deve essere appiccicato ma
+nemmeno troppo spaziato spaziato. Questo risultato non si può ottenere con delle semplici regole,
+quindi sta al programmatore rendere omogeneo il codice, tuttavia con questo documento vengono dati
+alcuni suggerimenti che cercano di agevolare la creazione di un proprio stile di scrittura chiaro
+e pulito.
+  Generalmente il codice non deve estendersi per più di 100 colonne in modo da non dover
+scrollare la pagina in orizzontale per ogni riga di codice. Per come comportarsi nei casi specifici
+rimando alle seguenti sezioni.
+
+COMMENTI
+------------------------------------
+  I commenti devono essere estensivi ed esplicativi, non minimizzati ad una riga di commento
+per duecento righe di codice, altrimenti sono inutili. Anche del codice ovvio deve essere
+commentato perchè può non essere chiaro il suo utilizzo nel contesto in cui si trova ed
+agevola la comprensione del codice ad un'altra persona. Per questo i commenti non devono
+limitarsi a descrivere pari pari il comando a cui si riferiscono, ma l'azione concettuale
+intrapresa dal o dai comandi relativi (vedi esempio). Un commento non è quasi mai una
+descrizione tecnica con un linguaggio formale, ma al contraio è una frase diretta, informale,
+ed in prima persona da programmatore a programmatore.
+  I commenti devono tutti iniziare con "//...", non sono ammessi altri tipi di markers come
+per esempio "/* ... */" o "#..." (se il linguaggio ovviamente permette di utilizzarli).
+Dopo le due barre "//" deve esserci uno spazio. Se il testo eccede le dimensioni dello schermo
+si deve andare a capo, inserire le due barre "//" sotto quelle precedenti e riprendere a scrivere.
+  I commenti devono trovarsi nella riga immediatamente sopra al comando o ai comandi a cui si
+riferiscono. Sono ammessi commenti a lato di una riga se il commento è prettamente una nota
+marginale o se si tratta di commenti ad una lista di comandi simili in successione. I commenti
+laterali devono essere tutti allineati lungo l'intera pagina e possono eccedere la larghezza
+dello schermo.
+  Esempio:
+      // Visualizzo nel browser tutto il contenuto dell'array
+      for( $i = 0; $i < count($my_array); $i++ )
+      {
+          echo( "Indice $i:{$my_array[$i]}" );            // Potevo anche concatenare le stringhe
+          echo( "<br>" );
+      }
+  (PHP Only) La documentazione delle funzioni è quella standard di PhpDocumentor e non necessita
+di ulteriori spiegazioni. Mentre se non si vuole o non si può utilizzare PhpDocumentor la
+descrizione della funzione permette un formato libero, ma in cui debbano essere presenti almeno
+una sua descrizione abbreviata, la descrizione dei parametri che la funzione richiede il la
+descrizione del valore ritornato.
+
+BLOCCHI DI CODICE
+-----------------------------------
+  Lo stile ammesso per l'indentatura è quello esteso, altrimenti chiamato stile BSD.
+  Questo stile prevede di aprire il blocco di codice con la parentesi graffa "{" posta subito
+sotto al comando a cui si riferisce, in linea con questo, lo stesso vale per la parentesi graffa
+di chiusura "}" su un'altra riga. Le righe in cui si apre e si chiude il blocco di codice non
+devono contenere altro che le parentesi, ovvero non devono avere ne comandi ne commenti.
+  All'interno del blocco il codice va indentato, ovvero spaziato, di 4 spazi. Non viene utilizzata
+la tabulazione perchè non garantisce l'allineamento del testo su vari tipi di editor.
+  Queste regole devono applicarsi qualsiasi sia la lunghezza del contenuto del blocco, sia che si
+tratti di 10 righe, sia che si tratti di una sola riga. Senza queste restrizioni è molto facile che
+la riga in cui c'è l'istruzione di controllo del flusso risulti appiccicata ad una lunga riga
+subito sotto rendendo il codice molto appiccicato, ed è proprio quello che si vuole evitare.
+  I blocchi di codice vengono usati nella maggior parte dei casi con istruzioni di controllo del
+flusso, ovvero: if-else if, for, while, do-while (e in quelli in cui mi sono dimenticato) e nella
+definizione di funzioni.
+  Esempio:
+      while( $a == true )
+      {
+          if( $b == "test" )
+          {
+              echo( "Questo è un" );
+              echo( "<b>Test</b>" );
+          }
+          else
+          {
+              $i++;
+          }
+      }
+  La regola generale che impone di inserire le parentesi graffe anche nel caso in cui il codice
+sia composto di una sola riga in certi casi può essere scavalcata, per esempio quando la singola
+istruzione è tale da coprire più righe estesamente (ovvero per diverse colonne), e comunque si
+lascia valutare al programmatore esperto se sia il caso o no di interrompere la regola.
+  Esempio:
+	while ( currValue = va_arg( varArgs, int ) )
+		__asm											// Non uso le graffe perchè __asm occupa
+		{												// ben 6 righe.
+			mov   eax, dword ptr [currValue]
+			push  eax
+			add   argSize, 4
+		};
+
+VARIABILI
+------------------------------------
+  I nomi delle variabili devono essere nomi esplicativi del contenuto o della funzione che svolge la
+variabile. Anche se il nome dovesse risultare lungo, ed è probabile, non ha importanza,
+  I nomi delle variabili, oltre a dovere rispettare il formato imposto da PHP deve avere altre
+caratteristiche. Innanzitutto non è ammessa la notazione ungherese, in quanto il nome della variabile
+deve essere esplicativo del suo contenuto. I nomi delle variabili devono essere tutto in minuscolo,
+compresa la prima lettera che deve sempre essere un carattere, e mai un altro simbolo ammesso da PHP
+come ad esempio l'underscore "_"; in caso di variabili comprendenti parole multiple, ogni parola deve
+essere separata con un carattere di underscore "_".
+  Alcuni esempi di nomi validi di variabile sono
+    $color					// Color
+    $compile_directory		// Compile Directory
+    
+E' molto facile far crescere a dismisura un nome e quindi è possibile e consigliato utilizzare
+abbreviazioni nel nome, però mai usando sigle, solo abbreviazioni. In caso si voglia costruire un
+nome fatto di abbreviazioni composte, è possibile concatenare le abbreviazioni senza l'uso di "_".
+  Esempio:
+    $adv_template			// Advanced Template
+    $compile_dir			// Compile Directory
+    $dbgfx					// Debug(dbg) Grafix/gfx)
+  
+STRINGHE
+------------------------------------
+  Le stringhe troppo lunghe devono essere spezzate prima dell'inizio dei commenti laterali, se ce ne
+sono, o comunque all'incirca a quella distanza. Dopo aver chiuso la stringa a fine riga con le doppie
+virgolette bisogna inserire uno spazio e il punto "." di concatenamento. Nella riga successiva la
+stringa deve ricominciare allineata all'inizio della stringa nella riga sopra.
+  In caso la stringa debba contenere delle variabili queste vanno inserite senza terminare la stringa
+(visto che PHP lo permette) per non interrompere il flusso delle parole. Se si tratta di una variabile
+articolata come un array multidimensionale o un metodo di un oggetto, la variabile va inserita tra
+parentesi graffe.
+  Esempio:
+      $testo = "Utente: $utente<br>Questo è un testo esplicativo che mostra" .
+               "come scrivere delle stringhe molto lunghe senza interrompere " .
+               "il flusso del testo. Metodo: {$my_obj->get()}";
+  Nel caso si debba inserire il valore di una funzione direttamente in una stringa (dovrebbe essere
+improbabile, ma può succedere) allora bisogna chiudere la stringa con le doppie virgolette e
+concatenare la chiamata a funzioni con il punto "." lasciando uno spazio prima e dopo il punto.
+  Esempio:
+      $testo = "Risultato: " . get_result() .
+
+ESPRESSIONI
+------------------------------------
+su più righe
+
+FUNZIONI
+------------------------------------
+come chiamarle
+definizione
+parametri
+chiamate
+
+CONTROLLI DEL FLUSSO
+------------------------------------
+
+SWITCH
+------------------------------------
+
+SPAZIATURA TRA RIGHE
+------------------------------------
+
+E' buona norma inserire le inclusioni del file in ordine di lunghezza, scrivendo per prime le inclusioni
+più lunghe. Ciò comporta una migliore visione d'insieme della pagina.

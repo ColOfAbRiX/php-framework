@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>File Source for adv_smarty.php</title>
+	<link rel="stylesheet" type="text/css" href="../media/style.css">
+	<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+</head>
+<body>
+
+<table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
+  <tr>
+	<td class="header-top-left"><img src="../media/logo.png" border="0" alt="phpDocumentor " /></td>
+    <td class="header-top-right">Kernel<br /><div class="header-top-right-subpackage">Admin</div></td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <tr>
+    <td colspan="2" class="header-menu">
+  		  [ <a href="../classtrees_Kernel.html" class="menu">class tree: Kernel</a> ]
+		  [ <a href="../elementindex_Kernel.html" class="menu">index: Kernel</a> ]
+		  [ <a href="../elementindex.html" class="menu">all elements</a> ]
+    </td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="195" class="menu">
+		<div class="package-title">Kernel</div>
+  <div class="package">
+	<div id="todolist">
+			<p><a href="../todolist.html">Todo List</a></p>
+	</div>
+	</div>
+      <b>Packages:</b><br />
+  <div class="package">
+              <a href="../li_Kernel.html">Kernel</a><br />
+              <a href="../li_Main.html">Main</a><br />
+      	</div>
+      <br />
+                        <br />
+                </td>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
+
+<h1 align="center">Source for file adv_smarty.php</h1>
+<p>Documentation is available at <a href="../Kernel/Admin/_kernel_modules_adv_smarty_php.html">adv_smarty.php</a></p>
+<div class="src-code"><span class="php">
+<div class="listing"><pre><ol><li><a name="a1"></a><span class="src-php">&lt;?php</span></li>
+<li><a name="a2"></a><span class="src-doc">/**</span></li>
+<li><a name="a3"></a><span class="src-doc"> * Estensione della classe Smarty</span></li>
+<li><a name="a4"></a><span class="src-doc"> *</span></li>
+<li><a name="a5"></a><span class="src-doc"> * In tantissime parti del codice mi servirebbe sapere quali variabili un template richiede per</span></li>
+<li><a name="a6"></a><span class="src-doc"> * sapere a runtime quali caricare, ma la classe standard di Smarty non mi permette di farlo. In</span></li>
+<li><a name="a7"></a><span class="src-doc"> * questo file c'è una classe che estende la classe Smarty e le aggiunge questa funzionalità.</span></li>
+<li><a name="a8"></a><span class="src-doc"> * Wow, è proprio forte l'ereditarietà.</span></li>
+<li><a name="a9"></a><span class="src-doc"> *</span></li>
+<li><a name="a10"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@package</span><span class="src-doc">    Kernel</span></li>
+<li><a name="a11"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@subpackage</span><span class="src-doc"> Admin</span></li>
+<li><a name="a12"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc">     Fabrizio Colonna &lt;colofabrix@tin.it&gt;</span></li>
+<li><a name="a13"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@copyright</span><span class="src-doc">  Copyright 2005, Fabrizio Colonna</span></li>
+<li><a name="a14"></a><span class="src-doc"> */</span></li>
+<li><a name="a15"></a><span class="src-comm">// Signature</span></li>
+<li><a name="a16"></a><a href="http://www.php.net/define">define</a><span class="src-sym">( </span><span class="src-str">&quot;KERNEL_ADMIN_ADV_SMARTY&quot;</span><span class="src-sym">, </span><span class="src-num">1 </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a17"></a><span class="src-comm">// Dipendenze</span></li>
+<li><a name="a18"></a><span class="src-inc">require_once</span><span class="src-sym">( </span><span class="src-id">dirname</span><span class="src-sym">(</span>__FILE__<span class="src-sym">)</span>.<span class="src-str">&quot;/../libs/smarty/Smarty.class.php&quot; </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a19"></a>&nbsp;</li>
+<li><a name="a20"></a><span class="src-doc">/**</span></li>
+<li><a name="a21"></a><span class="src-doc"> * Advanced Smarty Class.</span></li>
+<li><a name="a22"></a><span class="src-doc"> *</span></li>
+<li><a name="a23"></a><span class="src-doc"> * Classe Smarty estesa per aggiungerle alcune funzionaltià di grande utilità per la flessibilità</span></li>
+<li><a name="a24"></a><span class="src-doc"> * del sito.</span></li>
+<li><a name="a25"></a><span class="src-doc"> *</span></li>
+<li><a name="a26"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc">     Fabrizio Colonna</span></li>
+<li><a name="a27"></a><span class="src-doc"> * </span><span class="src-doc-tag">@date</span><span class="src-doc">       18/01/2006</span></li>
+<li><a name="a28"></a><span class="src-doc"> */</span></li>
+<li><a name="a29"></a><span class="src-key">class </span><a href="../Kernel/Admin/AdvSmarty.html">AdvSmarty</a> <span class="src-key">extends </span><span class="src-id">Smarty</span></li>
+<li><a name="a30"></a><span class="src-sym">{</span></li>
+<li><a name="a31"></a>    <span class="src-doc">/**</span></li>
+<li><a name="a32"></a><span class="src-doc">     * La funzione recupera le variabili presenti dentro il template.</span></li>
+<li><a name="a33"></a><span class="src-doc">     *</span></li>
+<li><a name="a34"></a><span class="src-doc">     * Il codice è un riadattamento di quello della funzione Smarty_Compile::_compile_file().</span></li>
+<li><a name="a35"></a><span class="src-doc">     * NOTA: Quelle merde dei programmatori di smarty hanno chiamato una funzione get_templates_vars()</span></li>
+<li><a name="a36"></a><span class="src-doc">     * mentre non fa assolutamente quello che le da il nome, ma restituisce le variabili assegnate,</span></li>
+<li><a name="a37"></a><span class="src-doc">     * così ho dovuto inventarmi un altro nome. Ci tengo a dirlo perchè mi ha dato molto fastidio.</span></li>
+<li><a name="a38"></a><span class="src-doc">     *</span></li>
+<li><a name="a39"></a><span class="src-doc">     * </span><span class="src-doc-coretag">@author</span><span class="src-doc">     Fabrizio Colonna</span></li>
+<li><a name="a40"></a><span class="src-doc">     * </span><span class="src-doc-tag">@date</span><span class="src-doc">       18/01/2006</span></li>
+<li><a name="a41"></a><span class="src-doc">     * </span><span class="src-doc-coretag">@param </span><span class="src-doc">     </span><span class="src-doc-type">String </span><span class="src-doc">   </span><span class="src-doc-var">$resource </span><span class="src-doc">Il nome della risorsa da analizzare</span></li>
+<li><a name="a42"></a><span class="src-doc">     * </span><span class="src-doc-coretag">@return </span><span class="src-doc">    </span><span class="src-doc-type">Array </span><span class="src-doc">    Un array contenente tutte le variabili presenti nel template</span></li>
+<li><a name="a43"></a><span class="src-doc">     */</span></li>
+<li><a name="a44"></a>    <span class="src-key">function </span><a href="../Kernel/Admin/AdvSmarty.html#methodget_vars_in_template">get_vars_in_template</a><span class="src-sym">( </span><span class="src-var">$resource </span><span class="src-sym">)</span></li>
+<li><a name="a45"></a>    <span class="src-sym">{</span></li>
+<li><a name="a46"></a>        <span class="src-key">return </span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">_get_template</span><span class="src-sym">( </span><span class="src-var">$resource</span><span class="src-sym">, </span><span class="src-str">&quot;variables&quot; </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a47"></a>    <span class="src-sym">}</span></li>
+<li><a name="a48"></a>&nbsp;</li>
+<li><a name="a49"></a>    <span class="src-doc">/**</span></li>
+<li><a name="a50"></a><span class="src-doc">     * La funzione recupera le funzioni presenti dentro il template.</span></li>
+<li><a name="a51"></a><span class="src-doc">     *</span></li>
+<li><a name="a52"></a><span class="src-doc">     * Il codice è un riadattamento di quello della funzione Smarty_Compile::_compile_file().</span></li>
+<li><a name="a53"></a><span class="src-doc">     *</span></li>
+<li><a name="a54"></a><span class="src-doc">     * </span><span class="src-doc-coretag">@author</span><span class="src-doc">     Fabrizio Colonna</span></li>
+<li><a name="a55"></a><span class="src-doc">     * </span><span class="src-doc-tag">@date</span><span class="src-doc">       18/01/2006</span></li>
+<li><a name="a56"></a><span class="src-doc">     * </span><span class="src-doc-coretag">@param </span><span class="src-doc">     </span><span class="src-doc-type">String </span><span class="src-doc">   </span><span class="src-doc-var">$resource </span><span class="src-doc">Il nome della risorsa da analizzare</span></li>
+<li><a name="a57"></a><span class="src-doc">     * </span><span class="src-doc-coretag">@return </span><span class="src-doc">    </span><span class="src-doc-type">Array </span><span class="src-doc">    Un array contenente tutte le variabili presenti nel template</span></li>
+<li><a name="a58"></a><span class="src-doc">     */</span></li>
+<li><a name="a59"></a>    <span class="src-key">function </span><a href="../Kernel/Admin/AdvSmarty.html#methodget_functions_in_template">get_functions_in_template</a><span class="src-sym">( </span><span class="src-var">$resource </span><span class="src-sym">)</span></li>
+<li><a name="a60"></a>    <span class="src-sym">{</span></li>
+<li><a name="a61"></a>        <span class="src-key">return </span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">_get_template</span><span class="src-sym">( </span><span class="src-var">$resource</span><span class="src-sym">, </span><span class="src-str">&quot;functions&quot; </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a62"></a>    <span class="src-sym">}</span></li>
+<li><a name="a63"></a>&nbsp;</li>
+<li><a name="a64"></a>    <span class="src-key">function </span><span class="src-id">_get_template</span><span class="src-sym">( </span><span class="src-var">$resource</span><span class="src-sym">, </span><span class="src-var">$type </span><span class="src-sym">)</span></li>
+<li><a name="a65"></a>    <span class="src-sym">{</span></li>
+<li><a name="a66"></a>        <span class="src-var">$out </span>= <span class="src-key">Array</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a67"></a>        <span class="src-var">$_match </span>= <span class="src-key">Array</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a68"></a>&nbsp;</li>
+<li><a name="a69"></a>        <span class="src-comm">// Carico il contenuto del file</span></li>
+<li><a name="a70"></a>        <span class="src-var">$_params </span>= <span class="src-key">array</span><span class="src-sym">( </span><span class="src-str">&quot;resource_name&quot; </span>=&gt; <span class="src-var">$resource </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a71"></a>        <span class="src-key">if</span><span class="src-sym">( </span><span class="src-sym">!</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">_fetch_resource_info</span><span class="src-sym">(</span><span class="src-var">$_params</span><span class="src-sym">) )</span></li>
+<li><a name="a72"></a>        <span class="src-sym">{</span></li>
+<li><a name="a73"></a>            <span class="src-key">return </span><span class="src-id">false</span><span class="src-sym">;</span></li>
+<li><a name="a74"></a>        <span class="src-sym">}</span></li>
+<li><a name="a75"></a>&nbsp;</li>
+<li><a name="a76"></a>        <span class="src-var">$source_content </span>= <span class="src-var">$_params</span><span class="src-sym">[</span><span class="src-str">&quot;source_content&quot;</span><span class="src-sym">]</span><span class="src-sym">;  </span><span class="src-comm">// Contenuto del file</span></li>
+<li><a name="a77"></a>&nbsp;</li>
+<li><a name="a78"></a>        <span class="src-comm">// Trovo tutti i tag Smarty</span></li>
+<li><a name="a79"></a>        <span class="src-var">$ldq </span>= <a href="http://www.php.net/preg_quote">preg_quote</a><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">left_delimiter</span><span class="src-sym">, </span><span class="src-str">&quot;~&quot;</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a80"></a>        <span class="src-var">$rdq </span>= <a href="http://www.php.net/preg_quote">preg_quote</a><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">right_delimiter</span><span class="src-sym">, </span><span class="src-str">&quot;~&quot;</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a81"></a>&nbsp;</li>
+<li><a name="a82"></a>        <a href="http://www.php.net/preg_match_all">preg_match_all</a><span class="src-sym">( </span><span class="src-str">&quot;</span><span class="src-str">~{<span class="src-var">$ldq</span><span class="src-sym">}</span>\s*(.*?)\s*{<span class="src-var">$rdq</span><span class="src-sym">}</span>~<span class="src-id">s</span></span><span class="src-str">&quot;</span><span class="src-sym">, </span><span class="src-var">$source_content</span><span class="src-sym">, </span><span class="src-var">$_match </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a83"></a>        <span class="src-var">$template_tags </span>= <span class="src-var">$_match</span><span class="src-sym">[</span><span class="src-num">1</span><span class="src-sym">]</span><span class="src-sym">;</span></li>
+<li><a name="a84"></a>&nbsp;</li>
+<li><a name="a85"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Kernel/Admin/AdvSmarty.html#methodregexp">regexp</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a86"></a>&nbsp;</li>
+<li><a name="a87"></a>        <span class="src-key">switch</span><span class="src-sym">( </span><span class="src-var">$type </span><span class="src-sym">)</span></li>
+<li><a name="a88"></a>        <span class="src-sym">{</span></li>
+<li><a name="a89"></a>            <span class="src-key">case </span><span class="src-str">&quot;variables&quot;</span>:</li>
+<li><a name="a90"></a>                <span class="src-var">$reg_exp </span>= <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_var_regexp</span><span class="src-sym">;</span></li>
+<li><a name="a91"></a>                <span class="src-key">break</span><span class="src-sym">;</span></li>
+<li><a name="a92"></a>&nbsp;</li>
+<li><a name="a93"></a>            <span class="src-key">case </span><span class="src-str">&quot;functions&quot;</span>:</li>
+<li><a name="a94"></a>                <span class="src-var">$reg_exp </span>= <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_func_regexp</span><span class="src-sym">;</span></li>
+<li><a name="a95"></a>                <span class="src-key">break</span><span class="src-sym">;</span></li>
+<li><a name="a96"></a>        <span class="src-sym">}</span></li>
+<li><a name="a97"></a>&nbsp;</li>
+<li><a name="a98"></a>        <span class="src-comm">// Trovo le variabili</span></li>
+<li><a name="a99"></a>        <span class="src-key">for</span><span class="src-sym">( </span><span class="src-var">$i </span>= <span class="src-num">0</span><span class="src-sym">; </span><span class="src-var">$i </span>&lt; <a href="http://www.php.net/count">count</a><span class="src-sym">(</span><span class="src-var">$template_tags</span><span class="src-sym">)</span><span class="src-sym">; </span><span class="src-var">$i</span>++ <span class="src-sym">)</span></li>
+<li><a name="a100"></a>        <span class="src-sym">{</span></li>
+<li><a name="a101"></a>            <span class="src-var">$token </span>= <span class="src-var">$template_tags</span><span class="src-sym">[</span><span class="src-var">$i</span><span class="src-sym">]</span><span class="src-sym">;</span></li>
+<li><a name="a102"></a>            <span class="src-comm">//$reserved = Array( &quot;literal&quot; );</span></li>
+<li><a name="a103"></a>&nbsp;</li>
+<li><a name="a104"></a>            <span class="src-comm">// Comandi riservati di Smarty</span></li>
+<li><a name="a105"></a>            <span class="src-key">if</span><span class="src-sym">( </span><span class="src-var">$token </span>== <span class="src-str">&quot;literal&quot; </span><span class="src-sym">)</span></li>
+<li><a name="a106"></a>            <span class="src-sym">{</span></li>
+<li><a name="a107"></a>                <span class="src-key">continue</span><span class="src-sym">;</span></li>
+<li><a name="a108"></a>            <span class="src-sym">}</span></li>
+<li><a name="a109"></a>&nbsp;</li>
+<li><a name="a110"></a>            <span class="src-key">if</span><span class="src-sym">( </span><a href="http://www.php.net/preg_match">preg_match</a><span class="src-sym">( </span><span class="src-str">&quot;</span><span class="src-str">~^<span class="src-var">$reg_exp</span>$~</span><span class="src-str">&quot;</span><span class="src-sym">, </span><span class="src-var">$token </span><span class="src-sym">) )</span></li>
+<li><a name="a111"></a>            <span class="src-sym">{</span></li>
+<li><a name="a112"></a>                <span class="src-key">if</span><span class="src-sym">( </span><span class="src-sym">!</span><a href="http://www.php.net/array_search">array_search</a><span class="src-sym">( </span><span class="src-var">$token</span><span class="src-sym">, </span><span class="src-var">$out </span><span class="src-sym">) )</span></li>
+<li><a name="a113"></a>                <span class="src-sym">{</span></li>
+<li><a name="a114"></a>                    <a href="http://www.php.net/array_push">array_push</a><span class="src-sym">( </span><span class="src-var">$out</span><span class="src-sym">, </span><span class="src-var">$token </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a115"></a>                <span class="src-sym">}</span></li>
+<li><a name="a116"></a>            <span class="src-sym">}</span></li>
+<li><a name="a117"></a>        <span class="src-sym">}</span></li>
+<li><a name="a118"></a>&nbsp;</li>
+<li><a name="a119"></a>        <span class="src-key">return </span><span class="src-var">$out</span><span class="src-sym">;</span></li>
+<li><a name="a120"></a>    <span class="src-sym">}</span></li>
+<li><a name="a121"></a>&nbsp;</li>
+<li><a name="a122"></a>    <span class="src-key">function </span><a href="../Kernel/Admin/AdvSmarty.html#methodregexp">regexp</a><span class="src-sym">(</span><span class="src-sym">)</span></li>
+<li><a name="a123"></a>    <span class="src-sym">{</span></li>
+<li><a name="a124"></a>        <span class="src-comm">// matches double quoted strings:</span></li>
+<li><a name="a125"></a>        <span class="src-comm">// &quot;foobar&quot;</span></li>
+<li><a name="a126"></a>        <span class="src-comm">// &quot;foo\&quot;bar&quot;</span></li>
+<li><a name="a127"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_db_qstr_regexp </span>= <span class="src-str">'&quot;[^&quot;\\\\]*(?:\\\\.[^&quot;\\\\]*)*&quot;'</span><span class="src-sym">;</span></li>
+<li><a name="a128"></a>&nbsp;</li>
+<li><a name="a129"></a>        <span class="src-comm">// matches single quoted strings:</span></li>
+<li><a name="a130"></a>        <span class="src-comm">// 'foobar'</span></li>
+<li><a name="a131"></a>        <span class="src-comm">// 'foo\'bar'</span></li>
+<li><a name="a132"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_si_qstr_regexp </span>= <span class="src-str">'\'[^\'\\\\]*(?:\\\\.[^\'\\\\]*)*\''</span><span class="src-sym">;</span></li>
+<li><a name="a133"></a>&nbsp;</li>
+<li><a name="a134"></a>        <span class="src-comm">// matches single or double quoted strings</span></li>
+<li><a name="a135"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_qstr_regexp </span>= <span class="src-str">'(?:' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_db_qstr_regexp </span>. <span class="src-str">'|' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_si_qstr_regexp </span>. <span class="src-str">')'</span><span class="src-sym">;</span></li>
+<li><a name="a136"></a>&nbsp;</li>
+<li><a name="a137"></a>        <span class="src-comm">// matches bracket portion of vars</span></li>
+<li><a name="a138"></a>        <span class="src-comm">// [0]</span></li>
+<li><a name="a139"></a>        <span class="src-comm">// [foo]</span></li>
+<li><a name="a140"></a>        <span class="src-comm">// [$bar]</span></li>
+<li><a name="a141"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_var_bracket_regexp </span>= <span class="src-str">'\[\$?[\w\.]+\]'</span><span class="src-sym">;</span></li>
+<li><a name="a142"></a>&nbsp;</li>
+<li><a name="a143"></a>        <span class="src-comm">// matches numerical constants</span></li>
+<li><a name="a144"></a>        <span class="src-comm">// 30</span></li>
+<li><a name="a145"></a>        <span class="src-comm">// -12</span></li>
+<li><a name="a146"></a>        <span class="src-comm">// 13.22</span></li>
+<li><a name="a147"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_num_const_regexp </span>= <span class="src-str">'(?:\-?\d+(?:\.\d+)?)'</span><span class="src-sym">;</span></li>
+<li><a name="a148"></a>&nbsp;</li>
+<li><a name="a149"></a>        <span class="src-comm">// matches $ vars (not objects):</span></li>
+<li><a name="a150"></a>        <span class="src-comm">// $foo</span></li>
+<li><a name="a151"></a>        <span class="src-comm">// $foo.bar</span></li>
+<li><a name="a152"></a>        <span class="src-comm">// $foo.bar.foobar</span></li>
+<li><a name="a153"></a>        <span class="src-comm">// $foo[0]</span></li>
+<li><a name="a154"></a>        <span class="src-comm">// $foo[$bar]</span></li>
+<li><a name="a155"></a>        <span class="src-comm">// $foo[5][blah]</span></li>
+<li><a name="a156"></a>        <span class="src-comm">// $foo[5].bar[$foobar][4]</span></li>
+<li><a name="a157"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_dvar_math_regexp </span>= <span class="src-str">'(?:[\+\*\/\%]|(?:-(?!&gt;)))'</span><span class="src-sym">;</span></li>
+<li><a name="a158"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_dvar_math_var_regexp </span>= <span class="src-str">'[\$\w\.\+\-\*\/\%\d\&gt;\[\]]'</span><span class="src-sym">;</span></li>
+<li><a name="a159"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_dvar_guts_regexp </span>= <span class="src-str">'\w+(?:' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_var_bracket_regexp</span></li>
+<li><a name="a160"></a>                . <span class="src-str">')*(?:\.\$?\w+(?:' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_var_bracket_regexp </span>. <span class="src-str">')*)*(?:' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_dvar_math_regexp </span>. <span class="src-str">'(?:' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_num_const_regexp </span>. <span class="src-str">'|' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_dvar_math_var_regexp </span>. <span class="src-str">')*)?'</span><span class="src-sym">;</span></li>
+<li><a name="a161"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_dvar_regexp </span>= <span class="src-str">'\$' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_dvar_guts_regexp</span><span class="src-sym">;</span></li>
+<li><a name="a162"></a>&nbsp;</li>
+<li><a name="a163"></a>        <span class="src-comm">// matches config vars:</span></li>
+<li><a name="a164"></a>        <span class="src-comm">// #foo#</span></li>
+<li><a name="a165"></a>        <span class="src-comm">// #foobar123_foo#</span></li>
+<li><a name="a166"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_cvar_regexp </span>= <span class="src-str">'\#\w+\#'</span><span class="src-sym">;</span></li>
+<li><a name="a167"></a>&nbsp;</li>
+<li><a name="a168"></a>        <span class="src-comm">// matches section vars:</span></li>
+<li><a name="a169"></a>        <span class="src-comm">// %foo.bar%</span></li>
+<li><a name="a170"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_svar_regexp </span>= <span class="src-str">'\%\w+\.\w+\%'</span><span class="src-sym">;</span></li>
+<li><a name="a171"></a>&nbsp;</li>
+<li><a name="a172"></a>        <span class="src-comm">// matches all valid variables (no quotes, no modifiers)</span></li>
+<li><a name="a173"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_avar_regexp </span>= <span class="src-str">'(?:' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_dvar_regexp </span>. <span class="src-str">'|'</span></li>
+<li><a name="a174"></a>           . <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_cvar_regexp </span>. <span class="src-str">'|' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_svar_regexp </span>. <span class="src-str">')'</span><span class="src-sym">;</span></li>
+<li><a name="a175"></a>&nbsp;</li>
+<li><a name="a176"></a>        <span class="src-comm">// matches valid variable syntax:</span></li>
+<li><a name="a177"></a>        <span class="src-comm">// $foo</span></li>
+<li><a name="a178"></a>        <span class="src-comm">// $foo</span></li>
+<li><a name="a179"></a>        <span class="src-comm">// #foo#</span></li>
+<li><a name="a180"></a>        <span class="src-comm">// #foo#</span></li>
+<li><a name="a181"></a>        <span class="src-comm">// &quot;text&quot;</span></li>
+<li><a name="a182"></a>        <span class="src-comm">// &quot;text&quot;</span></li>
+<li><a name="a183"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_var_regexp </span>= <span class="src-str">'(?:' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_avar_regexp </span>. <span class="src-str">'|' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_qstr_regexp </span>. <span class="src-str">')'</span><span class="src-sym">;</span></li>
+<li><a name="a184"></a>&nbsp;</li>
+<li><a name="a185"></a>        <span class="src-comm">// matches valid object call (one level of object nesting allowed in parameters):</span></li>
+<li><a name="a186"></a>        <span class="src-comm">// $foo-&gt;bar</span></li>
+<li><a name="a187"></a>        <span class="src-comm">// $foo-&gt;bar()</span></li>
+<li><a name="a188"></a>        <span class="src-comm">// $foo-&gt;bar(&quot;text&quot;)</span></li>
+<li><a name="a189"></a>        <span class="src-comm">// $foo-&gt;bar($foo, $bar, &quot;text&quot;)</span></li>
+<li><a name="a190"></a>        <span class="src-comm">// $foo-&gt;bar($foo, &quot;foo&quot;)</span></li>
+<li><a name="a191"></a>        <span class="src-comm">// $foo-&gt;bar-&gt;foo()</span></li>
+<li><a name="a192"></a>        <span class="src-comm">// $foo-&gt;bar-&gt;foo-&gt;bar()</span></li>
+<li><a name="a193"></a>        <span class="src-comm">// $foo-&gt;bar($foo-&gt;bar)</span></li>
+<li><a name="a194"></a>        <span class="src-comm">// $foo-&gt;bar($foo-&gt;bar())</span></li>
+<li><a name="a195"></a>        <span class="src-comm">// $foo-&gt;bar($foo-&gt;bar($blah,$foo,44,&quot;foo&quot;,$foo[0].bar))</span></li>
+<li><a name="a196"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_obj_ext_regexp </span>= <span class="src-str">'\-&gt;(?:\$?' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_dvar_guts_regexp </span>. <span class="src-str">')'</span><span class="src-sym">;</span></li>
+<li><a name="a197"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_obj_restricted_param_regexp </span>= <span class="src-str">'(?:'</span></li>
+<li><a name="a198"></a>                . <span class="src-str">'(?:' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_var_regexp </span>. <span class="src-str">'|' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_num_const_regexp </span>. <span class="src-str">')(?:' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_obj_ext_regexp </span>. <span class="src-str">'(?:\((?:(?:' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_var_regexp </span>. <span class="src-str">'|' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_num_const_regexp </span>. <span class="src-str">')'</span></li>
+<li><a name="a199"></a>                . <span class="src-str">'(?:\s*,\s*(?:' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_var_regexp </span>. <span class="src-str">'|' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_num_const_regexp </span>. <span class="src-str">'))*)?\))?)*)'</span><span class="src-sym">;</span></li>
+<li><a name="a200"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_obj_single_param_regexp </span>= <span class="src-str">'(?:\w+|' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_obj_restricted_param_regexp </span>. <span class="src-str">'(?:\s*,\s*(?:(?:\w+|'</span></li>
+<li><a name="a201"></a>                . <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_var_regexp </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_obj_restricted_param_regexp </span>. <span class="src-str">')))*)'</span><span class="src-sym">;</span></li>
+<li><a name="a202"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_obj_params_regexp </span>= <span class="src-str">'\((?:' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_obj_single_param_regexp</span></li>
+<li><a name="a203"></a>                . <span class="src-str">'(?:\s*,\s*' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_obj_single_param_regexp </span>. <span class="src-str">')*)?\)'</span><span class="src-sym">;</span></li>
+<li><a name="a204"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_obj_start_regexp </span>= <span class="src-str">'(?:' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_dvar_regexp </span>. <span class="src-str">'(?:' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_obj_ext_regexp </span>. <span class="src-str">')+)'</span><span class="src-sym">;</span></li>
+<li><a name="a205"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_obj_call_regexp </span>= <span class="src-str">'(?:' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_obj_start_regexp </span>. <span class="src-str">'(?:' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_obj_params_regexp </span>. <span class="src-str">')?(?:' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_dvar_math_regexp </span>. <span class="src-str">'(?:' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_num_const_regexp </span>. <span class="src-str">'|' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_dvar_math_var_regexp </span>. <span class="src-str">')*)?)'</span><span class="src-sym">;</span></li>
+<li><a name="a206"></a>&nbsp;</li>
+<li><a name="a207"></a>        <span class="src-comm">// matches valid modifier syntax:</span></li>
+<li><a name="a208"></a>        <span class="src-comm">// |foo</span></li>
+<li><a name="a209"></a>        <span class="src-comm">// |@foo</span></li>
+<li><a name="a210"></a>        <span class="src-comm">// |foo:&quot;bar&quot;</span></li>
+<li><a name="a211"></a>        <span class="src-comm">// |foo:$bar</span></li>
+<li><a name="a212"></a>        <span class="src-comm">// |foo:&quot;bar&quot;:$foobar</span></li>
+<li><a name="a213"></a>        <span class="src-comm">// |foo|bar</span></li>
+<li><a name="a214"></a>        <span class="src-comm">// |foo:$foo-&gt;bar</span></li>
+<li><a name="a215"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_mod_regexp </span>= <span class="src-str">'(?:\|@?\w+(?::(?:\w+|' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_num_const_regexp </span>. <span class="src-str">'|'</span></li>
+<li><a name="a216"></a>           . <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_obj_call_regexp </span>. <span class="src-str">'|' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_avar_regexp </span>. <span class="src-str">'|' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_qstr_regexp </span>.<span class="src-str">'))*)'</span><span class="src-sym">;</span></li>
+<li><a name="a217"></a>&nbsp;</li>
+<li><a name="a218"></a>        <span class="src-comm">// matches valid function name:</span></li>
+<li><a name="a219"></a>        <span class="src-comm">// foo123</span></li>
+<li><a name="a220"></a>        <span class="src-comm">// _foo_bar</span></li>
+<li><a name="a221"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_func_regexp </span>= <span class="src-str">'[a-zA-Z_]\w*'</span><span class="src-sym">;</span></li>
+<li><a name="a222"></a>&nbsp;</li>
+<li><a name="a223"></a>        <span class="src-comm">// matches valid registered object:</span></li>
+<li><a name="a224"></a>        <span class="src-comm">// foo-&gt;bar</span></li>
+<li><a name="a225"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_reg_obj_regexp </span>= <span class="src-str">'[a-zA-Z_]\w*-&gt;[a-zA-Z_]\w*'</span><span class="src-sym">;</span></li>
+<li><a name="a226"></a>&nbsp;</li>
+<li><a name="a227"></a>        <span class="src-comm">// matches valid parameter values:</span></li>
+<li><a name="a228"></a>        <span class="src-comm">// true</span></li>
+<li><a name="a229"></a>        <span class="src-comm">// $foo</span></li>
+<li><a name="a230"></a>        <span class="src-comm">// $foo|bar</span></li>
+<li><a name="a231"></a>        <span class="src-comm">// #foo#</span></li>
+<li><a name="a232"></a>        <span class="src-comm">// #foo#|bar</span></li>
+<li><a name="a233"></a>        <span class="src-comm">// &quot;text&quot;</span></li>
+<li><a name="a234"></a>        <span class="src-comm">// &quot;text&quot;|bar</span></li>
+<li><a name="a235"></a>        <span class="src-comm">// $foo-&gt;bar</span></li>
+<li><a name="a236"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_param_regexp </span>= <span class="src-str">'(?:\s*(?:' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_obj_call_regexp </span>. <span class="src-str">'|'</span></li>
+<li><a name="a237"></a>           . <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_var_regexp </span>. <span class="src-str">'|' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_num_const_regexp  </span>. <span class="src-str">'|\w+)(?&gt;' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_mod_regexp </span>. <span class="src-str">'*)\s*)'</span><span class="src-sym">;</span></li>
+<li><a name="a238"></a>&nbsp;</li>
+<li><a name="a239"></a>        <span class="src-comm">// matches valid parenthesised function parameters:</span></li>
+<li><a name="a240"></a>        <span class="src-comm">//</span></li>
+<li><a name="a241"></a>        <span class="src-comm">// &quot;text&quot;</span></li>
+<li><a name="a242"></a>        <span class="src-comm">//    $foo, $bar, &quot;text&quot;</span></li>
+<li><a name="a243"></a>        <span class="src-comm">// $foo|bar, &quot;foo&quot;|bar, $foo-&gt;bar($foo)|bar</span></li>
+<li><a name="a244"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_parenth_param_regexp </span>= <span class="src-str">'(?:\((?:\w+|'</span></li>
+<li><a name="a245"></a>                . <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_param_regexp </span>. <span class="src-str">'(?:\s*,\s*(?:(?:\w+|'</span></li>
+<li><a name="a246"></a>                . <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_param_regexp </span>. <span class="src-str">')))*)?\))'</span><span class="src-sym">;</span></li>
+<li><a name="a247"></a>&nbsp;</li>
+<li><a name="a248"></a>        <span class="src-comm">// matches valid function call:</span></li>
+<li><a name="a249"></a>        <span class="src-comm">// foo()</span></li>
+<li><a name="a250"></a>        <span class="src-comm">// foo_bar($foo)</span></li>
+<li><a name="a251"></a>        <span class="src-comm">// _foo_bar($foo,&quot;bar&quot;)</span></li>
+<li><a name="a252"></a>        <span class="src-comm">// foo123($foo,$foo-&gt;bar(),&quot;foo&quot;)</span></li>
+<li><a name="a253"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_func_call_regexp </span>= <span class="src-str">'(?:' </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_func_regexp </span>. <span class="src-str">'\s*(?:'</span></li>
+<li><a name="a254"></a>           . <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_parenth_param_regexp </span>. <span class="src-str">'))'</span><span class="src-sym">;</span></li>
+<li><a name="a255"></a>    <span class="src-sym">}</span></li>
+<li><a name="a256"></a><span class="src-sym">}</span></li>
+<li><a name="a257"></a><span class="src-php">?&gt;</span></li>
+</ol></pre></div>
+</span></div>
+        <div class="credit">
+		    <hr class="separator" />
+		    Documentation generated on Thu, 11 Oct 2007 13:27:48 +0200 by <a href="http://www.phpdoc.org">phpDocumentor 1.3.0RC3</a>
+	      </div>
+      </td></tr></table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

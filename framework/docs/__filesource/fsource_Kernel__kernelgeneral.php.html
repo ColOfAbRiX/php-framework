@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>File Source for general.php</title>
+	<link rel="stylesheet" type="text/css" href="../media/style.css">
+	<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+</head>
+<body>
+
+<table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
+  <tr>
+	<td class="header-top-left"><img src="../media/logo.png" border="0" alt="phpDocumentor " /></td>
+    <td class="header-top-right">Kernel<br /><div class="header-top-right-subpackage"></div></td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <tr>
+    <td colspan="2" class="header-menu">
+  		  [ <a href="../classtrees_Kernel.html" class="menu">class tree: Kernel</a> ]
+		  [ <a href="../elementindex_Kernel.html" class="menu">index: Kernel</a> ]
+		  [ <a href="../elementindex.html" class="menu">all elements</a> ]
+    </td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="195" class="menu">
+		<div class="package-title">Kernel</div>
+  <div class="package">
+	<div id="todolist">
+			<p><a href="../todolist.html">Todo List</a></p>
+	</div>
+	</div>
+      <b>Packages:</b><br />
+  <div class="package">
+              <a href="../li_Kernel.html">Kernel</a><br />
+              <a href="../li_Main.html">Main</a><br />
+      	</div>
+      <br />
+                        <br />
+                </td>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
+
+<h1 align="center">Source for file general.php</h1>
+<p>Documentation is available at <a href="../Kernel/_kernel_general_php.html">general.php</a></p>
+<div class="src-code"><span class="php">
+<div class="listing"><pre><ol><li><a name="a1"></a><span class="src-php">&lt;?php</span></li>
+<li><a name="a2"></a><span class="src-doc">/**</span></li>
+<li><a name="a3"></a><span class="src-doc"> * General Purprose functions</span></li>
+<li><a name="a4"></a><span class="src-doc"> *</span></li>
+<li><a name="a5"></a><span class="src-doc"> * Funzioni di utilizzo generale. Leggere la descrizione di ogni funzione per sapere il relativo comportamento.</span></li>
+<li><a name="a6"></a><span class="src-doc"> *</span></li>
+<li><a name="a7"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@package</span><span class="src-doc">    Kernel</span></li>
+<li><a name="a8"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc">     Fabrizio Colonna &lt;colofabrix@tin.it&gt;</span></li>
+<li><a name="a9"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@copyright</span><span class="src-doc">  Fabrizio Colonna 2005</span></li>
+<li><a name="a10"></a><span class="src-doc"> */</span></li>
+<li><a name="a11"></a>&nbsp;</li>
+<li><a name="a12"></a><span class="src-comm">// Signature</span></li>
+<li><a name="a13"></a><a href="http://www.php.net/define">define</a><span class="src-sym">( </span><span class="src-str">&quot;KERNEL_GENERAL&quot;</span><span class="src-sym">, </span><span class="src-num">1 </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a14"></a>&nbsp;</li>
+<li><a name="a15"></a><span class="src-doc">/**</span></li>
+<li><a name="a16"></a><span class="src-doc"> * Taglia una stringa in modo logico.</span></li>
+<li><a name="a17"></a><span class="src-doc"> *</span></li>
+<li><a name="a18"></a><span class="src-doc"> * La funzione permette di trocare una frase senza però troncare le singole parole. Data una lunghezza desiderata la</span></li>
+<li><a name="a19"></a><span class="src-doc"> * stringa verrà tagliata allo spazio successivo alla lunghezza delle parole.</span></li>
+<li><a name="a20"></a><span class="src-doc"> *</span></li>
+<li><a name="a21"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc">     Fabrizio Colonna</span></li>
+<li><a name="a22"></a><span class="src-doc"> * </span><span class="src-doc-tag">@date</span><span class="src-doc">       01/12/2005</span></li>
+<li><a name="a23"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc">     </span><span class="src-doc-type">String </span><span class="src-doc">    </span><span class="src-doc-var">$text </span><span class="src-doc">Il testo da tagliare.</span></li>
+<li><a name="a24"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc">     </span><span class="src-doc-type">Integer </span><span class="src-doc">   </span><span class="src-doc-var">$length </span><span class="src-doc">La lunghezza a cui tagliare il testo.</span></li>
+<li><a name="a25"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc">     </span><span class="src-doc-type">String </span><span class="src-doc">    </span><span class="src-doc-var">$terminator </span><span class="src-doc">Terminatore della stringa troncata.</span></li>
+<li><a name="a26"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc">    </span><span class="src-doc-type">String </span><span class="src-doc">    Il testo tagliato.</span></li>
+<li><a name="a27"></a><span class="src-doc"> */</span></li>
+<li><a name="a28"></a><span class="src-key">function </span><a href="../Kernel/_kernel_general_php.html#functioncutout_text">cutout_text</a><span class="src-sym">( </span><span class="src-var">$text</span><span class="src-sym">, </span><span class="src-var">$length</span><span class="src-sym">, </span><span class="src-var">$terminator </span>= <span class="src-str">&quot;&quot; </span><span class="src-sym">)</span></li>
+<li><a name="a29"></a><span class="src-sym">{</span></li>
+<li><a name="a30"></a>    <span class="src-key">if</span><span class="src-sym">( </span><a href="http://www.php.net/strlen">strlen</a><span class="src-sym">(</span><span class="src-var">$text</span><span class="src-sym">) </span>&lt;= <span class="src-var">$length </span>|| <span class="src-var">$length </span>== -<span class="src-num">1 </span><span class="src-sym">)</span></li>
+<li><a name="a31"></a>    <span class="src-sym">{</span></li>
+<li><a name="a32"></a>        <span class="src-key">return </span><span class="src-var">$text</span><span class="src-sym">;</span></li>
+<li><a name="a33"></a>    <span class="src-sym">}</span></li>
+<li><a name="a34"></a>&nbsp;</li>
+<li><a name="a35"></a>    <span class="src-comm">//$cutted = substr( $text, 0, $length );</span></li>
+<li><a name="a36"></a>    <span class="src-var">$next_space </span>= <a href="http://www.php.net/strpos">strpos</a><span class="src-sym">( </span><span class="src-var">$text</span><span class="src-sym">, </span><span class="src-str">&quot; &quot;</span><span class="src-sym">, </span><span class="src-var">$length </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a37"></a>&nbsp;</li>
+<li><a name="a38"></a>    <span class="src-key">if</span><span class="src-sym">( </span><a href="http://www.php.net/strlen">strlen</a><span class="src-sym">(</span><span class="src-var">$text</span><span class="src-sym">) </span>&lt;= <span class="src-var">$next_space </span><span class="src-sym">)</span></li>
+<li><a name="a39"></a>    <span class="src-sym">{</span></li>
+<li><a name="a40"></a>        <span class="src-key">return </span><span class="src-var">$text</span><span class="src-sym">;</span></li>
+<li><a name="a41"></a>    <span class="src-sym">}</span></li>
+<li><a name="a42"></a>&nbsp;</li>
+<li><a name="a43"></a>    <span class="src-var">$out </span>= <a href="http://www.php.net/substr">substr</a><span class="src-sym">( </span><span class="src-var">$text</span><span class="src-sym">, </span><span class="src-num">0</span><span class="src-sym">, </span><span class="src-var">$next_space </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a44"></a>    <span class="src-var">$out </span>.= <span class="src-var">$terminator</span><span class="src-sym">;</span></li>
+<li><a name="a45"></a>&nbsp;</li>
+<li><a name="a46"></a>    <span class="src-key">return </span><span class="src-var">$out</span><span class="src-sym">;</span></li>
+<li><a name="a47"></a><span class="src-sym">}</span></li>
+<li><a name="a48"></a>&nbsp;</li>
+<li><a name="a49"></a><span class="src-doc">/**</span></li>
+<li><a name="a50"></a><span class="src-doc"> * Converte un testo in HTML</span></li>
+<li><a name="a51"></a><span class="src-doc"> *</span></li>
+<li><a name="a52"></a><span class="src-doc"> * Converte un qualsiasi testo semplice in HTML trasformando le entità, rimpiazzando i caratteri di nuova linea con un</span></li>
+<li><a name="a53"></a><span class="src-doc"> * &amp;lt;br&amp;gt; e gli spazi e le tabulature con un non-breakeable-space.</span></li>
+<li><a name="a54"></a><span class="src-doc"> *</span></li>
+<li><a name="a55"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc">     Fabrizio Colonna</span></li>
+<li><a name="a56"></a><span class="src-doc"> * </span><span class="src-doc-tag">@date</span><span class="src-doc">       20/01/2005</span></li>
+<li><a name="a57"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc">     </span><span class="src-doc-type">String </span><span class="src-doc">    </span><span class="src-doc-var">$text </span><span class="src-doc">Il testo da convertire</span></li>
+<li><a name="a58"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc">    </span><span class="src-doc-type">String </span><span class="src-doc">    Il testo convertito in HTML</span></li>
+<li><a name="a59"></a><span class="src-doc"> */</span></li>
+<li><a name="a60"></a><span class="src-key">function </span><a href="../Kernel/_kernel_general_php.html#functionhtmlencode">htmlencode</a><span class="src-sym">( </span><span class="src-var">$text </span><span class="src-sym">)</span></li>
+<li><a name="a61"></a><span class="src-sym">{</span></li>
+<li><a name="a62"></a>    <span class="src-var">$text </span>= <a href="http://www.php.net/htmlentities">htmlentities</a><span class="src-sym">( </span><span class="src-var">$text </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a63"></a>    <span class="src-var">$text </span>= <a href="http://www.php.net/str_replace">str_replace</a><span class="src-sym">( </span><span class="src-str">&quot; &quot;</span><span class="src-sym">, </span><span class="src-str">&quot;&amp;nbsp;&quot;</span><span class="src-sym">, </span><span class="src-var">$text </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a64"></a>    <a href="http://www.php.net/str_replace">str_replace</a><span class="src-sym">( </span><span class="src-str">&quot;\t&quot;</span><span class="src-sym">, </span><a href="http://www.php.net/str_repeat">str_repeat</a><span class="src-sym">(</span><span class="src-str">&quot;&amp;nbsp;&quot;</span><span class="src-sym">, </span><span class="src-num">4</span><span class="src-sym">)</span><span class="src-sym">, </span><span class="src-var">$text </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a65"></a>    <span class="src-var">$text </span>= <a href="http://www.php.net/nl2br">nl2br</a><span class="src-sym">( </span><span class="src-var">$text </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a66"></a>    <span class="src-key">return </span><span class="src-var">$text</span><span class="src-sym">;</span></li>
+<li><a name="a67"></a><span class="src-sym">}</span></li>
+<li><a name="a68"></a>&nbsp;</li>
+<li><a name="a69"></a><span class="src-doc">/**</span></li>
+<li><a name="a70"></a><span class="src-doc"> * Recupera un parametro da un array di sistema bypassando gli indici non definiti</span></li>
+<li><a name="a71"></a><span class="src-doc"> *</span></li>
+<li><a name="a72"></a><span class="src-doc"> * La funzione permette di bypassare l'errore ed il relativo codice per evitarlo che si ha quando si tenta di accedere</span></li>
+<li><a name="a73"></a><span class="src-doc"> * ad una variabile di sistema non definita.</span></li>
+<li><a name="a74"></a><span class="src-doc"> *</span></li>
+<li><a name="a75"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc">     Fabrizio Colonna</span></li>
+<li><a name="a76"></a><span class="src-doc"> * </span><span class="src-doc-tag">@date</span><span class="src-doc">       14/12/2005</span></li>
+<li><a name="a77"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc">     </span><span class="src-doc-type">String </span><span class="src-doc">  </span><span class="src-doc-var">$name </span><span class="src-doc">L'indice da recuperare</span></li>
+<li><a name="a78"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc">     </span><span class="src-doc-type">Array </span><span class="src-doc">   </span><span class="src-doc-var">$array </span><span class="src-doc">L'array a cui accedere per recuperare le informazioni</span></li>
+<li><a name="a79"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc">     </span><span class="src-doc-type">Mixed </span><span class="src-doc">   </span><span class="src-doc-var">$default </span><span class="src-doc">Il valore da restituire in caso l'indice non sia stato trovato</span></li>
+<li><a name="a80"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc">    </span><span class="src-doc-type">String </span><span class="src-doc">  Il valore recuperato</span></li>
+<li><a name="a81"></a><span class="src-doc"> */</span></li>
+<li><a name="a82"></a><span class="src-key">function </span><a href="../Kernel/_kernel_general_php.html#functionget_index">get_index</a><span class="src-sym">( </span><span class="src-var">$name</span><span class="src-sym">, </span><span class="src-var">$array</span><span class="src-sym">, </span><span class="src-var">$default </span>= <span class="src-id">null </span><span class="src-sym">)</span></li>
+<li><a name="a83"></a><span class="src-sym">{</span></li>
+<li><a name="a84"></a>    <span class="src-key">if</span><span class="src-sym">( </span>isset<span class="src-sym">(</span><span class="src-var">$array</span><span class="src-sym">[</span><span class="src-var">$name</span><span class="src-sym">]</span><span class="src-sym">) )</span></li>
+<li><a name="a85"></a>    <span class="src-sym">{</span></li>
+<li><a name="a86"></a>        <span class="src-key">return </span><span class="src-var">$array</span><span class="src-sym">[</span><span class="src-var">$name</span><span class="src-sym">]</span><span class="src-sym">;</span></li>
+<li><a name="a87"></a>    <span class="src-sym">}</span></li>
+<li><a name="a88"></a>&nbsp;</li>
+<li><a name="a89"></a>    <span class="src-key">return </span><span class="src-var">$default</span><span class="src-sym">;</span></li>
+<li><a name="a90"></a><span class="src-sym">}</span></li>
+<li><a name="a91"></a>&nbsp;</li>
+<li><a name="a92"></a><span class="src-doc">/**</span></li>
+<li><a name="a93"></a><span class="src-doc"> * Inizializza un array</span></li>
+<li><a name="a94"></a><span class="src-doc"> *</span></li>
+<li><a name="a95"></a><span class="src-doc"> * Questa semplice funzione permette di inizializzare in maniera veloce, e senza tanti fronzoli nel</span></li>
+<li><a name="a96"></a><span class="src-doc"> * codice, un semplice array vuoto. Se l'array esiste gia non viene toccato.</span></li>
+<li><a name="a97"></a><span class="src-doc"> *</span></li>
+<li><a name="a98"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc">     Fabrizio Colonna</span></li>
+<li><a name="a99"></a><span class="src-doc"> * </span><span class="src-doc-tag">@date</span><span class="src-doc">       26/01/2007</span></li>
+<li><a name="a100"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc">     </span><span class="src-doc-type">String </span><span class="src-doc">  </span><span class="src-doc-var">$array </span><span class="src-doc">L'array da inizializzare</span></li>
+<li><a name="a101"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc">    </span><span class="src-doc-type">void </span></li>
+<li><a name="a102"></a><span class="src-doc"> */</span></li>
+<li><a name="a103"></a><span class="src-key">function </span><a href="../Kernel/_kernel_general_php.html#functionarray_init">array_init</a><span class="src-sym">( </span><span class="src-sym">&amp;</span><span class="src-var">$array </span><span class="src-sym">)</span></li>
+<li><a name="a104"></a><span class="src-sym">{</span></li>
+<li><a name="a105"></a>    <span class="src-key">if</span><span class="src-sym">( </span><span class="src-key">empty</span><span class="src-sym">(</span><span class="src-var">$array</span><span class="src-sym">) )</span></li>
+<li><a name="a106"></a>    <span class="src-sym">{</span></li>
+<li><a name="a107"></a>        <span class="src-var">$array </span>= <span class="src-key">Array</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a108"></a>    <span class="src-sym">}</span></li>
+<li><a name="a109"></a><span class="src-sym">}</span></li>
+<li><a name="a110"></a>&nbsp;</li>
+<li><a name="a111"></a><span class="src-doc">/**</span></li>
+<li><a name="a112"></a><span class="src-doc"> * Registra un array</span></li>
+<li><a name="a113"></a><span class="src-doc"> *</span></li>
+<li><a name="a114"></a><span class="src-doc"> * Crea una variabile globale per ogni indice dell'array le assegna il valore che aveva nell'array. E' possibile</span></li>
+<li><a name="a115"></a><span class="src-doc"> * specificare un testo da anteporre al nome della variabile globale creata per poterle raggruppare. Se l'array</span></li>
+<li><a name="a116"></a><span class="src-doc"> * specificato non è associativo la funzione non registra il suo contenuto.</span></li>
+<li><a name="a117"></a><span class="src-doc"> *</span></li>
+<li><a name="a118"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc">     Fabrizio Colonna</span></li>
+<li><a name="a119"></a><span class="src-doc"> * </span><span class="src-doc-tag">@date</span><span class="src-doc">       21/01/2006</span></li>
+<li><a name="a120"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc">     </span><span class="src-doc-type">Array </span><span class="src-doc">    </span><span class="src-doc-var">$array </span><span class="src-doc">L'array da registrare</span></li>
+<li><a name="a121"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc">     </span><span class="src-doc-type">String </span><span class="src-doc">   </span><span class="src-doc-var">$prefix </span><span class="src-doc">Il testo da anteporre al nome delle variabili</span></li>
+<li><a name="a122"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc">    </span><span class="src-doc-type">Int </span><span class="src-doc">      Il numero di variabili registrate</span></li>
+<li><a name="a123"></a><span class="src-doc"> */</span></li>
+<li><a name="a124"></a><span class="src-key">function </span><a href="../Kernel/_kernel_general_php.html#functionarray_register">array_register</a><span class="src-sym">( </span><span class="src-var">$array</span><span class="src-sym">, </span><span class="src-var">$prefix </span><span class="src-sym">)</span></li>
+<li><a name="a125"></a><span class="src-sym">{</span></li>
+<li><a name="a126"></a>    <span class="src-var">$i </span>= <span class="src-num">0</span><span class="src-sym">;</span></li>
+<li><a name="a127"></a>    <span class="src-key">foreach</span><span class="src-sym">( </span><span class="src-var">$array </span><span class="src-key">as </span><span class="src-var">$key </span>=&gt; <span class="src-var">$value </span><span class="src-sym">)</span></li>
+<li><a name="a128"></a>    <span class="src-sym">{</span></li>
+<li><a name="a129"></a>        <span class="src-key">if</span><span class="src-sym">( </span><span class="src-sym">!</span><a href="http://www.php.net/is_numeric">is_numeric</a><span class="src-sym">(</span><span class="src-var">$key</span><span class="src-sym">) )</span></li>
+<li><a name="a130"></a>        <span class="src-sym">{</span></li>
+<li><a name="a131"></a>            <span class="src-comm">// Costruisco il nome della variabile</span></li>
+<li><a name="a132"></a>            <span class="src-var">$var_name </span>= <span class="src-var">$prefix </span>. <span class="src-var">$key</span><span class="src-sym">;</span></li>
+<li><a name="a133"></a>            <span class="src-key">global </span>$<span class="src-var">$var_name</span><span class="src-sym">;</span></li>
+<li><a name="a134"></a>            $<span class="src-var">$var_name </span>= <span class="src-var">$value</span><span class="src-sym">;</span></li>
+<li><a name="a135"></a>            <span class="src-var">$i</span>++<span class="src-sym">;</span></li>
+<li><a name="a136"></a>        <span class="src-sym">}</span></li>
+<li><a name="a137"></a>    <span class="src-sym">}</span></li>
+<li><a name="a138"></a>&nbsp;</li>
+<li><a name="a139"></a>    <span class="src-key">return </span><span class="src-var">$i</span><span class="src-sym">;</span></li>
+<li><a name="a140"></a><span class="src-sym">}</span></li>
+<li><a name="a141"></a>&nbsp;</li>
+<li><a name="a142"></a><span class="src-doc">/**</span></li>
+<li><a name="a143"></a><span class="src-doc"> * Crea una query URL</span></li>
+<li><a name="a144"></a><span class="src-doc"> *</span></li>
+<li><a name="a145"></a><span class="src-doc"> * Trasforma un array associativo in una stringa formattata secondo lo standard delle query URI</span></li>
+<li><a name="a146"></a><span class="src-doc"> *</span></li>
+<li><a name="a147"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc">     Fabrizio Colonna</span></li>
+<li><a name="a148"></a><span class="src-doc"> * </span><span class="src-doc-tag">@date</span><span class="src-doc">       04/02/2006</span></li>
+<li><a name="a149"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc">     </span><span class="src-doc-type">Array </span><span class="src-doc">    </span><span class="src-doc-var">$array </span><span class="src-doc">L'array associativo da trasformare</span></li>
+<li><a name="a150"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc">    </span><span class="src-doc-type">Int </span><span class="src-doc">      Query string derivata dall'array</span></li>
+<li><a name="a151"></a><span class="src-doc"> */</span></li>
+<li><a name="a152"></a><span class="src-key">function </span><a href="../Kernel/_kernel_general_php.html#functionmake_query_string">make_query_string</a><span class="src-sym">( </span><span class="src-var">$array </span><span class="src-sym">)</span></li>
+<li><a name="a153"></a><span class="src-sym">{</span></li>
+<li><a name="a154"></a>    <span class="src-var">$output </span>= <span class="src-str">&quot;&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a155"></a>&nbsp;</li>
+<li><a name="a156"></a>    <span class="src-key">if</span><span class="src-sym">( </span><a href="http://www.php.net/count">count</a><span class="src-sym">(</span><span class="src-var">$array</span><span class="src-sym">) </span>!= <span class="src-num">0 </span><span class="src-sym">)</span></li>
+<li><a name="a157"></a>    <span class="src-sym">{</span></li>
+<li><a name="a158"></a>        <span class="src-key">foreach</span><span class="src-sym">( </span><span class="src-var">$array </span><span class="src-key">as </span><span class="src-var">$key </span>=&gt; <span class="src-var">$value </span><span class="src-sym">)</span></li>
+<li><a name="a159"></a>        <span class="src-sym">{</span></li>
+<li><a name="a160"></a>            <span class="src-var">$output </span>= <span class="src-str">&quot;</span><span class="src-str"><span class="src-var">$key</span>=<span class="src-var">$value</span>&amp;</span><span class="src-str">&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a161"></a>        <span class="src-sym">}</span></li>
+<li><a name="a162"></a>&nbsp;</li>
+<li><a name="a163"></a>        <span class="src-comm">// Elimino l'ultimo &quot;&amp;&quot; eventualmente inserito</span></li>
+<li><a name="a164"></a>        <span class="src-var">$output </span>= <a href="http://www.php.net/substr">substr</a><span class="src-sym">( </span><span class="src-var">$output</span><span class="src-sym">, </span><span class="src-num">0</span><span class="src-sym">, </span><a href="http://www.php.net/strlen">strlen</a><span class="src-sym">(</span><span class="src-var">$output</span><span class="src-sym">) </span>- <span class="src-num">1 </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a165"></a>    <span class="src-sym">}</span></li>
+<li><a name="a166"></a>&nbsp;</li>
+<li><a name="a167"></a>    <span class="src-key">return </span><span class="src-var">$output</span><span class="src-sym">;</span></li>
+<li><a name="a168"></a><span class="src-sym">}</span></li>
+<li><a name="a169"></a>&nbsp;</li>
+<li><a name="a170"></a>&nbsp;</li>
+<li><a name="a171"></a><span class="src-doc">/**</span></li>
+<li><a name="a172"></a><span class="src-doc"> * Stampa un oggetto</span></li>
+<li><a name="a173"></a><span class="src-doc"> *</span></li>
+<li><a name="a174"></a><span class="src-doc"> * Stampa un oggetto in una stringa in modo da darne una visualizzazione</span></li>
+<li><a name="a175"></a><span class="src-doc"> *</span></li>
+<li><a name="a176"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc">     Fabrizio Colonna</span></li>
+<li><a name="a177"></a><span class="src-doc"> * </span><span class="src-doc-tag">@date</span><span class="src-doc">       04/02/2006</span></li>
+<li><a name="a178"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc">     </span><span class="src-doc-type">Mixed </span><span class="src-doc">    </span><span class="src-doc-var">$ipnut </span><span class="src-doc">L'oggetto da stampare</span></li>
+<li><a name="a179"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc">    </span><span class="src-doc-type">String </span><span class="src-doc">   La stringa contenente l'oggetto stampato</span></li>
+<li><a name="a180"></a><span class="src-doc"> */</span></li>
+<li><a name="a181"></a><span class="src-key">function </span><a href="../Kernel/_kernel_general_php.html#functionobject_to_text">object_to_text</a><span class="src-sym">( </span><span class="src-var">$input </span><span class="src-sym">)</span></li>
+<li><a name="a182"></a><span class="src-sym">{</span></li>
+<li><a name="a183"></a>    <span class="src-comm">// Controllo particolare nel caso sia un oggetto</span></li>
+<li><a name="a184"></a>    <span class="src-key">if</span><span class="src-sym">( </span><a href="http://www.php.net/is_array">is_array</a><span class="src-sym">(</span><span class="src-var">$input</span><span class="src-sym">) )</span></li>
+<li><a name="a185"></a>    <span class="src-sym">{</span></li>
+<li><a name="a186"></a>        <span class="src-var">$not_allowed </span>= <span class="src-key">Array</span><span class="src-sym">( </span><span class="src-str">&quot;GLOBALS&quot; </span>=&gt; <span class="src-str">&quot;GLOBALS&quot; </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a187"></a>        <span class="src-var">$keys </span>= <a href="http://www.php.net/array_keys">array_keys</a><span class="src-sym">( </span><span class="src-var">$input </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a188"></a>        <span class="src-var">$found_keys </span>= <a href="http://www.php.net/array_intersect">array_intersect</a><span class="src-sym">( </span><span class="src-var">$keys</span><span class="src-sym">, </span><span class="src-var">$not_allowed </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a189"></a>&nbsp;</li>
+<li><a name="a190"></a>        <span class="src-key">if</span><span class="src-sym">( </span><span class="src-sym">!</span><span class="src-key">empty</span><span class="src-sym">(</span><span class="src-var">$found_keys</span><span class="src-sym">) )</span></li>
+<li><a name="a191"></a>        <span class="src-sym">{</span></li>
+<li><a name="a192"></a>            <span class="src-comm">// Non può essere visualizzato l'array $_GLOBAL</span></li>
+<li><a name="a193"></a>            <span class="src-var">$input </span>= <a href="http://www.php.net/array_diff_key">array_diff_key</a><span class="src-sym">( </span><span class="src-var">$input</span><span class="src-sym">, </span><span class="src-var">$not_allowed </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a194"></a>        <span class="src-sym">}</span></li>
+<li><a name="a195"></a>        </li>
+<li><a name="a196"></a>        <span class="src-key">return </span><span class="src-str">&quot;&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a197"></a>    <span class="src-sym">}</span></li>
+<li><a name="a198"></a>    </li>
+<li><a name="a199"></a>    <span class="src-key">return </span><a href="http://www.php.net/var_export">var_export</a><span class="src-sym">( </span><span class="src-var">$input</span><span class="src-sym">, </span><span class="src-id">true </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a200"></a><span class="src-sym">}</span></li>
+<li><a name="a201"></a>&nbsp;</li>
+<li><a name="a202"></a><span class="src-doc">/**</span></li>
+<li><a name="a203"></a><span class="src-doc"> * Esegue l'escape di una stringa per regexp</span></li>
+<li><a name="a204"></a><span class="src-doc"> * </span></li>
+<li><a name="a205"></a><span class="src-doc"> * La funzione permette di inserire una stringa contenente una Regular Expression all'interno di</span></li>
+<li><a name="a206"></a><span class="src-doc"> * un pattern di un'altra Regular Expression eseguendo un opportuno escpaing.</span></li>
+<li><a name="a207"></a><span class="src-doc"> *</span></li>
+<li><a name="a208"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc">     filippo dot toso at humanprofile dot biz (02-Aug-2006 11:11)</span></li>
+<li><a name="a209"></a><span class="src-doc"> * </span><span class="src-doc-tag">@date</span><span class="src-doc">       05/10/2007</span></li>
+<li><a name="a210"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc">     </span><span class="src-doc-type">String </span><span class="src-doc">   </span><span class="src-doc-var">$content </span><span class="src-doc">La stringa da controllare</span></li>
+<li><a name="a211"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc">    </span><span class="src-doc-type">String </span><span class="src-doc">   La stringa correttamente formata</span></li>
+<li><a name="a212"></a><span class="src-doc"> */</span></li>
+<li><a name="a213"></a><span class="src-key">function </span><a href="../Kernel/_kernel_general_php.html#functionsafe_preg">safe_preg</a><span class="src-sym">( </span><span class="src-var">$content </span><span class="src-sym">)</span></li>
+<li><a name="a214"></a><span class="src-sym">{</span></li>
+<li><a name="a215"></a>    <span class="src-var">$search  </span>= <span class="src-key">array</span><span class="src-sym">( </span><span class="src-str">'\\\\'</span><span class="src-sym">, </span><span class="src-str">'^'</span><span class="src-sym">, </span><span class="src-str">'$'</span><span class="src-sym">, </span><span class="src-str">'.'</span><span class="src-sym">, </span><span class="src-str">'['</span><span class="src-sym">, </span><span class="src-str">']'</span><span class="src-sym">, </span><span class="src-str">'|'</span><span class="src-sym">, </span><span class="src-str">'('</span><span class="src-sym">, </span><span class="src-str">')'</span><span class="src-sym">, </span><span class="src-str">'?'</span><span class="src-sym">, </span><span class="src-str">'*'</span><span class="src-sym">, </span><span class="src-str">'+'</span><span class="src-sym">, </span><span class="src-str">'{'</span><span class="src-sym">, </span><span class="src-str">'}' </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a216"></a>    <span class="src-var">$replace </span>= <span class="src-key">array</span><span class="src-sym">( </span><span class="src-str">'\\\\\\\\'</span><span class="src-sym">, </span><span class="src-str">'\\^'</span><span class="src-sym">, </span><span class="src-str">'\\$'</span><span class="src-sym">, </span><span class="src-str">'\\.'</span><span class="src-sym">, </span><span class="src-str">'\\['</span><span class="src-sym">, </span><span class="src-str">'\\]'</span><span class="src-sym">, </span><span class="src-str">'\\|'</span><span class="src-sym">, </span><span class="src-str">'\\('</span><span class="src-sym">, </span><span class="src-str">'\\)'</span><span class="src-sym">, </span><span class="src-str">'\\?'</span><span class="src-sym">, </span><span class="src-str">'\\*'</span><span class="src-sym">, </span><span class="src-str">'\\+'</span><span class="src-sym">, </span><span class="src-str">'\\{'</span><span class="src-sym">, </span><span class="src-str">'\\}' </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a217"></a>    <span class="src-key">return </span><a href="http://www.php.net/str_replace">str_replace</a><span class="src-sym">( </span><span class="src-var">$search</span><span class="src-sym">, </span><span class="src-var">$replace</span><span class="src-sym">, </span><span class="src-var">$content </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a218"></a><span class="src-sym">}</span></li>
+<li><a name="a219"></a>&nbsp;</li>
+<li><a name="a220"></a><span class="src-doc">/**</span></li>
+<li><a name="a221"></a><span class="src-doc"> * Recupero dati</span></li>
+<li><a name="a222"></a><span class="src-doc"> *</span></li>
+<li><a name="a223"></a><span class="src-doc"> * Recupera i dati inviati tramite GET e POST e li inserisce in variabili globali accessibili. Questo sistema è un po'</span></li>
+<li><a name="a224"></a><span class="src-doc"> * come il register_globals (che è stato disabilitato per motivi di sicurezza), ma più avanzato e più sicuro.</span></li>
+<li><a name="a225"></a><span class="src-doc"> * Le nuove variabili avranno nome param_xxx, dove al posto di xxx c'è il nome della variabile. E' possibile cambiare il</span></li>
+<li><a name="a226"></a><span class="src-doc"> * prefisso del nome nel file di configurazione.</span></li>
+<li><a name="a227"></a><span class="src-doc"> *</span></li>
+<li><a name="a228"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc">     Fabrizio Colonna</span></li>
+<li><a name="a229"></a><span class="src-doc"> * </span><span class="src-doc-tag">@date</span><span class="src-doc">       12/01/2006</span></li>
+<li><a name="a230"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc">    </span><span class="src-doc-type">void </span></li>
+<li><a name="a231"></a><span class="src-doc"> */</span></li>
+<li><a name="a232"></a><span class="src-key">function </span><a href="../Kernel/_kernel_general_php.html#functioninit_parameters">init_parameters</a><span class="src-sym">(</span><span class="src-sym">)</span></li>
+<li><a name="a233"></a><span class="src-sym">{</span></li>
+<li><a name="a234"></a>    <span class="src-key">global </span><span class="src-var">$CONFIG</span><span class="src-sym">;</span></li>
+<li><a name="a235"></a>&nbsp;</li>
+<li><a name="a236"></a>    <span class="src-var">$types </span>= <span class="src-key">Array</span><span class="src-sym">( </span><span class="src-str">&quot;get&quot;</span><span class="src-sym">, </span><span class="src-str">&quot;post&quot;</span><span class="src-sym">, </span><span class="src-str">&quot;session&quot;</span><span class="src-sym">, </span><span class="src-str">&quot;server&quot;</span><span class="src-sym">, </span><span class="src-str">&quot;cookie&quot;</span><span class="src-sym">, </span><span class="src-str">&quot;env&quot; </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a237"></a>&nbsp;</li>
+<li><a name="a238"></a>    <span class="src-key">foreach</span><span class="src-sym">( </span><span class="src-var">$types </span><span class="src-key">as </span><span class="src-var">$type </span><span class="src-sym">)</span></li>
+<li><a name="a239"></a>    <span class="src-sym">{</span></li>
+<li><a name="a240"></a>        <span class="src-comm">// Recuper l'array globale</span></li>
+<li><a name="a241"></a>        <span class="src-var">$global_type </span>= <span class="src-str">&quot;_&quot; </span>. <a href="http://www.php.net/strtoupper">strtoupper</a><span class="src-sym">( </span><span class="src-var">$type </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a242"></a>        <span class="src-var">$global_type </span>= <span class="src-sym">@</span><span class="src-var">$GLOBALS</span><span class="src-sym">[</span><span class="src-var">$global_type</span><span class="src-sym">]</span><span class="src-sym">;</span></li>
+<li><a name="a243"></a>&nbsp;</li>
+<li><a name="a244"></a>        <span class="src-key">if</span><span class="src-sym">( </span>isset<span class="src-sym">( </span><span class="src-var">$CONFIG</span><span class="src-sym">[</span><span class="src-str">&quot;register&quot;</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-var">$type</span><span class="src-sym">] </span><span class="src-sym">) )</span></li>
+<li><a name="a245"></a>        <span class="src-sym">{</span></li>
+<li><a name="a246"></a>            <span class="src-comm">// Registro le variabili dell'array globale recuperato</span></li>
+<li><a name="a247"></a>            <span class="src-key">if</span><span class="src-sym">( </span><span class="src-var">$global_type </span>!= <span class="src-id">null </span>&amp;&amp; isset<span class="src-sym">(</span><span class="src-var">$CONFIG</span><span class="src-sym">[</span><span class="src-str">&quot;register&quot;</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-var">$type</span><span class="src-sym">]</span><span class="src-sym">) )</span></li>
+<li><a name="a248"></a>            <span class="src-sym">{</span></li>
+<li><a name="a249"></a>                <a href="../Kernel/_kernel_general_php.html#functionarray_register">array_register</a><span class="src-sym">( </span><span class="src-var">$global_type</span><span class="src-sym">, </span><span class="src-var">$CONFIG</span><span class="src-sym">[</span><span class="src-str">&quot;register&quot;</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">&quot;</span>{<span class="src-var">$type</span><span class="src-str"></span><span class="src-sym">}</span><span class="src-id">_prefix</span></span><span class="src-str">&quot;</span><span class="src-sym">] </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a250"></a>            <span class="src-sym">}</span></li>
+<li><a name="a251"></a>        <span class="src-sym">}</span></li>
+<li><a name="a252"></a>    <span class="src-sym">}</span></li>
+<li><a name="a253"></a><span class="src-sym">}</span></li>
+<li><a name="a254"></a>&nbsp;</li>
+<li><a name="a255"></a><span class="src-doc">/**</span></li>
+<li><a name="a256"></a><span class="src-doc"> * Richiama una funzione esterna al codice</span></li>
+<li><a name="a257"></a><span class="src-doc"> *</span></li>
+<li><a name="a258"></a><span class="src-doc"> * Richiama una funzione che non necessariamente esiste gia. Se non esiste la funzione prova a</span></li>
+<li><a name="a259"></a><span class="src-doc"> * caricarla dal file che viene specificato. Per motivi di efficienza la funzione tiene traccia di</span></li>
+<li><a name="a260"></a><span class="src-doc"> * quali file sono presenti in una variabile globale.</span></li>
+<li><a name="a261"></a><span class="src-doc"> * </span></li>
+<li><a name="a262"></a><span class="src-doc"> * &lt;bNOTA:&lt;/b&gt; La funzione esegue un controllo solo sul nome relativo, e non assoluto, del file che</span></li>
+<li><a name="a263"></a><span class="src-doc"> * tenta di caricare, quindi prestate attenzione ai casi di omonimia.</span></li>
+<li><a name="a264"></a><span class="src-doc"> *</span></li>
+<li><a name="a265"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc">     Fabrizio Colonna</span></li>
+<li><a name="a266"></a><span class="src-doc"> * </span><span class="src-doc-tag">@date</span><span class="src-doc">       05/06/2006</span></li>
+<li><a name="a267"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc">     </span><span class="src-doc-type">String </span><span class="src-doc">   </span><span class="src-doc-var">$file </span><span class="src-doc">Il file in cui cercare la funzione</span></li>
+<li><a name="a268"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc">     </span><span class="src-doc-type">String </span><span class="src-doc">   </span><span class="src-doc-var">$function </span><span class="src-doc">Il nome della funzione da eseguire</span></li>
+<li><a name="a269"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc">     </span><span class="src-doc-type">Array </span><span class="src-doc">    </span><span class="src-doc-var">$params </span><span class="src-doc">L'array dei parametri da passare alla funzione</span></li>
+<li><a name="a270"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc">     </span><span class="src-doc-type">Mixed </span><span class="src-doc">    </span><span class="src-doc-var">$return </span><span class="src-doc">Il valore di ritorno della funzione chiamata. Valido solo se la funzione ritorna true</span></li>
+<li><a name="a271"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc">    </span><span class="src-doc-type">Boolean </span><span class="src-doc">  True se la funzione è stata chiamata con successo, False altrimenti</span></li>
+<li><a name="a272"></a><span class="src-doc"> */</span></li>
+<li><a name="a273"></a><span class="src-key">function </span><a href="../Kernel/_kernel_general_php.html#functioncall_ext_function">call_ext_function</a><span class="src-sym">( </span><span class="src-var">$file</span><span class="src-sym">, </span><span class="src-var">$function</span><span class="src-sym">, </span><span class="src-var">$params</span><span class="src-sym">, </span><span class="src-sym">&amp;</span><span class="src-var">$return </span><span class="src-sym">)</span></li>
+<li><a name="a274"></a><span class="src-sym">{</span></li>
+<li><a name="a275"></a>       <span class="src-key">global </span><span class="src-var">$callext_missed</span><span class="src-sym">;</span></li>
+<li><a name="a276"></a>       <a href="../Kernel/_kernel_general_php.html#functionarray_init">array_init</a><span class="src-sym">( </span><span class="src-var">$callext_missed </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a277"></a>       </li>
+<li><a name="a278"></a>       <a href="../Kernel/Admin/_kernel_modules_debug_php.html#functiondebug_system_advise">debug_system_advise</a><span class="src-sym">( </span><span class="src-str">&quot;Called external function. Checking if exists...&quot; </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a279"></a>       </li>
+<li><a name="a280"></a>    <span class="src-comm">// Per evitare di fare un'inclusione inutile controllo se la funzione c'è gia</span></li>
+<li><a name="a281"></a>    <span class="src-key">if</span><span class="src-sym">( </span><a href="http://www.php.net/function_exists">function_exists</a><span class="src-sym">(</span><span class="src-var">$function</span><span class="src-sym">) )</span></li>
+<li><a name="a282"></a>    <span class="src-sym">{</span></li>
+<li><a name="a283"></a>        <span class="src-var">$return </span>= <a href="http://www.php.net/call_user_func_array">call_user_func_array</a><span class="src-sym">( </span><span class="src-var">$function</span><span class="src-sym">, </span><span class="src-var">$params </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a284"></a>    <span class="src-sym">}</span></li>
+<li><a name="a285"></a>    <span class="src-key">else</span></li>
+<li><a name="a286"></a>    <span class="src-sym">{</span></li>
+<li><a name="a287"></a>        <span class="src-comm">// Se il file non è stato specificato si esce</span></li>
+<li><a name="a288"></a>        <span class="src-key">if</span><span class="src-sym">( </span><span class="src-var">$file </span>== <span class="src-str">&quot;&quot; </span><span class="src-sym">)</span></li>
+<li><a name="a289"></a>        <span class="src-sym">{</span></li>
+<li><a name="a290"></a>            <span class="src-key">return </span><span class="src-id">false</span><span class="src-sym">;</span></li>
+<li><a name="a291"></a>        <span class="src-sym">}</span></li>
+<li><a name="a292"></a>        </li>
+<li><a name="a293"></a>        <span class="src-comm">// Controllo di non aver gia provato a caricare questo file</span></li>
+<li><a name="a294"></a>        <span class="src-key">if</span><span class="src-sym">( </span><a href="http://www.php.net/in_array">in_array</a><span class="src-sym">(</span><span class="src-var">$file</span><span class="src-sym">, </span><span class="src-var">$callext_missed</span><span class="src-sym">) )</span></li>
+<li><a name="a295"></a>        <span class="src-sym">{</span></li>
+<li><a name="a296"></a>            <span class="src-key">return </span><span class="src-id">false</span><span class="src-sym">;</span></li>
+<li><a name="a297"></a>        <span class="src-sym">}</span></li>
+<li><a name="a298"></a>    </li>
+<li><a name="a299"></a>        <span class="src-comm">// In modo che sia comparabile</span></li>
+<li><a name="a300"></a>        <span class="src-var">$file_path </span>= <a href="http://www.php.net/realpath">realpath</a><span class="src-sym">( </span><span class="src-var">$file </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a301"></a>        </li>
+<li><a name="a302"></a>        <span class="src-comm">// $file vale false se il file a cui faceva riferimento non esiste</span></li>
+<li><a name="a303"></a>        <span class="src-key">if</span><span class="src-sym">( </span><span class="src-var">$file_path </span>== <span class="src-id">false </span>|| <span class="src-sym">!</span><a href="http://www.php.net/is_file">is_file</a><span class="src-sym">(</span><span class="src-var">$file_path</span><span class="src-sym">) )</span></li>
+<li><a name="a304"></a>        <span class="src-sym">{</span></li>
+<li><a name="a305"></a>            <a href="http://www.php.net/array_push">array_push</a><span class="src-sym">( </span><span class="src-var">$callext_missed</span><span class="src-sym">, </span><span class="src-var">$file </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a306"></a>            <span class="src-key">return </span><span class="src-id">false</span><span class="src-sym">;</span></li>
+<li><a name="a307"></a>        <span class="src-sym">}</span></li>
+<li><a name="a308"></a>&nbsp;</li>
+<li><a name="a309"></a>        <span class="src-comm">// Recupero la lista dei file inclusi</span></li>
+<li><a name="a310"></a>        <span class="src-var">$included_files </span>= <a href="http://www.php.net/get_included_files">get_included_files</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a311"></a>&nbsp;</li>
+<li><a name="a312"></a>        <span class="src-comm">// Se il file è gia stato incluso e non ho trovato la funzione non posso fare tanto...</span></li>
+<li><a name="a313"></a>        <span class="src-key">if</span><span class="src-sym">( </span><span class="src-sym">!</span><a href="http://www.php.net/in_array">in_array</a><span class="src-sym">(</span><span class="src-var">$file_path</span><span class="src-sym">, </span><span class="src-var">$included_files</span><span class="src-sym">) )</span></li>
+<li><a name="a314"></a>        <span class="src-sym">{</span></li>
+<li><a name="a315"></a>            <span class="src-comm">// Includo il file dove c'è il gestore, e se lo trovo lo eseguo.</span></li>
+<li><a name="a316"></a>            <span class="src-inc">include_once</span><span class="src-sym">( </span><span class="src-var">$file_path </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a317"></a>&nbsp;</li>
+<li><a name="a318"></a>            <span class="src-comm">// Controllo che la funzione esista nel file incluso</span></li>
+<li><a name="a319"></a>            <span class="src-key">if</span><span class="src-sym">( </span><a href="http://www.php.net/function_exists">function_exists</a><span class="src-sym">(</span><span class="src-var">$function</span><span class="src-sym">) )</span></li>
+<li><a name="a320"></a>            <span class="src-sym">{</span></li>
+<li><a name="a321"></a>                <span class="src-comm">//debug_timer_start(2);</span></li>
+<li><a name="a322"></a>                <span class="src-var">$return </span>= <a href="http://www.php.net/call_user_func_array">call_user_func_array</a><span class="src-sym">( </span><span class="src-var">$function</span><span class="src-sym">, </span><span class="src-var">$params </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a323"></a>            <span class="src-sym">}</span></li>
+<li><a name="a324"></a>            <span class="src-key">else</span></li>
+<li><a name="a325"></a>            <span class="src-sym">{</span></li>
+<li><a name="a326"></a>                <a href="http://www.php.net/array_push">array_push</a><span class="src-sym">( </span><span class="src-var">$callext_missed</span><span class="src-sym">, </span><span class="src-var">$file </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a327"></a>                <span class="src-key">return </span><span class="src-id">false</span><span class="src-sym">;</span></li>
+<li><a name="a328"></a>            <span class="src-sym">}</span></li>
+<li><a name="a329"></a>        <span class="src-sym">}</span></li>
+<li><a name="a330"></a>        <span class="src-key">else</span></li>
+<li><a name="a331"></a>        <span class="src-sym">{</span></li>
+<li><a name="a332"></a>            <a href="http://www.php.net/array_push">array_push</a><span class="src-sym">( </span><span class="src-var">$callext_missed</span><span class="src-sym">, </span><span class="src-var">$file </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a333"></a>            <span class="src-key">return </span><span class="src-id">false</span><span class="src-sym">;</span></li>
+<li><a name="a334"></a>        <span class="src-sym">}</span></li>
+<li><a name="a335"></a>    <span class="src-sym">}</span></li>
+<li><a name="a336"></a>&nbsp;</li>
+<li><a name="a337"></a>    <span class="src-key">return </span><span class="src-id">true</span><span class="src-sym">;</span></li>
+<li><a name="a338"></a><span class="src-sym">}</span></li>
+<li><a name="a339"></a><span class="src-php">?&gt;</span></li>
+</ol></pre></div>
+</span></div>
+        <div class="credit">
+		    <hr class="separator" />
+		    Documentation generated on Thu, 11 Oct 2007 13:27:56 +0200 by <a href="http://www.phpdoc.org">phpDocumentor 1.3.0RC3</a>
+	      </div>
+      </td></tr></table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

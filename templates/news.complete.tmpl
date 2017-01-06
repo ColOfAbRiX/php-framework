@@ -1,0 +1,13 @@
+{* Template per la visualizzazione di una news in formato completo *}
+<table widh="100%" align="center">
+  <tr>
+    <td width="20%">{$news_section}{* Sezione di appartenza della news *}</td>
+    <td width="60%" align="center"><b>{$news_title}{* Titolo della news *}</b></td>
+    <td width="20%" align="right">{$news_date}{* Data di inserimento della news *}</td>
+  </tr>
+  <tr>
+    <td width="100%" colspan="3" align="justify">
+      {$news_content}{* Contenuto della news *}
+    </td>
+  </tr>
+</table>

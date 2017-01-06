@@ -1,0 +1,44 @@
+Struttura delle inclusioni dei file
+====================================
+
+index.php
+  |
+  +---- /kernel/admin/smarty.php
+  |       |
+  |       +---- ../config.php
+  |       |
+  |       +---- ../libs/smarty/Smarty.class.php
+  |       |
+  |       +---- /debug.php
+  |               |
+  |               +---- /../config.php
+  |               |
+  |               +---- /smarty.php (Riferimento circolare)
+  |
+  +---- /kernel/admin/database.php
+  |       |
+  |       +---- /../config.php
+  |       |
+  |       +---- /queries.php
+  |       |
+  |       +---- /debug.php
+  |       |       |
+  |       |       +---- /../config.php
+  |       |       |
+  |       |       +---- /smarty.php (Riferimento circolare)
+  |       |
+  |       +---- PEAR.php
+  |       |
+  |       +---- DB.php
+  |          
+  +---- /news.php
+          |
+          +---- /kernel/user/news.php
+                  |
+                  +---- /../admin/smarty.php (Riferimento circolare)
+                  |
+                  +---- /../config.ph
+                  |
+                  +---- /../admin/database.php (Riferimento circolare)
+                  |
+                  +---- /../general.php

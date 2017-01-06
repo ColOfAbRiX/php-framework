@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Docs for page template_engine.php</title>
+	<link rel="stylesheet" type="text/css" href="../../media/style.css">
+	<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+</head>
+<body>
+
+<table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
+  <tr>
+	<td class="header-top-left"><img src="../../media/logo.png" border="0" alt="phpDocumentor " /></td>
+    <td class="header-top-right">Kernel<br /><div class="header-top-right-subpackage">Admin</div></td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="../../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <tr>
+    <td colspan="2" class="header-menu">
+  		  [ <a href="../../classtrees_Kernel.html" class="menu">class tree: Kernel</a> ]
+		  [ <a href="../../elementindex_Kernel.html" class="menu">index: Kernel</a> ]
+		  [ <a href="../../elementindex.html" class="menu">all elements</a> ]
+    </td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="../../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="195" class="menu">
+		<div class="package-title">Kernel</div>
+  <div class="package">
+	<div id="todolist">
+			<p><a href="../../todolist.html">Todo List</a></p>
+	</div>
+	</div>
+      <b>Packages:</b><br />
+  <div class="package">
+              <a href="../../li_Kernel.html">Kernel</a><br />
+              <a href="../../li_Main.html">Main</a><br />
+      	</div>
+      <br />
+                        <b>Files:</b><br />
+        <div class="package">
+				<span style="padding-left: 1em;"><a href="../../Kernel/_framework_application_php.html">application.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/_framework_general_php.html">general.php</a></span><br />
+	  </div>
+  <div class="package">
+	<strong>Admin</strong><br />			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_framework_kernel_adv_smarty_php.html">adv_smarty.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_framework_kernel_buffering_php.html">buffering.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_framework_kernel_buffer_handlers_php.html">buffer_handlers.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_framework_kernel_components_php.html">components.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_framework_kernel_config_php.html">config.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_framework_kernel_database_php.html">database.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_framework_kernel_debug_php.html">debug.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_framework_kernel_debug_gfx_php.html">debug_gfx.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_framework_kernel_definitions_php.html">definitions.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_framework_kernel_errors_php.html">errors.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_framework_kernel_queries_php.html">queries.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_framework_kernel_template_engine_php.html">template_engine.php</a></span><br />
+	  </div>
+  <div class="package">
+	<strong>User</strong><br />			<span style="padding-left: 1em;"><a href="../../Kernel/User/_framework_packages_login_php.html">login.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/User/_framework_packages_menu_php.html">menu.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/User/_framework_packages_news_php.html">news.php</a></span><br />
+	  </div>
+            <br />
+            <b>Classes:</b><br />
+        <div class="package">
+	Admin<br />	    <span style="padding-left: 1em;">		<a href="../../Kernel/Admin/AdvSmarty.html">AdvSmarty</a>    </span>	 <br />
+	  </div>
+                </td>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
+
+<h1>Procedural File: template_engine.php</h1>
+Source Location: /framework/kernel/template_engine.php<br /><br />
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Page Details</div>
+	<div class="nav-bar">
+					<span class="disabled">Page Details</span> |
+									<a href="#sec-includes">Includes</a>
+			|							<a href="#sec-constants">Constants</a>
+			|									<a href="#sec-functions">Functions</a>
+			</div>
+	<div class="info-box-body">
+		<p align="center" class="short-description"><strong>Funzioni per l'elaborazione dei template
+</strong></p>
+<span class="description"><p>Questo file espone le funzioni necessare per l'utilizzo del template engine Smarty.  Le funzioni di questo file memorizzano una oggetto Smarty nella variabile globale $SMARTY  che usano come oggetto di default. E' comunque possibile non utilizzare questa variabile  globale ed usare una oggetto alternativo. Se ne l'oggetto di default ne l'oggetto  alternativo sono specificati viene creta sul momento una nuovo template engine Smarty ed  impstato come default.</p></span>		<table border="0" cellspacing="0" cellpadding="0">
+			<tr><td><strong>Filesource:</strong>&nbsp;&nbsp;</td><td><a href="../..//__filesource/fsource_Kernel_Admin_frameworkkerneltemplate_engine.php.html">Source Code for this file</a></td></tr>
+			<tr><td><strong>Copyright:</strong>&nbsp;&nbsp;</td><td>Copyright 2005, Fabrizio Colonna</td></tr>
+			<tr><td><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna &lt;<a href="mailto:colofabrix@tin.it">colofabrix@tin.it</a>&gt;</td></tr>
+	</table>
+
+			</div>
+</div>
+
+
+	<a name="sec-includes"></a>
+	<div class="info-box">
+		<div class="info-box-title">Includes</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Page Details</a> |
+						<span class="disabled">Includes</span>
+			|							<a href="#sec-constants">Constants</a>
+				|													<a href="#sec-functions">Functions</a>
+					</div>
+		<div class="info-box-body">
+			<a name="_dirname(__FILE__)_/__/general_php"><!-- --></a>
+<div class="evenrow">
+
+	<div>
+		<span class="include-title">
+			<span class="include-type">require_once</span>
+			(<span class="include-name">dirname(__FILE__)."/../general.php"</span>)
+			<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_frameworkkerneltemplate_engine.php.html#a21">21</a>]</span>
+		</span>
+	</div>
+
+		
+		<div class="top">[ <a href="#top">Top</a> ]</div>
+		<br />
+</div>
+<a name="_dirname(__FILE__)_/adv_smarty_php"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="include-title">
+			<span class="include-type">require_once</span>
+			(<span class="include-name">dirname(__FILE__)."/adv_smarty.php"</span>)
+			<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_frameworkkerneltemplate_engine.php.html#a22">22</a>]</span>
+		</span>
+	</div>
+
+		
+		<div class="top">[ <a href="#top">Top</a> ]</div>
+		<br />
+</div>
+<a name="_dirname(__FILE__)_/config_php"><!-- --></a>
+<div class="evenrow">
+
+	<div>
+		<span class="include-title">
+			<span class="include-type">require_once</span>
+			(<span class="include-name">dirname(__FILE__)."/config.php"</span>)
+			<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_frameworkkerneltemplate_engine.php.html#a23">23</a>]</span>
+		</span>
+	</div>
+
+		
+		<div class="top">[ <a href="#top">Top</a> ]</div>
+		<br />
+</div>
+<a name="_dirname(__FILE__)_/debug_php"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="include-title">
+			<span class="include-type">require_once</span>
+			(<span class="include-name">dirname(__FILE__)."/debug.php"</span>)
+			<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_frameworkkerneltemplate_engine.php.html#a24">24</a>]</span>
+		</span>
+	</div>
+
+		
+		<div class="top">[ <a href="#top">Top</a> ]</div>
+		<br />
+</div>
+		</div>
+	</div><br />
+
+	<a name="sec-constants"></a>
+	<div class="info-box">
+		<div class="info-box-title">Constants</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Page Details</a> |
+										<a href="#sec-includes">Includes</a>
+				|						<span class="disabled">Constants</span>
+			|										<a href="#sec-functions">Functions</a>
+					</div>
+		<div class="info-box-body">
+			<a name="defineKERNEL_ADMIN_TEMPLATE_ENGINE"><!-- --></a>
+<div class="evenrow">
+
+	<div>
+		<span class="const-title">
+			<span class="const-name">KERNEL_ADMIN_TEMPLATE_ENGINE</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_frameworkkerneltemplate_engine.php.html#a19">19</a>]</span>
+		</span>
+	</div>
+<br />
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>KERNEL_ADMIN_TEMPLATE_ENGINE = 1</code>
+    </td></tr></table>
+    </td></tr></table>
+
+        
+	<br />
+
+		<div class="top">[ <a href="#top">Top</a> ]</div>
+	<br />
+</div>
+		</div>
+	</div><br />
+
+
+	<a name="sec-functions"></a>
+	<div class="info-box">
+		<div class="info-box-title">Functions</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Page Details</a> |
+										<a href="#sec-includes">Includes</a>
+				|										<a href="#sec-constants">Constants</a>
+				|									<span class="disabled">Functions</span>
+		</div>
+		<div class="info-box-body">
+			<a name="functionbuild_cmplx_tmpl" id="functionbuild_cmplx_tmpl"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="method-title">build_cmplx_tmpl</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_frameworkkerneltemplate_engine.php.html#a230">230</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>String build_cmplx_tmpl(
+Array $container, Array $items&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Crea un template complesso
+</strong></p>
+<span class="description"><p>Un template complesso è un template che contiene una serie di altri template creati o no in sequenza. Un esempio  concreto di template complesso può essere una lista di news. Ogni news è descritta da un template, queste news vengono  poi caricate e quindi sono tutte inserite all'interno di un'altro template.</p><p>Descrizione parametro $container:<br />    $container[&quot;template&quot;]:  Nome del template per il contenitore.<br />    $container[&quot;list_name&quot;]: Variabile del template contenitore che accoglia la lista di elementi.<br />    $container[&quot;values&quot;]:    Opzionale. Altri assegnamenti da passare al template.<br />  Descrizione parametro $items:<br />    $items[&quot;data&quot;]:          I dati in ingresso sotto forma di un array. La prima dimensione dell'array contiene<br />                             la lista dei dati sequenziali e dentro ogni indice c'è un array associativo in cui<br />                             ogni chiave è una variabile del template e ogni valore sono i valori delle variabili<br />                             nel template.<br />    $items[&quot;template&quot;]:      Nome del template per un singolo elemento<br />    $items[&quot;input_filter&quot;]:  Opzionale. Funzione di elaborazione dei dati in ingresso<br />    $items[&quot;item_function&quot;]: Opzionale. Funzione di elaborazione che viene chiamata per ogni elemento<br />    $items[&quot;merge_function&quot;]:Opzionale. Funzione personalizzata per l'unione degli elementi<br /></p></span>
+    		<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">Array</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$container:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Dati per il template contenitore dei singoli elementi</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">Array</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$items:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Dati per i singoli elementi da elaborare</span>			</td></tr>
+				</table>
+	
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Return:</strong>&nbsp;&nbsp;</td><td>Il template corretamente formattato</td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functionbuild_template" id="functionbuild_template"><!-- --></a>
+<div class="evenrow">
+
+	<div>
+		<span class="method-title">build_template</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_frameworkkerneltemplate_engine.php.html#a159">159</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>String build_template(
+String $template, [Array $values = array()], [Smarty $obj = null]&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Crea un template
+</strong></p>
+<span class="description"><p>Carica il template specificato e lo riempie con l'array di parametri passato. Prima di utilizzare il valore statico  passato assieme alla variabile viene utilizzato il sistema di assegnamento dinamico dei valori <a href="../../Kernel/Admin/_framework_kernel_template_engine_php.html#functiondynamic_assign">dynamic_assign</a>  I valori assegnati al template engine una volta inseriti vengono subito eliminati per non sovraccaricare l'ambiente e  quindi non sono disponibili oltre questa funzione.</p><p>Variabili di debug: $assignments</p></span>
+    		<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">String</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$template:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Il template da recuperare</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">Array</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$values:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> L'array associativo con i valori da sostituire nel template</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">Smarty</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$obj:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Il template engine da utilizzare</span>			</td></tr>
+				</table>
+	
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Return:</strong>&nbsp;&nbsp;</td><td>Il template riempito con i valori</td>
+  </tr>
+  <tr>
+    <td class="indent"><strong>Global:</strong>&nbsp;&nbsp;</td><td>Smarty $SMARTY: Smarty Template Engine</td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functiondynamic_assign" id="functiondynamic_assign"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="method-title">dynamic_assign</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_frameworkkerneltemplate_engine.php.html#a300">300</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>Array dynamic_assign(
+String $template, [Array $values = array()]&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Assegna i valori delle variabili all'interno di un template
+</strong></p>
+<span class="description"><p>Carica le funzioni del file di codie associato con il template specificato (la posizione di questo file viene definita  nel file <a href="../../Kernel/Admin/_framework_kernel_config_php.html">config.php</a>), quindi analizza le variabili presenti all'interno del template. Se trova una  corrispondenza tra una funzione del codice ed una variabile del template, chiama questa funzione per assegnare il  valore alla variabile. In caso questa corrispondenza non venga trovata la funzione controlla che la variabile sia  stata almeno specificata tra i valori statici (la variabile $values passata come argomento). In caso non la trovi  nemmeno li solleva un errore.</p></span>
+    		<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">String</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$template:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Il template da elaborare</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">Array</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$values:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Array associativo contenente le assegnazioni gia valorizzate</span>			</td></tr>
+				</table>
+	
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Return:</strong>&nbsp;&nbsp;</td><td>L'array contenente tutti i valori del template</td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functionget_global_smarty" id="functionget_global_smarty"><!-- --></a>
+<div class="evenrow">
+
+	<div>
+		<span class="method-title">get_global_smarty</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_frameworkkerneltemplate_engine.php.html#a111">111</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>Smarty get_global_smarty(
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Recupera il template engine globale di default.
+</strong></p>
+<span class="description"><p>Se non esiste ancora un template engine di defaul la funzione si preoccupa di crearne uno e poi restituirlo.  Predispone ad upgradare il sito utilizzando i paradigmi della OOP.</p></span>
+    
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Return:</strong>&nbsp;&nbsp;</td><td>Il template engine di default</td>
+  </tr>
+  <tr>
+    <td class="indent"><strong>Global:</strong>&nbsp;&nbsp;</td><td>Smarty $SMARTY: Connession di default al database</td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functionset_global_smarty" id="functionset_global_smarty"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="method-title">set_global_smarty</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_frameworkkerneltemplate_engine.php.html#a135">135</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void set_global_smarty(
+Smarty $obj&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Imposta come template engine di default l'oggetto specificato.
+</strong></p>
+
+    		<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">Smarty</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$obj:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> L'oggetto Smarty da utilizzare</span>			</td></tr>
+				</table>
+	
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Global:</strong>&nbsp;&nbsp;</td><td>Smarty $SMARTY: Smarty Template Engine</td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functionsmarty_create" id="functionsmarty_create"><!-- --></a>
+<div class="evenrow">
+
+	<div>
+		<span class="method-title">smarty_create</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_frameworkkerneltemplate_engine.php.html#a39">39</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>PEAR::DB smarty_create(
+[boolean $set_global = true]&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Crea un nuovo Template Engine Smarty utilizzando i parametri di config.php.
+</strong></p>
+<span class="description"><p>La funzione crea un nuovo oggetto Smarty utilizzando i parametri della sezione template nel file di configurazione  <a href="../../Kernel/Admin/_framework_kernel_config_php.html">config.php</a>. L'utilizzo della cache è sempre abilitato. Nella modalità di debug la cache viene sempre cancelata  e viene forzata la ricompilazione dei template.</p></span>
+    		<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">boolean</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$set_global:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Indica se ipostare la connessione come default.</span>			</td></tr>
+				</table>
+	
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Return:</strong>&nbsp;&nbsp;</td><td>La connessione al database</td>
+  </tr>
+  <tr>
+    <td class="indent"><strong>Global:</strong>&nbsp;&nbsp;</td><td>Array $CONFIG: Parametri di configurazione</td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functionsmarty_destroy" id="functionsmarty_destroy"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="method-title">smarty_destroy</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_frameworkkerneltemplate_engine.php.html#a84">84</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void smarty_destroy(
+[Smarty $obj = null]&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Elimina un oggetto smarty
+</strong></p>
+<span class="description"><p>La funzione elimina un template engine Smarty. Se non ne viene specificato uno cancellato l'oggetto globale.</p></span>
+    		<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">Smarty</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$obj:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> L'oggetto che fa riferimento al template engine</span>			</td></tr>
+				</table>
+	
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Global:</strong>&nbsp;&nbsp;</td><td>Smarty $SMARTY: L'oggetto Smarty globale</td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+		</div>
+	</div><br />
+
+        <div class="credit">
+		    <hr class="separator" />
+		    Documentation generated on Sat, 13 Oct 2007 23:46:45 +0200 by <a href="http://www.phpdoc.org">phpDocumentor 1.3.0RC3</a>
+	      </div>
+      </td></tr></table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,1054 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Docs for page debug.php</title>
+	<link rel="stylesheet" type="text/css" href="../../media/style.css">
+	<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+</head>
+<body>
+
+<table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
+  <tr>
+	<td class="header-top-left"><img src="../../media/logo.png" border="0" alt="phpDocumentor " /></td>
+    <td class="header-top-right">Kernel<br /><div class="header-top-right-subpackage">Admin</div></td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="../../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <tr>
+    <td colspan="2" class="header-menu">
+  		  [ <a href="../../classtrees_Kernel.html" class="menu">class tree: Kernel</a> ]
+		  [ <a href="../../elementindex_Kernel.html" class="menu">index: Kernel</a> ]
+		  [ <a href="../../elementindex.html" class="menu">all elements</a> ]
+    </td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="../../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="195" class="menu">
+		<div class="package-title">Kernel</div>
+  <div class="package">
+	<div id="todolist">
+			<p><a href="../../todolist.html">Todo List</a></p>
+	</div>
+	</div>
+      <b>Packages:</b><br />
+  <div class="package">
+              <a href="../../li_Kernel.html">Kernel</a><br />
+              <a href="../../li_Main.html">Main</a><br />
+      	</div>
+      <br />
+                        <b>Files:</b><br />
+        <div class="package">
+				<span style="padding-left: 1em;"><a href="../../Kernel/_kernel_application_php.html">application.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/_kernel_modules_config_php.html">config.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/_kernel_modules_definitions_php.html">definitions.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/_kernel_general_php.html">general.php</a></span><br />
+	  </div>
+  <div class="package">
+	<strong>Admin</strong><br />			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_adv_smarty_php.html">adv_smarty.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_buffering_php.html">buffering.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_buffer_handlers_php.html">buffer_handlers.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_components_php.html">components.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_database_php.html">database.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_debug_php.html">debug.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_debug_gfx_php.html">debug_gfx.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_errors_php.html">errors.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_queries_php.html">queries.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_kernel_modules_template_engine_php.html">template_engine.php</a></span><br />
+	  </div>
+  <div class="package">
+	<strong>User</strong><br />			<span style="padding-left: 1em;"><a href="../../Kernel/User/_kernel_packages_login_php.html">login.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/User/_kernel_packages_menu_php.html">menu.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/User/_kernel_packages_news_php.html">news.php</a></span><br />
+	  </div>
+            <br />
+            <b>Classes:</b><br />
+        <div class="package">
+	Admin<br />	    <span style="padding-left: 1em;">		<a href="../../Kernel/Admin/AdvSmarty.html">AdvSmarty</a>    </span>	 <br />
+	  </div>
+                </td>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
+
+<h1>Procedural File: debug.php</h1>
+Source Location: /kernel/modules/debug.php<br /><br />
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Page Details</div>
+	<div class="nav-bar">
+					<span class="disabled">Page Details</span> |
+									<a href="#sec-includes">Includes</a>
+			|							<a href="#sec-constants">Constants</a>
+			|									<a href="#sec-functions">Functions</a>
+			</div>
+	<div class="info-box-body">
+		<p align="center" class="short-description"><strong>Funzioni per il debugging dell'applicazione
+</strong></p>
+<span class="description"><p>Funzioni utilizzate per visualizzare messaggi di errore all'utente e al programmatore in fase di  programmazione pemettendo di fare il debugging dell'applicazione.<br />  Le principali funzionalità offerte da questo sistema di debug sono: <ul><li>Visualizzazione di messaggi suddivisi in 4 categorie: messaggi di sistema, messaggi di errore,
+     visualizzazione variabili, marker placement.</li><li>Timer per la misurazione delle prestazioni degli script</li><li>Divisione degli items del debug in sezioni</li><li>Filtraggio dell'output</li></ul>  <strong>NOTA</strong>: Le funzioni di debug non utilizzano i metodi standard per la visualizzazione del testo in  HTML, ovverosia non fanno uso dei template. Il codice HTML è scritto all'interno del codice PHP,  questo per rendere indipendente dal resto del sistema, e quindi non dipendente dai suoi errori  il sistema di debug.<br />  <strong>NOTA</strong>: Chi volesse modificare le funzioni di debug deve stare attento a non usare queste funzioni  all'interno del debug stesso, perchè potrebbero venire a crearsi dei riferimenti circolari con  conseguenti loop infiniti.</p></span>		<table border="0" cellspacing="0" cellpadding="0">
+			<tr><td><strong>Filesource:</strong>&nbsp;&nbsp;</td><td><a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesdebug.php.html">Source Code for this file</a></td></tr>
+			<tr><td><strong>See:</strong>&nbsp;&nbsp;</td><td><a href="../../Kernel/_kernel_modules_config_php.html">config.php</a>, <a href="../../Kernel/Admin/_kernel_modules_debug_gfx_php.html">debug_gfx.php</a></td></tr>
+			<tr><td><strong>Copyright:</strong>&nbsp;&nbsp;</td><td>Copyright 2005, Fabrizio Colonna</td></tr>
+			<tr><td><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna &lt;<a href="mailto:colofabrix@tin.it">colofabrix@tin.it</a>&gt;</td></tr>
+	</table>
+
+			</div>
+</div>
+
+
+	<a name="sec-includes"></a>
+	<div class="info-box">
+		<div class="info-box-title">Includes</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Page Details</a> |
+						<span class="disabled">Includes</span>
+			|							<a href="#sec-constants">Constants</a>
+				|													<a href="#sec-functions">Functions</a>
+					</div>
+		<div class="info-box-body">
+			<a name="_dirname(__FILE__)_/__/general_php"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="include-title">
+			<span class="include-type">require_once</span>
+			(<span class="include-name">dirname(__FILE__)."/../general.php"</span>)
+			<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesdebug.php.html#a32">32</a>]</span>
+		</span>
+	</div>
+
+		
+		<div class="top">[ <a href="#top">Top</a> ]</div>
+		<br />
+</div>
+<a name="_dirname(__FILE__)_/config_php"><!-- --></a>
+<div class="evenrow">
+
+	<div>
+		<span class="include-title">
+			<span class="include-type">require_once</span>
+			(<span class="include-name">dirname(__FILE__)."/config.php"</span>)
+			<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesdebug.php.html#a34">34</a>]</span>
+		</span>
+	</div>
+
+		
+		<div class="top">[ <a href="#top">Top</a> ]</div>
+		<br />
+</div>
+<a name="_dirname(__FILE__)_/debug_gfx_php"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="include-title">
+			<span class="include-type">require_once</span>
+			(<span class="include-name">dirname(__FILE__)."/debug_gfx.php"</span>)
+			<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesdebug.php.html#a33">33</a>]</span>
+		</span>
+	</div>
+
+		
+		<div class="top">[ <a href="#top">Top</a> ]</div>
+		<br />
+</div>
+		</div>
+	</div><br />
+
+	<a name="sec-constants"></a>
+	<div class="info-box">
+		<div class="info-box-title">Constants</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Page Details</a> |
+										<a href="#sec-includes">Includes</a>
+				|						<span class="disabled">Constants</span>
+			|										<a href="#sec-functions">Functions</a>
+					</div>
+		<div class="info-box-body">
+			<a name="defineKERNEL_ADMIN_DEBUG"><!-- --></a>
+<div class="evenrow">
+
+	<div>
+		<span class="const-title">
+			<span class="const-name">KERNEL_ADMIN_DEBUG</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesdebug.php.html#a30">30</a>]</span>
+		</span>
+	</div>
+<br />
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>KERNEL_ADMIN_DEBUG = 1</code>
+    </td></tr></table>
+    </td></tr></table>
+
+        
+	<br />
+
+		<div class="top">[ <a href="#top">Top</a> ]</div>
+	<br />
+</div>
+		</div>
+	</div><br />
+
+
+	<a name="sec-functions"></a>
+	<div class="info-box">
+		<div class="info-box-title">Functions</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Page Details</a> |
+										<a href="#sec-includes">Includes</a>
+				|										<a href="#sec-constants">Constants</a>
+				|									<span class="disabled">Functions</span>
+		</div>
+		<div class="info-box-body">
+			<a name="functiondebug_add_item" id="functiondebug_add_item"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="method-title">debug_add_item</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesdebug.php.html#a254">254</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void debug_add_item(
+Array $item&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Aggiunge un elemento alla lista di debug
+</strong></p>
+<span class="description"><p>Aggiunge un elemento alla lista globale di debug, come una variabile o un marker, occupandosi di inizializzare la  lista se necessario. L'oggetto da aggiungere alla lista deve rispettare un determinato formato. Vedere <a href="../../Kernel/Admin/_kernel_modules_debug_php.html#functiondebug_create_item">debug_create_item</a>  per ulteriori informazioni.</p></span>
+    		<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">Array</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$item:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Oggetto da aggiungere</span>			</td></tr>
+				</table>
+	
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>See:</strong>&nbsp;&nbsp;</td><td><a href="../../Kernel/Admin/_kernel_modules_debug_php.html#functiondebug_create_item">debug_create_item()</a></td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functiondebug_create_item" id="functiondebug_create_item"><!-- --></a>
+<div class="evenrow">
+
+	<div>
+		<span class="method-title">debug_create_item</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesdebug.php.html#a205">205</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void debug_create_item(
+String $type, Array $type_data, Integer $stack_skip, Integer $extra_skip&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Crea ed inserisce un item nel debug
+</strong></p>
+<span class="description"><p>La funzione aiuta nella creazione di un nuovo item per il debug e lo inserisce automaticamente nella lista di  debug tramite <a href="../../Kernel/Admin/_kernel_modules_debug_php.html#functiondebug_add_item">debug_add_item</a>.</p></span>
+    		<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">String</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$type:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Tipo di item da creare</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">Array</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$type_data:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Dati dell'item</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">Integer</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$stack_skip:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Numero di passi da non contare nella visualizzazione dello ST</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">Integer</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$extra_skip:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Numero stacktrace da non contare dovuti alle chiamate di debug fino a questa funzione compresa</span>			</td></tr>
+				</table>
+	
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>See:</strong>&nbsp;&nbsp;</td><td><a href="../../Kernel/Admin/_kernel_modules_debug_php.html#functiondebug_add_item">debug_add_item()</a></td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functiondebug_enter_section" id="functiondebug_enter_section"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="method-title">debug_enter_section</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesdebug.php.html#a567">567</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void debug_enter_section(
+String $section&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Entra in una sezione logica di codice
+</strong></p>
+<span class="description"><p>Queste funzioni sono utili per marcare porzioni di informazioni di debug come relative  ad una certa sezione di codice così da permettere una comoda ricerca in fase di analisi  e di filtraggio dei risultati.<br />  Le sezioni vengono trattate come uno stack, quindi per tornare indietro ad una data  sezione bisogna prima uscire da quelle successive. Inoltre ad ogni chiamata &quot;enter&quot; deve  corrispondere una chiamata &quot;exit&quot;.</p></span>
+    		<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">String</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$section:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Il nome della sezione</span>			</td></tr>
+				</table>
+	
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>See:</strong>&nbsp;&nbsp;</td><td><a href="../../Kernel/Admin/_kernel_modules_debug_php.html#functiondebug_exit_section">debug_exit_section()</a></td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functiondebug_error" id="functiondebug_error"><!-- --></a>
+<div class="evenrow">
+
+	<div>
+		<span class="method-title">debug_error</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesdebug.php.html#a361">361</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void debug_error(
+String $text&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Inserisce un messaggio di errore
+</strong></p>
+<span class="description"><p>I messaggi di errore sono coloratidì di rosso intenso.</p></span>
+    		<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">String</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$text:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Testo da visualizzare</span>			</td></tr>
+				</table>
+	
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>See:</strong>&nbsp;&nbsp;</td><td><a href="../../Kernel/Admin/_kernel_modules_debug_php.html#functiondebug_show">debug_show()</a>, <a href="../../Kernel/Admin/_kernel_modules_debug_gfx_php.html#functiondebugfx_show_type_variable">debugfx_show_type_variable()</a></td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functiondebug_exit_section" id="functiondebug_exit_section"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="method-title">debug_exit_section</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesdebug.php.html#a591">591</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void debug_exit_section(
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Elimina l'ultima sezione inserita
+</strong></p>
+<span class="description"><p>Queste funzioni sono utili per marcare porzioni di informazioni di debug come relative  ad una certa sezione di codice così da permettere una comoda ricerca in fase di analisi  e di filtraggio dei risultati.<br />  Le sezioni vengono trattate come uno stack, quindi per tornare indietro ad una data  sezione bisogna prima uscire da quelle successive. Inoltre ad ogni chiamata &quot;enter&quot; deve  corrispondere una chiamata &quot;exit&quot;</p></span>
+    
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>See:</strong>&nbsp;&nbsp;</td><td><a href="../../Kernel/Admin/_kernel_modules_debug_php.html#functiondebug_enter_section">debug_enter_section()</a></td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functiondebug_filter_check" id="functiondebug_filter_check"><!-- --></a>
+<div class="evenrow">
+
+	<div>
+		<span class="method-title">debug_filter_check</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesdebug.php.html#a106">106</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>Bool debug_filter_check(
+String $filter, Array $data&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Filtra un dato
+</strong></p>
+<span class="description"><p>Il filtro si intende eseguito su ognuna delle singore righe del debug. E' possibile esprimere  espressioni booleane, anche complesse, sui dati che compaiono nella visualizzazione del debug per  ottenere un sottoinsieme ristretto di informazioni, generalmente più utili, delle informazioni  complete.<br />  Operatori di confronto: A&lt;B, A&lt;=B, A==B, A!=B, A&gt;=B, A&gt;B, A has &quot;text&quot;, A regexp /regexp/imsxeuADSUX<br />  Operatori logici: (expr1)and(expr2), (expr1)or(expr2), (expr1)xor(expr2), not(expr)<br />  Variabili di controllo: variabile $data<br />  Esempio: <samp>(type_data.value.items regexp /&lt;[^&lt;&gt;]&gt;/m) or (type_data.value.item regexp /&lt;[^&lt;&gt;]&gt;/m)</samp></p></span>
+    		<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">String</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$filter:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> La stringa filtro</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">Array</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$data:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Dati dell'item</span>			</td></tr>
+				</table>
+	
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Return:</strong>&nbsp;&nbsp;</td><td>True se il dato è valido, false altrimenti</td>
+  </tr>
+  <tr>
+    <td class="indent"><strong>See:</strong>&nbsp;&nbsp;</td><td><a href="../../Kernel/Admin/_kernel_modules_debug_php.html#functiondebug_show">debug_show()</a></td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functiondebug_get_uid" id="functiondebug_get_uid"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="method-title">debug_get_uid</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesdebug.php.html#a539">539</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>integer debug_get_uid(
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Restituisce un UID
+</strong></p>
+<span class="description"><p>Questa funzione viene utilizzata per generare un numero univoco rispetto alla sessione utilizzabile  in vari ambiti.</p></span>
+    
+<br />
+	
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functiondebug_place_mark" id="functiondebug_place_mark"><!-- --></a>
+<div class="evenrow">
+
+	<div>
+		<span class="method-title">debug_place_mark</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesdebug.php.html#a324">324</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void debug_place_mark(
+[String $description = ""]&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Imposta un marker nel codice.
+</strong></p>
+<span class="description"><p>Imposta un marker nel codice per varie ragioni, per esempio può essere utile determinare se una porzione di codice è  stata eseguita oppure no.<br />  I marker hanno sfondo azzurro.</p></span>
+    		<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">String</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$description:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Descrizione facoltativa del marker</span>			</td></tr>
+				</table>
+	
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>See:</strong>&nbsp;&nbsp;</td><td><a href="../../Kernel/Admin/_kernel_modules_debug_php.html#functiondebug_show">debug_show()</a>, <a href="../../Kernel/Admin/_kernel_modules_debug_gfx_php.html#functiondebugfx_show_type_marker">debugfx_show_type_marker()</a></td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functiondebug_reset" id="functiondebug_reset"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="method-title">debug_reset</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesdebug.php.html#a278">278</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void debug_reset(
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Cancella la lista delle informazioni di debug
+</strong></p>
+
+    
+<br />
+	
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functiondebug_show" id="functiondebug_show"><!-- --></a>
+<div class="evenrow">
+
+	<div>
+		<span class="method-title">debug_show</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesdebug.php.html#a52">52</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>String debug_show(
+[String $buffer = null]&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Visualizza le informazioni di debug
+</strong></p>
+<span class="description"><p>Visualizza le variabili con il relativo al debug inserendole in una opportuna form grafica, utilizzando  per ogni tipologia di dato le opportune funzioni.<br />  Le visualizzazioni personalizzate vengono gestite chiamando le funzioni del tipo relativo costruendo il  nome della variabile con debug_show_type_&lt;tipo&gt; e passandole i dati da visualizzare. Vedere anche le  funzioni <a href="../../Kernel/Admin/_kernel_modules_debug_gfx_php.html#functiondebugfx_show_type_variable">debugfx_show_type_variable</a>, <a href="../../Kernel/Admin/_kernel_modules_debug_gfx_php.html#functiondebugfx_show_type_sysinfo">debugfx_show_type_sysinfo</a>, <a href="../../Kernel/Admin/_kernel_modules_debug_gfx_php.html#functiondebugfx_show_type_marker">debugfx_show_type_marker</a></p></span>
+    		<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">String</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$buffer:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Il buffer su cui scrivere le informazioni di debug</span>			</td></tr>
+				</table>
+	
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Return:</strong>&nbsp;&nbsp;</td><td>L'insieme formattato in HTML delle informazioni di debug</td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functiondebug_system_advise" id="functiondebug_system_advise"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="method-title">debug_system_advise</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesdebug.php.html#a342">342</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void debug_system_advise(
+String $text&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Inserisce un avviso di sistema
+</strong></p>
+<span class="description"><p>Inserisce un messaggio di sistema nel debug in modo che sia visualizzato all'utente in maniera differente. In genere un  messaggio di sistema è un messaggio riguardante una particolare funzione o stato in cui si trova il kernel.<br />  I messaggi di sistema hanno un colore verde</p></span>
+    		<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">String</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$text:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Testo da visualizzare</span>			</td></tr>
+				</table>
+	
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>See:</strong>&nbsp;&nbsp;</td><td><a href="../../Kernel/Admin/_kernel_modules_debug_php.html#functiondebug_show">debug_show()</a>, <a href="../../Kernel/Admin/_kernel_modules_debug_gfx_php.html#functiondebugfx_show_type_sysinfo">debugfx_show_type_sysinfo()</a></td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functiondebug_timer_get" id="functiondebug_timer_get"><!-- --></a>
+<div class="evenrow">
+
+	<div>
+		<span class="method-title">debug_timer_get</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesdebug.php.html#a463">463</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>float debug_timer_get(
+Integer $id&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Trova il conteggio del timer
+</strong></p>
+<span class="description"><p>Restituisce un valore float che indica la differenza di tempo trascorso dall'inizio del conteggio  del timer al tempo in cui viene chiamata la funzione, oppure, se il timer è stato fermato, il  tempo totale per cui il timer ha funzionato. Se il timer specificato non esiste viene restuito  il valore 0.</p></span>
+    		<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">Integer</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$id:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Identificativo del timer</span>			</td></tr>
+				</table>
+	
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Return:</strong>&nbsp;&nbsp;</td><td>Il tempo in secondi trascorso dall'avvio del timer</td>
+  </tr>
+  <tr>
+    <td class="indent"><strong>See:</strong>&nbsp;&nbsp;</td><td><a href="../../Kernel/Admin/_kernel_modules_debug_php.html#functiondebug_timer_start">debug_timer_start()</a>, <a href="../../Kernel/Admin/_kernel_modules_debug_php.html#functiondebug_timer_stop">debug_timer_stop()</a>, <a href="../../Kernel/Admin/_kernel_modules_debug_php.html#functiondebug_timer_reset">debug_timer_reset()</a></td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functiondebug_timer_newid" id="functiondebug_timer_newid"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="method-title">debug_timer_newid</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesdebug.php.html#a518">518</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>Integer debug_timer_newid(
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Restituisce l'ID di un nuovo timer
+</strong></p>
+<span class="description"><p>Serve per creare nuovi timer a tempo di esecuzione senza sapere a priori il suo id</p></span>
+    
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Return:</strong>&nbsp;&nbsp;</td><td>Identificativo del nuovo timer</td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functiondebug_timer_reset" id="functiondebug_timer_reset"><!-- --></a>
+<div class="evenrow">
+
+	<div>
+		<span class="method-title">debug_timer_reset</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesdebug.php.html#a501">501</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void debug_timer_reset(
+Integer $id&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Resetta un timer
+</strong></p>
+<span class="description"><p>Imposta il timer specificato come non utilizzato, e quindi permette di poterlo riutilizzare</p></span>
+    		<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">Integer</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$id:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Identificativo del timer</span>			</td></tr>
+				</table>
+	
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Global:</strong>&nbsp;&nbsp;</td><td>Integer $debug_timers: Contatore dei marks</td>
+  </tr>
+  <tr>
+    <td class="indent"><strong>See:</strong>&nbsp;&nbsp;</td><td><a href="../../Kernel/Admin/_kernel_modules_debug_php.html#functiondebug_timer_start">debug_timer_start()</a>, <a href="../../Kernel/Admin/_kernel_modules_debug_php.html#functiondebug_timer_stop">debug_timer_stop()</a>, <a href="../../Kernel/Admin/_kernel_modules_debug_php.html#functiondebug_timer_get">debug_timer_get()</a></td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functiondebug_timer_start" id="functiondebug_timer_start"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="method-title">debug_timer_start</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesdebug.php.html#a392">392</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>Integer debug_timer_start(
+[Integer $id = -1]&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Avvia un timer di debug
+</strong></p>
+<span class="description"><p>Avvia un timer specifico che può essere utilizzato in molteplici modi, ad esempio per il controllo  delle prestazioni del codice. Prima di avviare un timer, lo stesso viene resettato chiamando  la funzione <a href="../../Kernel/Admin/_kernel_modules_debug_php.html#functiondebug_timer_reset">debug_timer_reset</a>.<br />  La funzione permette di avviare più timer simultaneamente semplicemente chiamando varie volte  la funzione e specificando l'id del timer da avviare. Non passando il parametro $id la funzione cerca  il primo identificativo libero e lo assegna al timer. E' sempre consigliato usare l'opzione di default,  a meno di casi particolari.<br />  Per fermare il timer consultare <a href="../../Kernel/Admin/_kernel_modules_debug_php.html#functiondebug_timer_stop">debug_timer_stop</a>, mentre per prenderne il conteggio attuale  vedere <a href="../../Kernel/Admin/_kernel_modules_debug_php.html#functiondebug_timer_get">debug_timer_get</a>.</p></span>
+    		<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">Integer</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$id:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Identificativo del timer da avviare</span>			</td></tr>
+				</table>
+	
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Return:</strong>&nbsp;&nbsp;</td><td>L'identificativo del timer avviato</td>
+  </tr>
+  <tr>
+    <td class="indent"><strong>See:</strong>&nbsp;&nbsp;</td><td><a href="../../Kernel/Admin/_kernel_modules_debug_php.html#functiondebug_timer_stop">debug_timer_stop()</a>, <a href="../../Kernel/Admin/_kernel_modules_debug_php.html#functiondebug_timer_get">debug_timer_get()</a>, <a href="../../Kernel/Admin/_kernel_modules_debug_php.html#functiondebug_timer_reset">debug_timer_reset()</a></td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functiondebug_timer_stop" id="functiondebug_timer_stop"><!-- --></a>
+<div class="evenrow">
+
+	<div>
+		<span class="method-title">debug_timer_stop</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesdebug.php.html#a427">427</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>float debug_timer_stop(
+Integer $id&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Arresta un timer di debug
+</strong></p>
+<span class="description"><p>Arresta un timer specifico che può essere utilizzato in molteplici modi, ad esempio per il controllo  delle prestazioni del codice. La funzione permette di fermare più timer con più chiamate. La  funzione restituisce il tempo in secondi dall'avvio del timer con una precisione di 1us. Più  chiamate per lo stesso timer (ovvero per lo stesso ID) non avranno nessun effetto, ovverosia un timer  può essere bloccato al più una volta e il risultato restituito sarà 0</p></span>
+    		<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">Integer</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$id:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Identificativo del timer da avviare</span>			</td></tr>
+				</table>
+	
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Return:</strong>&nbsp;&nbsp;</td><td>Il tempo in secondi trascorso dall'avvio del timer</td>
+  </tr>
+  <tr>
+    <td class="indent"><strong>See:</strong>&nbsp;&nbsp;</td><td><a href="../../Kernel/Admin/_kernel_modules_debug_php.html#functiondebug_timer_start">debug_timer_start()</a>, <a href="../../Kernel/Admin/_kernel_modules_debug_php.html#functiondebug_timer_get">debug_timer_get()</a>, <a href="../../Kernel/Admin/_kernel_modules_debug_php.html#functiondebug_timer_reset">debug_timer_reset()</a></td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functiondebug_watch" id="functiondebug_watch"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="method-title">debug_watch</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_Admin_kernelmodulesdebug.php.html#a302">302</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void debug_watch(
+String $text, Mixed $value, [Integer $w_level = 0], [Integer $skip_stack = 0]&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Visualizza una variabile
+</strong></p>
+<span class="description"><p>La funzione salva il valore della variabile passata per permetterne la visualizzazione al momento della visualizzazione  del debug. E' possibile aggiungere un warning level che permette di colorare di diverse tonalità di rosso il messaggio  in modo da metterlo in evidenza.</p></span>
+    		<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">String</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$text:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Il nome della variabile da salvare (può essere descrittivo)</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">Mixed</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$value:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Il valore da salvare</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">Integer</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$w_level:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Livello di Warning di debug, da 0 a 10</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">Integer</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$skip_stack:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Passi dello stacktrace da saltare</span>			</td></tr>
+				</table>
+	
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>See:</strong>&nbsp;&nbsp;</td><td><a href="../../Kernel/Admin/_kernel_modules_debug_php.html#functiondebug_show">debug_show()</a>, <a href="../../Kernel/Admin/_kernel_modules_debug_gfx_php.html#functiondebugfx_show_type_variable">debugfx_show_type_variable()</a></td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+		</div>
+	</div><br />
+
+        <div class="credit">
+		    <hr class="separator" />
+		    Documentation generated on Thu, 11 Oct 2007 13:27:53 +0200 by <a href="http://www.phpdoc.org">phpDocumentor 1.3.0RC3</a>
+	      </div>
+      </td></tr></table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

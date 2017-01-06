@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>File Source for login.php</title>
+	<link rel="stylesheet" type="text/css" href="../media/style.css">
+	<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+</head>
+<body>
+
+<table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
+  <tr>
+	<td class="header-top-left"><img src="../media/logo.png" border="0" alt="phpDocumentor " /></td>
+    <td class="header-top-right">Kernel<br /><div class="header-top-right-subpackage">User</div></td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <tr>
+    <td colspan="2" class="header-menu">
+  		  [ <a href="../classtrees_Kernel.html" class="menu">class tree: Kernel</a> ]
+		  [ <a href="../elementindex_Kernel.html" class="menu">index: Kernel</a> ]
+		  [ <a href="../elementindex.html" class="menu">all elements</a> ]
+    </td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="195" class="menu">
+		<div class="package-title">Kernel</div>
+  <div class="package">
+	<div id="todolist">
+			<p><a href="../todolist.html">Todo List</a></p>
+	</div>
+	</div>
+      <b>Packages:</b><br />
+  <div class="package">
+              <a href="../li_Kernel.html">Kernel</a><br />
+              <a href="../li_Main.html">Main</a><br />
+      	</div>
+      <br />
+                        <br />
+                </td>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
+
+<h1 align="center">Source for file login.php</h1>
+<p>Documentation is available at <a href="../Kernel/User/_kernel_packages_login_php.html">login.php</a></p>
+<div class="src-code"><span class="php">
+<div class="listing"><pre><ol><li><a name="a1"></a><span class="src-php">&lt;?php</span></li>
+<li><a name="a2"></a><span class="src-doc">/**</span></li>
+<li><a name="a3"></a><span class="src-doc"> * Funzioni per effettuare il login degli utenti/amministratori</span></li>
+<li><a name="a4"></a><span class="src-doc"> *</span></li>
+<li><a name="a5"></a><span class="src-doc"> * Queste funzioni si occupano di gestire tutti i processi e le fasi di login che un</span></li>
+<li><a name="a6"></a><span class="src-doc"> * utente può fare</span></li>
+<li><a name="a7"></a><span class="src-doc"> *</span></li>
+<li><a name="a8"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@package</span><span class="src-doc">    Kernel</span></li>
+<li><a name="a9"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@subpackage</span><span class="src-doc"> User</span></li>
+<li><a name="a10"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc">     Fabrizio Colonna &lt;colofabrix@tin.it&gt;</span></li>
+<li><a name="a11"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@copyright</span><span class="src-doc">  Fabrizio Colonna 2005</span></li>
+<li><a name="a12"></a><span class="src-doc"> */</span></li>
+<li><a name="a13"></a>&nbsp;</li>
+<li><a name="a14"></a><span class="src-comm">// Signature</span></li>
+<li><a name="a15"></a><a href="http://www.php.net/define">define</a><span class="src-sym">( </span><span class="src-str">&quot;KERNEL_USER_LOGIN&quot;</span><span class="src-sym">, </span><span class="src-num">1 </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a16"></a><span class="src-comm">// Dipendenze</span></li>
+<li><a name="a17"></a><span class="src-inc">require_once</span><span class="src-sym">( </span><span class="src-id">dirname</span><span class="src-sym">(</span>__FILE__<span class="src-sym">)</span>.<span class="src-str">&quot;/../modules/components.php&quot; </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a18"></a><span class="src-inc">require_once</span><span class="src-sym">( </span><span class="src-id">dirname</span><span class="src-sym">(</span>__FILE__<span class="src-sym">)</span>.<span class="src-str">&quot;/../modules/database.php&quot; </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a19"></a>&nbsp;</li>
+<li><a name="a20"></a><span class="src-doc">/**</span></li>
+<li><a name="a21"></a><span class="src-doc"> * Crea la form per il login e ne gestisce gli eventi</span></li>
+<li><a name="a22"></a><span class="src-doc"> *</span></li>
+<li><a name="a23"></a><span class="src-doc"> * La funzione crea la form per il login degli amministratori e ne effettua il login se la form è gia stata inviata. Se</span></li>
+<li><a name="a24"></a><span class="src-doc"> * il login ha avuto successo vengono valorizzate le variabili di sessione &quot;is_logged&quot; e &quot;user_id&quot; contenenti la prima</span></li>
+<li><a name="a25"></a><span class="src-doc"> * una variabile booleana che indica il successo del login e la seconda l'identificativo dell'utente sul database.</span></li>
+<li><a name="a26"></a><span class="src-doc"> *</span></li>
+<li><a name="a27"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc">     Fabrizio Colonna</span></li>
+<li><a name="a28"></a><span class="src-doc"> * </span><span class="src-doc-tag">@date</span><span class="src-doc">       01/12/2005</span></li>
+<li><a name="a29"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc">     </span><span class="src-doc-type">String </span><span class="src-doc">  </span><span class="src-doc-var">$text </span><span class="src-doc">Il testo da tagliare.</span></li>
+<li><a name="a30"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc">     </span><span class="src-doc-type">Integer </span><span class="src-doc"> </span><span class="src-doc-var">$length </span><span class="src-doc">La lunghezza a cui tagliare il testo.</span></li>
+<li><a name="a31"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc">    </span><span class="src-doc-type">String </span><span class="src-doc">  Il testo tagliato.</span></li>
+<li><a name="a32"></a><span class="src-doc"> */</span></li>
+<li><a name="a33"></a><span class="src-key">function </span><a href="../Kernel/User/_kernel_packages_login_php.html#functionbuild_login">build_login</a><span class="src-sym">(</span><span class="src-sym">)</span></li>
+<li><a name="a34"></a><span class="src-sym">{</span></li>
+<li><a name="a35"></a>    <span class="src-key">global </span><span class="src-var">$param_s</span><span class="src-sym">;</span></li>
+<li><a name="a36"></a>    </li>
+<li><a name="a37"></a>    <span class="src-comm">// Creo la form dal template di login (login.tmpl), cancellando i dati ogni volta che viene inviata la form (null).</span></li>
+<li><a name="a38"></a>    <span class="src-comm">// Se la form non è stata inviata termino l'esecuzione (app_end), altrimenti chiamo la funzione che effettua il</span></li>
+<li><a name="a39"></a>    <span class="src-comm">// login (check_user) passandole i dati del login. La form è stata inviata quando è stato inviato il campo &quot;s&quot; della</span></li>
+<li><a name="a40"></a>    <span class="src-comm">// form stessa e quando vale &quot;do_login&quot;</span></li>
+<li><a name="a41"></a>    <span class="src-var">$is_logged </span>= <a href="../Kernel/Admin/_kernel_modules_components_php.html#functionbuild_html_frame">build_html_frame</a><span class="src-sym">(</span></li>
+<li><a name="a42"></a>        <span class="src-key">Array</span><span class="src-sym">(</span></li>
+<li><a name="a43"></a>            <span class="src-str">&quot;template&quot; </span>=&gt; <span class="src-str">&quot;login.tmpl&quot;</span><span class="src-sym">,</span></li>
+<li><a name="a44"></a>            <span class="src-str">&quot;values&quot; </span>=&gt; <span class="src-id">null</span></li>
+<li><a name="a45"></a>        <span class="src-sym">)</span><span class="src-sym">,</span></li>
+<li><a name="a46"></a>        <span class="src-key">Array</span><span class="src-sym">(</span></li>
+<li><a name="a47"></a>            <span class="src-str">&quot;true_func&quot; </span>=&gt; <span class="src-str">&quot;check_user&quot;</span><span class="src-sym">,</span></li>
+<li><a name="a48"></a>            <span class="src-str">&quot;true_params&quot; </span>=&gt; <span class="src-key">Array</span><span class="src-sym">( </span><a href="../Kernel/_kernel_general_php.html#functionget_index">get_index</a><span class="src-sym">(</span><span class="src-str">&quot;user&quot;</span><span class="src-sym">, </span><span class="src-var">$_POST</span><span class="src-sym">, </span><span class="src-str">&quot;&quot;</span><span class="src-sym">)</span><span class="src-sym">, </span><a href="../Kernel/_kernel_general_php.html#functionget_index">get_index</a><span class="src-sym">(</span><span class="src-str">&quot;pwd&quot;</span><span class="src-sym">, </span><span class="src-var">$_POST</span><span class="src-sym">, </span><span class="src-str">&quot;&quot;</span><span class="src-sym">) )</span><span class="src-sym">,</span></li>
+<li><a name="a49"></a>            <span class="src-str">&quot;false_func&quot; </span>=&gt; <span class="src-str">&quot;app_end&quot;</span></li>
+<li><a name="a50"></a>        <span class="src-sym">)</span><span class="src-sym">,</span></li>
+<li><a name="a51"></a>        <span class="src-var">$condition </span>= <span class="src-sym">(</span><span class="src-sym">@</span><span class="src-var">$param_s </span>== <span class="src-str">&quot;do_login&quot;</span><span class="src-sym">)</span><span class="src-sym">,</span></li>
+<li><a name="a52"></a>        <span class="src-key">Array</span><span class="src-sym">( </span><span class="src-str">&quot;a&quot; </span><span class="src-sym">)</span></li>
+<li><a name="a53"></a>    <span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a54"></a>&nbsp;</li>
+<li><a name="a55"></a>    <span class="src-comm">// NOTA: Potevo inserire questa condizione anche all'interno della funzione check_user che tanto veniva chiamata in</span></li>
+<li><a name="a56"></a>    <span class="src-comm">// automatico, ma ho preferito farla qui per coerenza.</span></li>
+<li><a name="a57"></a>    <span class="src-key">if</span><span class="src-sym">( </span><span class="src-var">$condition </span><span class="src-sym">)            </span><span class="src-comm">// Significa che la form è stata inviata</span></li>
+<li><a name="a58"></a>    <span class="src-sym">{</span></li>
+<li><a name="a59"></a>        <span class="src-comm">// Controllo il risultato della riceca dell'utente nel DB</span></li>
+<li><a name="a60"></a>        <span class="src-key">if</span><span class="src-sym">( </span><span class="src-sym">!</span><span class="src-var">$is_logged </span><span class="src-sym">)</span></li>
+<li><a name="a61"></a>        <span class="src-sym">{</span></li>
+<li><a name="a62"></a>            <a href="http://www.php.net/trigger_error">trigger_error</a><span class="src-sym">( </span><span class="src-str">&quot;Username o password errati! (sostituire questo messaggio)&quot;</span><span class="src-sym">, </span><span class="src-id">E_USER_ERROR </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a63"></a>        <span class="src-sym">}</span></li>
+<li><a name="a64"></a>        <span class="src-key">else</span></li>
+<li><a name="a65"></a>        <span class="src-sym">{</span></li>
+<li><a name="a66"></a>            <span class="src-comm">// Salvo nella sessione i dati del login</span></li>
+<li><a name="a67"></a>            <span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">&quot;is_logged&quot;</span><span class="src-sym">] </span>= <span class="src-id">true</span><span class="src-sym">;</span></li>
+<li><a name="a68"></a>            <span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">&quot;user_id&quot;</span><span class="src-sym">] </span>= <span class="src-var">$is_logged</span><span class="src-sym">;</span></li>
+<li><a name="a69"></a>&nbsp;</li>
+<li><a name="a70"></a>            <a href="http://www.php.net/trigger_error">trigger_error</a><span class="src-sym">( </span><span class="src-str">&quot;Login effettuato con successo! (sostituire questo messaggio)&quot;</span><span class="src-sym">, </span><span class="src-id">E_USER_ERROR </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a71"></a>        <span class="src-sym">}</span></li>
+<li><a name="a72"></a>    <span class="src-sym">}</span></li>
+<li><a name="a73"></a><span class="src-sym">}</span></li>
+<li><a name="a74"></a>&nbsp;</li>
+<li><a name="a75"></a><span class="src-doc">/**</span></li>
+<li><a name="a76"></a><span class="src-doc"> * Effettua il login di un amministratore</span></li>
+<li><a name="a77"></a><span class="src-doc"> *</span></li>
+<li><a name="a78"></a><span class="src-doc"> * Tramite lo username e la password come argomenti la funzione è ingrado di determinare se quell'utente è presente sul</span></li>
+<li><a name="a79"></a><span class="src-doc"> * database. Se l'utente è presente viene restituito il suo id. Se l'utente non fosse presente la funzione attende due</span></li>
+<li><a name="a80"></a><span class="src-doc"> * secondi prima di terminare per prevenire attacchi brute-force e restituisce il valore zero.</span></li>
+<li><a name="a81"></a><span class="src-doc"> *</span></li>
+<li><a name="a82"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc">     Fabrizio Colonna</span></li>
+<li><a name="a83"></a><span class="src-doc"> * </span><span class="src-doc-tag">@date</span><span class="src-doc">       01/12/2005</span></li>
+<li><a name="a84"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc">     </span><span class="src-doc-type">String </span><span class="src-doc">   </span><span class="src-doc-var">$user </span><span class="src-doc">Il nome utente</span></li>
+<li><a name="a85"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc">     </span><span class="src-doc-type">String </span><span class="src-doc">   </span><span class="src-doc-var">$pwd </span><span class="src-doc">La password</span></li>
+<li><a name="a86"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc">    </span><span class="src-doc-type">Int </span><span class="src-doc">      Zero se l'utente non è presente, il suo ID del database altrimenti</span></li>
+<li><a name="a87"></a><span class="src-doc"> */</span></li>
+<li><a name="a88"></a><span class="src-key">function </span><a href="../Kernel/User/_kernel_packages_login_php.html#functioncheck_user">check_user</a><span class="src-sym">( </span><span class="src-var">$user</span><span class="src-sym">, </span><span class="src-var">$pwd </span><span class="src-sym">)</span></li>
+<li><a name="a89"></a><span class="src-sym">{</span></li>
+<li><a name="a90"></a>    <span class="src-key">global </span><span class="src-var">$SQL</span><span class="src-sym">;</span></li>
+<li><a name="a91"></a>&nbsp;</li>
+<li><a name="a92"></a>    <span class="src-comm">// Recupero gli utenti con un dato nome</span></li>
+<li><a name="a93"></a>    <span class="src-var">$users </span>= <a href="../Kernel/Admin/_kernel_modules_database_php.html#functiondb_execute_array">db_execute_array</a><span class="src-sym">( </span><span class="src-var">$SQL</span><span class="src-sym">[</span><span class="src-str">&quot;user_login&quot;</span><span class="src-sym">]</span><span class="src-sym">, </span><span class="src-key">Array</span><span class="src-sym">(</span><span class="src-var">$user</span><span class="src-sym">) )</span><span class="src-sym">;</span></li>
+<li><a name="a94"></a>&nbsp;</li>
+<li><a name="a95"></a>    <span class="src-key">for</span><span class="src-sym">( </span><span class="src-var">$i </span>= <span class="src-num">0</span><span class="src-sym">; </span><span class="src-var">$i </span>&lt; <a href="http://www.php.net/count">count</a><span class="src-sym">(</span><span class="src-var">$users</span><span class="src-sym">)</span><span class="src-sym">; </span><span class="src-var">$i</span>++ <span class="src-sym">)</span></li>
+<li><a name="a96"></a>    <span class="src-sym">{</span></li>
+<li><a name="a97"></a>        list<span class="src-sym">( </span><span class="src-var">$user_id</span><span class="src-sym">, </span><span class="src-var">$name_db</span><span class="src-sym">, </span><span class="src-var">$seed_db</span><span class="src-sym">, </span><span class="src-var">$pwd_db </span><span class="src-sym">) </span>= <a href="http://www.php.net/array_values">array_values</a><span class="src-sym">( </span><span class="src-var">$users</span><span class="src-sym">[</span><span class="src-var">$i</span><span class="src-sym">] </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a98"></a>&nbsp;</li>
+<li><a name="a99"></a>        <span class="src-comm">// Ricostruisco l'hash</span></li>
+<li><a name="a100"></a>        <span class="src-var">$check </span>= <span class="src-str">&quot;</span><span class="src-str"><span class="src-var">$name_db</span>:<span class="src-var">$pwd</span>:<span class="src-var">$seed_db</span></span><span class="src-str">&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a101"></a>        <span class="src-var">$check </span>= <a href="http://www.php.net/sha1">sha1</a><span class="src-sym">( </span><span class="src-var">$check </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a102"></a>&nbsp;</li>
+<li><a name="a103"></a>        <a href="../Kernel/Admin/_kernel_modules_debug_php.html#functiondebug_watch">debug_watch</a><span class="src-sym">( </span><span class="src-str">&quot;\$pwd_db&quot;</span><span class="src-sym">, </span><span class="src-var">$pwd_db </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a104"></a>        <a href="../Kernel/Admin/_kernel_modules_debug_php.html#functiondebug_watch">debug_watch</a><span class="src-sym">( </span><span class="src-str">&quot;\$check&quot;</span><span class="src-sym">, </span><span class="src-var">$check </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a105"></a>&nbsp;</li>
+<li><a name="a106"></a>        <span class="src-comm">// Controllo l'hash del db e quello nuovo</span></li>
+<li><a name="a107"></a>        <span class="src-key">if</span><span class="src-sym">( </span><span class="src-var">$check </span>== <span class="src-var">$pwd_db </span><span class="src-sym">)</span></li>
+<li><a name="a108"></a>        <span class="src-sym">{</span></li>
+<li><a name="a109"></a>            <span class="src-comm">// L'utente è presente nel db</span></li>
+<li><a name="a110"></a>            <span class="src-key">return </span><span class="src-var">$user_id</span><span class="src-sym">;</span></li>
+<li><a name="a111"></a>        <span class="src-sym">}</span></li>
+<li><a name="a112"></a>        <span class="src-key">else</span></li>
+<li><a name="a113"></a>        <span class="src-sym">{</span></li>
+<li><a name="a114"></a>            <span class="src-comm">// L'utente non è presente nel db</span></li>
+<li><a name="a115"></a>            <a href="http://www.php.net/sleep">sleep</a><span class="src-sym">( </span><span class="src-num">2 </span><span class="src-sym">)</span><span class="src-sym">;            </span><span class="src-comm">// Perdo alcuni secondi, così evito gli attacchi brute force</span></li>
+<li><a name="a116"></a>            <span class="src-key">return </span><span class="src-num">0</span><span class="src-sym">;</span></li>
+<li><a name="a117"></a>        <span class="src-sym">}</span></li>
+<li><a name="a118"></a>    <span class="src-sym">}</span></li>
+<li><a name="a119"></a>&nbsp;</li>
+<li><a name="a120"></a>    <span class="src-key">return </span><span class="src-num">0</span><span class="src-sym">;</span></li>
+<li><a name="a121"></a><span class="src-sym">}</span></li>
+<li><a name="a122"></a>&nbsp;</li>
+<li><a name="a123"></a><a href="../Kernel/User/_kernel_packages_login_php.html#functionbuild_login">build_login</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a124"></a><span class="src-php">?&gt;</span></li>
+</ol></pre></div>
+</span></div>
+        <div class="credit">
+		    <hr class="separator" />
+		    Documentation generated on Thu, 11 Oct 2007 13:27:57 +0200 by <a href="http://www.phpdoc.org">phpDocumentor 1.3.0RC3</a>
+	      </div>
+      </td></tr></table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

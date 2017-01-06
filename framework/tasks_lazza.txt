@@ -1,0 +1,10 @@
+IDEE A GETTO
+Visto e considerato che dobbiamo decidere come fare il lavoro del login che comunque va fatto, intanto sarebbe intelligente pensare a DOVE
+inserire, nella pagina index.php, i due campi per userid e password per effettuarlo. In alternativa, si può pensare di fare eseguire il 
+login  in una pagina separata (login.php - in alternativa anche un template) che serva solo ed esclusivamente a valorizzare i campi di
+ _SESSION.
+ Sorge la domanda: è meglio creare tante versioni della pagina index.php oppure scindere le due sezioni (amministrativa - modifiche - 
+ dinamica / utenza - visualizzazione - statica). Io personalmente ritengo che sia più semplice, intuitivo ed utile scindere le due sezioni,
+ ovvero creare per ogni possibile template due versioni, una per le modifiche e l'altra per la semplice visualizzazione... in ogni caso 
+ ne devo parlare con Colo.
+ 

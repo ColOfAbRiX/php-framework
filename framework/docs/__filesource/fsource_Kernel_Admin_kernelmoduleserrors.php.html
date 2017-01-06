@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>File Source for errors.php</title>
+	<link rel="stylesheet" type="text/css" href="../media/style.css">
+	<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+</head>
+<body>
+
+<table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
+  <tr>
+	<td class="header-top-left"><img src="../media/logo.png" border="0" alt="phpDocumentor " /></td>
+    <td class="header-top-right">Kernel<br /><div class="header-top-right-subpackage">Admin</div></td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <tr>
+    <td colspan="2" class="header-menu">
+  		  [ <a href="../classtrees_Kernel.html" class="menu">class tree: Kernel</a> ]
+		  [ <a href="../elementindex_Kernel.html" class="menu">index: Kernel</a> ]
+		  [ <a href="../elementindex.html" class="menu">all elements</a> ]
+    </td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="195" class="menu">
+		<div class="package-title">Kernel</div>
+  <div class="package">
+	<div id="todolist">
+			<p><a href="../todolist.html">Todo List</a></p>
+	</div>
+	</div>
+      <b>Packages:</b><br />
+  <div class="package">
+              <a href="../li_Kernel.html">Kernel</a><br />
+              <a href="../li_Main.html">Main</a><br />
+      	</div>
+      <br />
+                        <br />
+                </td>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
+
+<h1 align="center">Source for file errors.php</h1>
+<p>Documentation is available at <a href="../Kernel/Admin/_kernel_modules_errors_php.html">errors.php</a></p>
+<div class="src-code"><span class="php">
+<div class="listing"><pre><ol><li><a name="a1"></a><span class="src-php">&lt;?php</span></li>
+<li><a name="a2"></a><span class="src-doc">/**</span></li>
+<li><a name="a3"></a><span class="src-doc"> * Funzioni di gestione personalizzata degli errori</span></li>
+<li><a name="a4"></a><span class="src-doc"> *</span></li>
+<li><a name="a5"></a><span class="src-doc"> * Questo file contiene le funzioni utilizzate per gestire gli errori che potrebbero</span></li>
+<li><a name="a6"></a><span class="src-doc"> * venire sollevati durante la normale esecuzione del codice.</span></li>
+<li><a name="a7"></a><span class="src-doc"> *</span></li>
+<li><a name="a8"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@package</span><span class="src-doc">    Kernel</span></li>
+<li><a name="a9"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@subpackage</span><span class="src-doc"> Admin</span></li>
+<li><a name="a10"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc">     Fabrizio Colonna &lt;colofabrix@tin.it&gt;</span></li>
+<li><a name="a11"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@copyright</span><span class="src-doc">  Copyright 2005, Fabrizio Colonna</span></li>
+<li><a name="a12"></a><span class="src-doc"> * </span><span class="src-doc-tag">@depend</span><span class="src-doc">     PEAR, PEAR::DB, config.php, debug.php</span></li>
+<li><a name="a13"></a><span class="src-doc"> */</span></li>
+<li><a name="a14"></a><span class="src-comm">// Signature</span></li>
+<li><a name="a15"></a><a href="http://www.php.net/define">define</a><span class="src-sym">( </span><span class="src-str">&quot;KERNEL_ERRORS&quot;</span><span class="src-sym">, </span><span class="src-num">1 </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a16"></a><span class="src-comm">// Dipendenze</span></li>
+<li><a name="a17"></a><span class="src-inc">require_once</span><span class="src-sym">( </span><span class="src-id">dirname</span><span class="src-sym">(</span>__FILE__<span class="src-sym">)</span>.<span class="src-str">&quot;/template_engine.php&quot; </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a18"></a><span class="src-inc">require_once</span><span class="src-sym">( </span><span class="src-id">dirname</span><span class="src-sym">(</span>__FILE__<span class="src-sym">)</span>.<span class="src-str">&quot;/../general.php&quot; </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a19"></a><span class="src-inc">require_once</span><span class="src-sym">( </span><span class="src-id">dirname</span><span class="src-sym">(</span>__FILE__<span class="src-sym">)</span>.<span class="src-str">&quot;/config.php&quot; </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a20"></a><span class="src-inc">require_once</span><span class="src-sym">( </span><span class="src-id">dirname</span><span class="src-sym">(</span>__FILE__<span class="src-sym">)</span>.<span class="src-str">&quot;/debug.php&quot; </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a21"></a>&nbsp;</li>
+<li><a name="a22"></a><span class="src-doc">/**</span></li>
+<li><a name="a23"></a><span class="src-doc"> * Gestore degli errori.</span></li>
+<li><a name="a24"></a><span class="src-doc"> *</span></li>
+<li><a name="a25"></a><span class="src-doc"> * Il messaggio di errore personalizzato viene visualizzato trame il template della variabile di configurazione</span></li>
+<li><a name="a26"></a><span class="src-doc"> * $CONFIG[&quot;error.tmpl&quot;]. Se si è in modalità di debug non verrà caricato il template ma verrà solo visualizzato un</span></li>
+<li><a name="a27"></a><span class="src-doc"> * messagio di errore. La visualizzazione degli errori è nel contesto del contenuto, e non ha un livello proprio come il</span></li>
+<li><a name="a28"></a><span class="src-doc"> * debug.</span></li>
+<li><a name="a29"></a><span class="src-doc"> *</span></li>
+<li><a name="a30"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc">     Fabrizio Colonna</span></li>
+<li><a name="a31"></a><span class="src-doc"> * </span><span class="src-doc-tag">@date</span><span class="src-doc">       19/12/2006</span></li>
+<li><a name="a32"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc">     </span><span class="src-doc-type">Integer </span><span class="src-doc">  </span><span class="src-doc-var">$errno </span><span class="src-doc">The first parameter, errno, contains the level of the error raised, as an integer.</span></li>
+<li><a name="a33"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc">     </span><span class="src-doc-type">String </span><span class="src-doc">   </span><span class="src-doc-var">$errstr </span><span class="src-doc">The second parameter, errstr, contains the error message, as a string.</span></li>
+<li><a name="a34"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc">     </span><span class="src-doc-type">String </span><span class="src-doc">   </span><span class="src-doc-var">$errfile </span><span class="src-doc">Contains the filename that the error was raised in, as a string.</span></li>
+<li><a name="a35"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc">     </span><span class="src-doc-type">Integer </span><span class="src-doc">  </span><span class="src-doc-var">$errline </span><span class="src-doc">Contains the line number the error was raised at, as an integer.</span></li>
+<li><a name="a36"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc">     </span><span class="src-doc-type">Array </span><span class="src-doc">    </span><span class="src-doc-var">$errcontext </span><span class="src-doc">Contain an array of every variable that existed in the scope the error was triggered in</span></li>
+<li><a name="a37"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@global </span><span class="src-doc">    </span><span class="src-doc-type">Array </span><span class="src-doc">    Parametri di configurazione</span></li>
+<li><a name="a38"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc">    </span><span class="src-doc-type">void </span></li>
+<li><a name="a39"></a><span class="src-doc"> */</span></li>
+<li><a name="a40"></a><span class="src-key">function </span><a href="../Kernel/Admin/_kernel_modules_errors_php.html#functionerror_handler">error_handler</a><span class="src-sym">( </span><span class="src-var">$errno</span><span class="src-sym">, </span><span class="src-var">$errstr</span><span class="src-sym">, </span><span class="src-var">$errfile </span>= <span class="src-id">null</span><span class="src-sym">, </span><span class="src-var">$errline </span>= <span class="src-num">0</span><span class="src-sym">, </span><span class="src-var">$errcontx </span>= <span class="src-id">null </span><span class="src-sym">)</span></li>
+<li><a name="a41"></a><span class="src-sym">{</span></li>
+<li><a name="a42"></a>    <span class="src-key">global </span><span class="src-var">$CONFIG</span><span class="src-sym">;</span></li>
+<li><a name="a43"></a>&nbsp;</li>
+<li><a name="a44"></a>    <span class="src-comm">// Maschero gli errori che non devo gestire</span></li>
+<li><a name="a45"></a>    <span class="src-var">$error_mask </span>= (int)<a href="http://www.php.net/ini_get">ini_get</a><span class="src-sym">( </span><span class="src-str">&quot;error_reporting&quot; </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a46"></a>    <span class="src-var">$errno </span>&amp;= <span class="src-var">$error_mask</span><span class="src-sym">;</span></li>
+<li><a name="a47"></a>&nbsp;</li>
+<li><a name="a48"></a>    <span class="src-key">switch</span><span class="src-sym">( </span><span class="src-var">$errno </span><span class="src-sym">)</span></li>
+<li><a name="a49"></a>    <span class="src-sym">{</span></li>
+<li><a name="a50"></a>        <span class="src-comm">// Il caso zero capita quando l'errore è stato mascherato</span></li>
+<li><a name="a51"></a>        <span class="src-key">case </span><span class="src-num">0</span>:</li>
+<li><a name="a52"></a>            <span class="src-key">return</span><span class="src-sym">;</span></li>
+<li><a name="a53"></a>&nbsp;</li>
+<li><a name="a54"></a>        <span class="src-comm">// Errore sollevato da una chiamata del programmatore</span></li>
+<li><a name="a55"></a>        <span class="src-key">case </span><span class="src-id">E_USER_ERROR</span>:</li>
+<li><a name="a56"></a>            <span class="src-var">$error_msg </span>= <span class="src-var">$errstr</span><span class="src-sym">;</span></li>
+<li><a name="a57"></a>            <span class="src-key">break</span><span class="src-sym">;</span></li>
+<li><a name="a58"></a>&nbsp;</li>
+<li><a name="a59"></a>        <span class="src-comm">// Tutti gli altri errori</span></li>
+<li><a name="a60"></a>        <span class="src-key">default</span>:</li>
+<li><a name="a61"></a>            <span class="src-var">$error_msg </span>= <span class="src-str">&quot;</span><span class="src-str"><span class="src-var">$errstr</span>\n<span class="src-var">$errfile</span> - <span class="src-var">$errline</span></span><span class="src-str">&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a62"></a>            <span class="src-key">break</span><span class="src-sym">;</span></li>
+<li><a name="a63"></a>    <span class="src-sym">}</span></li>
+<li><a name="a64"></a>&nbsp;</li>
+<li><a name="a65"></a>    <span class="src-key">if</span><span class="src-sym">( </span><span class="src-sym">!</span><span class="src-var">$CONFIG</span><span class="src-sym">[</span><span class="src-str">&quot;debug&quot;</span><span class="src-sym">] </span><span class="src-sym">)</span></li>
+<li><a name="a66"></a>    <span class="src-sym">{</span></li>
+<li><a name="a67"></a>        <span class="src-comm">// Cancello il testo gia scritto</span></li>
+<li><a name="a68"></a>        <a href="../Kernel/Admin/_kernel_modules_buffering_php.html#functionbuffer_clear_level">buffer_clear_level</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a69"></a>        <a href="../Kernel/Admin/_kernel_modules_errors_php.html#functionerror_show">error_show</a><span class="src-sym">( </span><a href="http://www.php.net/nl2br">nl2br</a><span class="src-sym">(</span><span class="src-var">$error_msg</span><span class="src-sym">) )</span><span class="src-sym">;</span></li>
+<li><a name="a70"></a>&nbsp;</li>
+<li><a name="a71"></a>        <span class="src-comm">// Sistema per il logging degli errori. Da completare</span></li>
+<li><a name="a72"></a>        <a href="../Kernel/Admin/_kernel_modules_errors_php.html#functionerror_log_message">error_log_message</a><span class="src-sym">( </span><span class="src-key">Array</span><span class="src-sym">(</span><span class="src-var">$errno</span><span class="src-sym">, </span><span class="src-var">$errstr</span><span class="src-sym">, </span><span class="src-var">$errfile</span><span class="src-sym">, </span><span class="src-var">$errline</span><span class="src-sym">, </span><span class="src-var">$errcontx</span><span class="src-sym">) )</span><span class="src-sym">;</span></li>
+<li><a name="a73"></a>    <span class="src-sym">}</span></li>
+<li><a name="a74"></a>    <span class="src-key">else</span></li>
+<li><a name="a75"></a>    <span class="src-sym">{</span></li>
+<li><a name="a76"></a>        <span class="src-comm">// Nel debug non faccio vedere tutti quei messaggioni</span></li>
+<li><a name="a77"></a>        <a href="../Kernel/Admin/_kernel_modules_debug_php.html#functiondebug_error">debug_error</a><span class="src-sym">( </span><span class="src-str">&quot;</span><span class="src-str">(<span class="src-var">$errno</span>) <span class="src-var">$errstr</span></span><span class="src-str">&quot; </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a78"></a>    <span class="src-sym">}</span></li>
+<li><a name="a79"></a>&nbsp;</li>
+<li><a name="a80"></a>    <span class="src-comm">// Termino l'esecuzione della pagina se richiesto</span></li>
+<li><a name="a81"></a>    <span class="src-key">if</span><span class="src-sym">( </span><span class="src-var">$CONFIG</span><span class="src-sym">[</span><span class="src-str">&quot;error&quot;</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">&quot;terminate&quot;</span><span class="src-sym">] </span><span class="src-sym">)</span></li>
+<li><a name="a82"></a>    <span class="src-sym">{</span></li>
+<li><a name="a83"></a>        <a href="../Kernel/_kernel_application_php.html#functionapp_end">app_end</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a84"></a>    <span class="src-sym">}</span></li>
+<li><a name="a85"></a><span class="src-sym">}</span></li>
+<li><a name="a86"></a>&nbsp;</li>
+<li><a name="a87"></a><span class="src-doc">/**</span></li>
+<li><a name="a88"></a><span class="src-doc"> * Visualizza un messaggio di errore personalizzato per il debug.</span></li>
+<li><a name="a89"></a><span class="src-doc"> *</span></li>
+<li><a name="a90"></a><span class="src-doc"> * Il messaggio di errore personalizzato viene visualizzato trame il template della variabile di configurazione</span></li>
+<li><a name="a91"></a><span class="src-doc"> * $CONFIG[&quot;error.tmpl&quot;]. Se si è in modalità di debug non verrà caricato il template ma verrà solo visualizzato un</span></li>
+<li><a name="a92"></a><span class="src-doc"> * messagio di errore.</span></li>
+<li><a name="a93"></a><span class="src-doc"> *</span></li>
+<li><a name="a94"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc">     Fabrizio Colonna</span></li>
+<li><a name="a95"></a><span class="src-doc"> * </span><span class="src-doc-tag">@date</span><span class="src-doc">       30/11/2005</span></li>
+<li><a name="a96"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@global </span><span class="src-doc">    </span><span class="src-doc-type">Array </span><span class="src-doc">    Parametri di configurazione</span></li>
+<li><a name="a97"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc">     </span><span class="src-doc-type">String </span><span class="src-doc">  </span><span class="src-doc-var">$text </span><span class="src-doc">Il testo da visualizzare</span></li>
+<li><a name="a98"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc">    </span><span class="src-doc-type">void </span></li>
+<li><a name="a99"></a><span class="src-doc"> */</span></li>
+<li><a name="a100"></a><span class="src-key">function </span><a href="../Kernel/Admin/_kernel_modules_errors_php.html#functionerror_show">error_show</a><span class="src-sym">( </span><span class="src-var">$text </span><span class="src-sym">)</span></li>
+<li><a name="a101"></a><span class="src-sym">{</span></li>
+<li><a name="a102"></a>    <span class="src-key">global </span><span class="src-var">$CONFIG</span><span class="src-sym">;</span></li>
+<li><a name="a103"></a>    echo<span class="src-sym">( </span><a href="../Kernel/Admin/_kernel_modules_template_engine_php.html#functionbuild_template">build_template</a><span class="src-sym">( </span><span class="src-var">$CONFIG</span><span class="src-sym">[</span><span class="src-str">&quot;error&quot;</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">&quot;tmpl&quot;</span><span class="src-sym">]</span><span class="src-sym">, </span><span class="src-key">Array</span><span class="src-sym">(</span><span class="src-str">&quot;content&quot; </span>=&gt; <span class="src-var">$text</span><span class="src-sym">) ) )</span><span class="src-sym">;</span></li>
+<li><a name="a104"></a><span class="src-sym">}</span></li>
+<li><a name="a105"></a>&nbsp;</li>
+<li><a name="a106"></a><span class="src-doc">/**</span></li>
+<li><a name="a107"></a><span class="src-doc"> * Crea il log dell'errore</span></li>
+<li><a name="a108"></a><span class="src-doc"> *</span></li>
+<li><a name="a109"></a><span class="src-doc"> * Carica un template e lo riempie con informazioni utili per il debug. Ovviamente funziona</span></li>
+<li><a name="a110"></a><span class="src-doc"> * se l'errore non è nel template engine..</span></li>
+<li><a name="a111"></a><span class="src-doc"> *</span></li>
+<li><a name="a112"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc">     Fabrizio Colonna</span></li>
+<li><a name="a113"></a><span class="src-doc"> * </span><span class="src-doc-tag">@date</span><span class="src-doc">       20/01/2005</span></li>
+<li><a name="a114"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc">     </span><span class="src-doc-type">Array </span><span class="src-doc">   </span><span class="src-doc-var">$params </span><span class="src-doc">I parametri da visualizzare, sono gli stessi di </span><span class="src-doc-inlinetag">{@link error_handler}</span></li>
+<li><a name="a115"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc">    </span><span class="src-doc-type">String </span><span class="src-doc">  Il messaggio per il log</span></li>
+<li><a name="a116"></a><span class="src-doc"> */</span></li>
+<li><a name="a117"></a><span class="src-key">function </span><a href="../Kernel/Admin/_kernel_modules_errors_php.html#functionerror_log_message">error_log_message</a><span class="src-sym">( </span><span class="src-var">$params </span><span class="src-sym">)</span></li>
+<li><a name="a118"></a><span class="src-sym">{</span></li>
+<li><a name="a119"></a>    <span class="src-key">global </span><span class="src-var">$CONFIG</span><span class="src-sym">;</span></li>
+<li><a name="a120"></a>&nbsp;</li>
+<li><a name="a121"></a>    <span class="src-var">$context </span>= <a href="http://www.php.net/print_r">print_r</a><span class="src-sym">(</span><span class="src-var">$params</span><span class="src-sym">[</span><span class="src-num">4</span><span class="src-sym">]</span><span class="src-sym">, </span><span class="src-id">true </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a122"></a>    <span class="src-var">$stack </span>= <a href="http://www.php.net/print_r">print_r</a><span class="src-sym">( </span><a href="http://www.php.net/debug_backtrace">debug_backtrace</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">, </span><span class="src-id">true </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a123"></a>    <span class="src-var">$environment </span>= <a href="http://www.php.net/print_r">print_r</a><span class="src-sym">( </span><span class="src-var">$GLOBALS</span><span class="src-sym">, </span><span class="src-id">true </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a124"></a>&nbsp;</li>
+<li><a name="a125"></a>    <span class="src-var">$data </span>= <span class="src-key">Array</span></li>
+<li><a name="a126"></a>    <span class="src-sym">(</span></li>
+<li><a name="a127"></a>        <span class="src-str">&quot;error_num&quot; </span>=&gt; <span class="src-var">$params</span><span class="src-sym">[</span><span class="src-num">0</span><span class="src-sym">]</span><span class="src-sym">,</span></li>
+<li><a name="a128"></a>        <span class="src-str">&quot;error_msg&quot; </span>=&gt; <span class="src-var">$params</span><span class="src-sym">[</span><span class="src-num">1</span><span class="src-sym">]</span><span class="src-sym">,</span></li>
+<li><a name="a129"></a>        <span class="src-str">&quot;error_file&quot; </span>=&gt; <span class="src-var">$params</span><span class="src-sym">[</span><span class="src-num">2</span><span class="src-sym">]</span><span class="src-sym">,</span></li>
+<li><a name="a130"></a>        <span class="src-str">&quot;error_line&quot; </span>=&gt; <span class="src-var">$params</span><span class="src-sym">[</span><span class="src-num">3</span><span class="src-sym">]</span><span class="src-sym">,</span></li>
+<li><a name="a131"></a>        <span class="src-str">&quot;error_context&quot; </span>=&gt; <a href="../Kernel/_kernel_general_php.html#functionhtmlencode">htmlencode</a><span class="src-sym">(</span><span class="src-var">$context</span><span class="src-sym">)</span><span class="src-sym">,</span></li>
+<li><a name="a132"></a>        <span class="src-str">&quot;error_callstack&quot; </span>=&gt; <a href="../Kernel/_kernel_general_php.html#functionhtmlencode">htmlencode</a><span class="src-sym">(</span><span class="src-var">$stack</span><span class="src-sym">)</span><span class="src-sym">,</span></li>
+<li><a name="a133"></a>        <span class="src-str">&quot;error_globals&quot; </span>=&gt; <a href="../Kernel/_kernel_general_php.html#functionhtmlencode">htmlencode</a><span class="src-sym">(</span><span class="src-var">$environment</span><span class="src-sym">)</span></li>
+<li><a name="a134"></a>    <span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a135"></a>&nbsp;</li>
+<li><a name="a136"></a>    <span class="src-key">return </span><a href="../Kernel/Admin/_kernel_modules_template_engine_php.html#functionbuild_template">build_template</a><span class="src-sym">( </span><span class="src-var">$CONFIG</span><span class="src-sym">[</span><span class="src-str">&quot;error&quot;</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">&quot;log_tmpl&quot;</span><span class="src-sym">]</span><span class="src-sym">, </span><span class="src-var">$data </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a137"></a><span class="src-sym">}</span></li>
+<li><a name="a138"></a>&nbsp;</li>
+<li><a name="a139"></a><span class="src-doc">/**</span></li>
+<li><a name="a140"></a><span class="src-doc"> * Controlla gli errori in un oggetto PEAR.</span></li>
+<li><a name="a141"></a><span class="src-doc"> *</span></li>
+<li><a name="a142"></a><span class="src-doc"> * Se l'oggetto PEAR ha sollevato un eccezione la funzione si occupa di rilevare l'errore e di visualizzarlo tramite la</span></li>
+<li><a name="a143"></a><span class="src-doc"> * funzione error_show()</span></li>
+<li><a name="a144"></a><span class="src-doc"> *</span></li>
+<li><a name="a145"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc">     Fabrizio Colonna</span></li>
+<li><a name="a146"></a><span class="src-doc"> * </span><span class="src-doc-tag">@date</span><span class="src-doc">       30/11/2005</span></li>
+<li><a name="a147"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@global </span><span class="src-doc">    </span><span class="src-doc-type">Array </span><span class="src-doc">    Parametri di configurazione</span></li>
+<li><a name="a148"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc">     </span><span class="src-doc-type">Object </span><span class="src-doc">  </span><span class="src-doc-var">$pear </span><span class="src-doc">L'oggetto PEAR da controllare.</span></li>
+<li><a name="a149"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc">    </span><span class="src-doc-type">void </span></li>
+<li><a name="a150"></a><span class="src-doc"> */</span></li>
+<li><a name="a151"></a><span class="src-key">function </span><a href="../Kernel/Admin/_kernel_modules_errors_php.html#functionpear_check">pear_check</a><span class="src-sym">( </span><span class="src-var">$pear </span><span class="src-sym">)</span></li>
+<li><a name="a152"></a><span class="src-sym">{</span></li>
+<li><a name="a153"></a>    <span class="src-key">if</span><span class="src-sym">( </span><span class="src-id">PEAR</span><span class="src-sym">::</span><span class="src-id">isError</span><span class="src-sym">(</span><span class="src-var">$pear</span><span class="src-sym">) )</span></li>
+<li><a name="a154"></a>    <span class="src-sym">{</span></li>
+<li><a name="a155"></a>        <a href="http://www.php.net/trigger_error">trigger_error</a><span class="src-sym">( </span><span class="src-str">&quot;PEAR: &quot; </span>. <span class="src-var">$pear</span><span class="src-sym">-&gt;</span><span class="src-id">getMessage</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">, </span><span class="src-id">E_USER_ERROR </span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a156"></a>    <span class="src-sym">}</span></li>
+<li><a name="a157"></a><span class="src-sym">}</span></li>
+<li><a name="a158"></a><span class="src-php">?&gt;</span></li>
+</ol></pre></div>
+</span></div>
+        <div class="credit">
+		    <hr class="separator" />
+		    Documentation generated on Thu, 11 Oct 2007 13:27:55 +0200 by <a href="http://www.phpdoc.org">phpDocumentor 1.3.0RC3</a>
+	      </div>
+      </td></tr></table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

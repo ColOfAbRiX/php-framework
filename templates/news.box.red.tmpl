@@ -1,0 +1,20 @@
+{* Template per la visualizzazione delle news in formato lista *}
+<p><table cellspacing="2" cellpadding="2" style="border: 1px black solid; width="100%">
+  <tr>
+    <td width="50%">
+      <b>{$news_date_1}{* Data di inserimento della news *}</b> - 
+      <b>{$news_title_1}{* Titolo della news *}</b><br>
+      &nbsp;{$news_content_1}{* Contenuto della news *}
+      <a href="index.php?r=show_news&id={$news_id_1}{* Id della news *}">Continua</a>
+    </td>
+    {if $news_count == 2}
+    {* Senza questo if capita che se resta una sola news ci sia un errore *}
+    <td width="50%" style="border-left: 1px black solid">
+      <b>{$news_date_2}{* Data di inserimento della news *}</b> - 
+      <b>{$news_title_2}{* Titolo della news *}</b><br>
+      &nbsp;{$news_content_2}{* Contenuto della news *}
+      <a href="index.php?r=show_news&id={$news_id_2}{* Id della news *}">Continua</a>
+    </td>
+    {/if}
+  </tr>
+</table></p>

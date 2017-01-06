@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Docs for page news.php</title>
+	<link rel="stylesheet" type="text/css" href="../../media/style.css">
+	<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+</head>
+<body>
+
+<table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
+  <tr>
+	<td class="header-top-left"><img src="../../media/logo.png" border="0" alt="phpDocumentor " /></td>
+    <td class="header-top-right">Kernel<br /><div class="header-top-right-subpackage">User</div></td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="../../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <tr>
+    <td colspan="2" class="header-menu">
+  		  [ <a href="../../classtrees_Kernel.html" class="menu">class tree: Kernel</a> ]
+		  [ <a href="../../elementindex_Kernel.html" class="menu">index: Kernel</a> ]
+		  [ <a href="../../elementindex.html" class="menu">all elements</a> ]
+    </td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="../../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="195" class="menu">
+		<div class="package-title">Kernel</div>
+  <div class="package">
+	<div id="todolist">
+			<p><a href="../../todolist.html">Todo List</a></p>
+	</div>
+	</div>
+      <b>Packages:</b><br />
+  <div class="package">
+              <a href="../../li_Kernel.html">Kernel</a><br />
+              <a href="../../li_Main.html">Main</a><br />
+      	</div>
+      <br />
+                        <b>Files:</b><br />
+        <div class="package">
+				<span style="padding-left: 1em;"><a href="../../Kernel/_framework_application_php.html">application.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/_framework_general_php.html">general.php</a></span><br />
+	  </div>
+  <div class="package">
+	<strong>Admin</strong><br />			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_framework_kernel_adv_smarty_php.html">adv_smarty.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_framework_kernel_buffering_php.html">buffering.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_framework_kernel_buffer_handlers_php.html">buffer_handlers.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_framework_kernel_components_php.html">components.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_framework_kernel_config_php.html">config.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_framework_kernel_database_php.html">database.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_framework_kernel_debug_php.html">debug.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_framework_kernel_debug_gfx_php.html">debug_gfx.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_framework_kernel_definitions_php.html">definitions.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_framework_kernel_errors_php.html">errors.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_framework_kernel_queries_php.html">queries.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/Admin/_framework_kernel_template_engine_php.html">template_engine.php</a></span><br />
+	  </div>
+  <div class="package">
+	<strong>User</strong><br />			<span style="padding-left: 1em;"><a href="../../Kernel/User/_framework_packages_login_php.html">login.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/User/_framework_packages_menu_php.html">menu.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../../Kernel/User/_framework_packages_news_php.html">news.php</a></span><br />
+	  </div>
+            <br />
+            <b>Classes:</b><br />
+        <div class="package">
+	Admin<br />	    <span style="padding-left: 1em;">		<a href="../../Kernel/Admin/AdvSmarty.html">AdvSmarty</a>    </span>	 <br />
+	  </div>
+                </td>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
+
+<h1>Procedural File: news.php</h1>
+Source Location: /framework/packages/news.php<br /><br />
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Page Details</div>
+	<div class="nav-bar">
+					<span class="disabled">Page Details</span> |
+									<a href="#sec-includes">Includes</a>
+			|							<a href="#sec-constants">Constants</a>
+			|									<a href="#sec-functions">Functions</a>
+			</div>
+	<div class="info-box-body">
+		<p align="center" class="short-description"><strong>Funzioni di visualizzazione delle news
+</strong></p>
+<span class="description"><p>Contiene le funzioni per la visualizzazione da parte dell'utente delle news.  Permette un alto grado di adattamento per consentire di creare molti pattern  diversi di news utilizzando un template per la singola news ed un altro  template per la visualizzazione complessiva.  Fare riferimento alla sezione &quot;News&quot; all'interno del file di configurazione  per sapere come configurare il comportamento delle funzioni.</p><p><strong>Note sul formato del pattern</strong> Il pattern di ripetizione delle news è  composto da più elementi separati tra loro da un punto e virgola. Ogni elemento  ha il seguente formato: &lt;start&gt;,&lt;type&gt;[/num],&lt;end&gt; <ul><li>&lt;start&gt;: La news di partenza</li><li>&lt;type&gt; : Il tipo di visualizzazione (full, reduced, list)</li><li>[/num] : Il numero di news in un singolo template. Opzionale, se assente si considera 1</li><li>&lt;end&gt;  : La news finale</li></ul> Se &lt;start&gt; non è presente viene preso pari a zero e template &quot;full&quot;; se non è  presente &lt;end&gt; l'algoritmo va avanti fino alla fine delle news. Sono possibili delle  sovrapposizioni tra i vari &lt;start&gt; ed &lt;end&gt; dei vari elementi, l'ultimo elemento  della stringa ha la priorità. Ecco un esempio di pattern:    &quot;0,full,5;-,list,10;6,reduced/2,10;-,list,-&quot;.  Il significato di questo pattern è: elementi da 1 a 5 full, elementi da 6 a 10 reduced,  i restanti list. Gli elementi list dal 6 al 10 sono rimpiazzati da quelli reduced. Un  template reduced richiede 2 news.</p></span>		<table border="0" cellspacing="0" cellpadding="0">
+			<tr><td><strong>See:</strong>&nbsp;&nbsp;</td><td><a href="../../Kernel/Admin/_framework_kernel_database_php.html">database.php</a></td></tr>
+			<tr><td><strong>Filesource:</strong>&nbsp;&nbsp;</td><td><a href="../..//__filesource/fsource_Kernel_User_frameworkpackagesnews.php.html">Source Code for this file</a></td></tr>
+			<tr><td><strong>See:</strong>&nbsp;&nbsp;</td><td><a href="../../Kernel/_framework_general_php.html">general.php</a></td></tr>
+			<tr><td><strong>See:</strong>&nbsp;&nbsp;</td><td><a href="../../Kernel/Admin/_framework_kernel_config_php.html">config.php</a></td></tr>
+			<tr><td><strong>Copyright:</strong>&nbsp;&nbsp;</td><td>Copyright 2005, Fabrizio Colonna</td></tr>
+			<tr><td><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna &lt;<a href="mailto:colofabrix@tin.it">colofabrix@tin.it</a>&gt;</td></tr>
+	</table>
+
+			</div>
+</div>
+
+
+	<a name="sec-includes"></a>
+	<div class="info-box">
+		<div class="info-box-title">Includes</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Page Details</a> |
+						<span class="disabled">Includes</span>
+			|							<a href="#sec-constants">Constants</a>
+				|													<a href="#sec-functions">Functions</a>
+					</div>
+		<div class="info-box-body">
+			<a name="_dirname(__FILE__)_/__/kernel/database_php"><!-- --></a>
+<div class="evenrow">
+
+	<div>
+		<span class="include-title">
+			<span class="include-type">require_once</span>
+			(<span class="include-name">dirname(__FILE__)."/../kernel/database.php"</span>)
+			<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_User_frameworkpackagesnews.php.html#a41">41</a>]</span>
+		</span>
+	</div>
+
+		
+		<div class="top">[ <a href="#top">Top</a> ]</div>
+		<br />
+</div>
+<a name="_dirname(__FILE__)_/__/kernel/template_engine_php"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="include-title">
+			<span class="include-type">require_once</span>
+			(<span class="include-name">dirname(__FILE__)."/../kernel/template_engine.php"</span>)
+			<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_User_frameworkpackagesnews.php.html#a42">42</a>]</span>
+		</span>
+	</div>
+
+		
+		<div class="top">[ <a href="#top">Top</a> ]</div>
+		<br />
+</div>
+<a name="_dirname(__FILE__)_/__/kernel/config_php"><!-- --></a>
+<div class="evenrow">
+
+	<div>
+		<span class="include-title">
+			<span class="include-type">require_once</span>
+			(<span class="include-name">dirname(__FILE__)."/../kernel/config.php"</span>)
+			<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_User_frameworkpackagesnews.php.html#a43">43</a>]</span>
+		</span>
+	</div>
+
+		
+		<div class="top">[ <a href="#top">Top</a> ]</div>
+		<br />
+</div>
+		</div>
+	</div><br />
+
+	<a name="sec-constants"></a>
+	<div class="info-box">
+		<div class="info-box-title">Constants</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Page Details</a> |
+										<a href="#sec-includes">Includes</a>
+				|						<span class="disabled">Constants</span>
+			|										<a href="#sec-functions">Functions</a>
+					</div>
+		<div class="info-box-body">
+			<a name="defineKERNEL_USER_NEWS"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="const-title">
+			<span class="const-name">KERNEL_USER_NEWS</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_User_frameworkpackagesnews.php.html#a39">39</a>]</span>
+		</span>
+	</div>
+<br />
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>KERNEL_USER_NEWS = 1</code>
+    </td></tr></table>
+    </td></tr></table>
+
+        
+	<br />
+
+		<div class="top">[ <a href="#top">Top</a> ]</div>
+	<br />
+</div>
+		</div>
+	</div><br />
+
+
+	<a name="sec-functions"></a>
+	<div class="info-box">
+		<div class="info-box-title">Functions</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Page Details</a> |
+										<a href="#sec-includes">Includes</a>
+				|										<a href="#sec-constants">Constants</a>
+				|									<span class="disabled">Functions</span>
+		</div>
+		<div class="info-box-body">
+			<a name="functionbuild_complete_news" id="functionbuild_complete_news"><!-- --></a>
+<div class="evenrow">
+
+	<div>
+		<span class="method-title">build_complete_news</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_User_frameworkpackagesnews.php.html#a159">159</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>String build_complete_news(
+PEAR::DB_Result $news&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Visualizza una news completamente.
+</strong></p>
+<span class="description"><p>Crea una pagina basandosi sul template $CONFIG[&quot;news_complete&quot;] che permette  di visualizzare una news completa in ogni sua parte a pagina intera.</p></span>
+    		<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">PEAR::DB_Result</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$news:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> La news da visualizzare</span>			</td></tr>
+				</table>
+	
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Return:</strong>&nbsp;&nbsp;</td><td>La pagina contenente la news</td>
+  </tr>
+  <tr>
+    <td class="indent"><strong>Global:</strong>&nbsp;&nbsp;</td><td>Array $CONFIG: Parametri di configurazione</td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functionbuild_news" id="functionbuild_news"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="method-title">build_news</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_User_frameworkpackagesnews.php.html#a315">315</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>String build_news(
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Restituisce il riquadro di tutte le news correttamente formattato.
+</strong></p>
+<span class="description"><p>La funzione esegue la query news_all (vedi queries.php) per recuperare tutte le news  e utilizza quindi la funzione <a href="../../Kernel/User/_framework_packages_news_php.html#functionget_all_news">get_all_news</a> per creare una struttura dati  contenente tutte le news suddivise per stile di template. La funzione inserisce i  gruppi di news nel template $CONFIG[&quot;news_frame&quot;].</p><p>Variabili di debug: $news_pattern.</p></span>
+    
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Return:</strong>&nbsp;&nbsp;</td><td>Il codice HTML contenente tutte le news formattate secondo i template</td>
+  </tr>
+  <tr>
+    <td class="indent"><strong>Global:</strong>&nbsp;&nbsp;</td><td>Array $CONFIG: Parametri di configurazione</td>
+  </tr>
+  <tr>
+    <td class="indent"><strong>See:</strong>&nbsp;&nbsp;</td><td><a href="../../Kernel/Admin/_framework_kernel_queries_php.html">queries.php</a></td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functioncompile_pattern" id="functioncompile_pattern"><!-- --></a>
+<div class="evenrow">
+
+	<div>
+		<span class="method-title">compile_pattern</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_User_frameworkpackagesnews.php.html#a57">57</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>Array compile_pattern(
+String $text_pattern&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Compila un pattern di news.
+</strong></p>
+<span class="description"><p>Ovvero passa dalla visualizzazione user-friendly a quella php-friendly; per una descrizione  del formato di output vedere <a href="../../Kernel/User/_framework_packages_news_php.html#functionget_all_news">get_all_news</a>.</p></span>
+    		<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">String</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$text_pattern:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Il pattern da compilare.</span>			</td></tr>
+				</table>
+	
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Return:</strong>&nbsp;&nbsp;</td><td>L'array contenente il pattern.</td>
+  </tr>
+  <tr>
+    <td class="indent"><strong>See:</strong>&nbsp;&nbsp;</td><td><a href="../../Kernel/User/_framework_packages_news_php.html#functionget_all_news">get_all_news()</a></td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functionget_all_news" id="functionget_all_news"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="method-title">get_all_news</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_User_frameworkpackagesnews.php.html#a227">227</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>Array get_all_news(
+Array $pattern&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Crea una struttura dati contente tutte le news suddivise per stili.
+</strong></p>
+<span class="description"><p>Formato dell'<strong>array di input</strong>: ogni indice corrisponde ad una news e  in ogni indice  è presente lo stile della news e il numero di news da caricare in ogni template nella forma  template/numero.  L'<strong>array di uscita</strong> ha il seguente formato: è un array a due dimensioni, la prima dimensione  corrisponde ad un elemento del pattern stringa, ovvero ad uno stile, la seconda dimensione contiene  tutte le news formattate con lo stile dell'indice della prima dimensione a cui appartiene.</p></span>
+    		<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">Array</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$pattern:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Il pattern per la visualizzazione in stili misti. Vedi note per il formato.</span>			</td></tr>
+				</table>
+	
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Return:</strong>&nbsp;&nbsp;</td><td>Struttura di array contenente le news suddivise per stili</td>
+  </tr>
+  <tr>
+    <td class="indent"><strong>Global:</strong>&nbsp;&nbsp;</td><td>Array $CONFIG: Parametri di configurazione</td>
+  </tr>
+  <tr>
+    <td class="indent"><strong>Global:</strong>&nbsp;&nbsp;</td><td>Array $SQL: Insieme delle query SQL del sito</td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functionget_news_box" id="functionget_news_box"><!-- --></a>
+<div class="evenrow">
+
+	<div>
+		<span class="method-title">get_news_box</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_User_frameworkpackagesnews.php.html#a102">102</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>String get_news_box(
+Array $news, mixed $type, String $tpye&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Crea un box di una news con lo stile specificato.
+</strong></p>
+<span class="description"><p>La funzione è in grado di creare box che richiedono più di una news. Le variabili  all'interno del template hanno nomi che terminano con _&lt;n&gt;, dove &lt;n&gt; rappresenta  il numero della news a cui fa riferimento. Viene sempre e comunque creato un set  di variabili per la prima news che non termina con _&lt;n&gt; per aumentare la  chiarezza all'interno del template.</p></span>
+    		<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">Array</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$news:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Un array di dataset che contiengono le news.</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">String</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$tpye:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Stile di visualizzazione della news (full, reduced, list).</span>			</td></tr>
+				</table>
+	
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Return:</strong>&nbsp;&nbsp;</td><td>Restituisce la news creata</td>
+  </tr>
+  <tr>
+    <td class="indent"><strong>Global:</strong>&nbsp;&nbsp;</td><td>Array $CONFIG: Parametri di configurazione</td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+<a name="functionget_news_result_by_id" id="functionget_news_result_by_id"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="method-title">get_news_result_by_id</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="../..//__filesource/fsource_Kernel_User_frameworkpackagesnews.php.html#a193">193</a>]</span>
+	</div>
+<br />
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>PEAR::DB_Result get_news_result_by_id(
+Integer $newsId&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table>
+
+		<p align="center" class="short-description"><strong>Recupera una news dal database a partire dal suo id.
+</strong></p>
+
+    		<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">Integer</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$newsId:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> L'id della news da recuperare</span>			</td></tr>
+				</table>
+	
+<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Return:</strong>&nbsp;&nbsp;</td><td>Il dataset che contiene la news recuperata.</td>
+  </tr>
+  <tr>
+    <td class="indent"><strong>Global:</strong>&nbsp;&nbsp;</td><td>Array 1: Insieme delle query SQL del sito</td>
+  </tr>
+  <tr>
+    <td class="indent"><strong>Global:</strong>&nbsp;&nbsp;</td><td>PEAR::DB $SQL: Connession di default al database</td>
+  </tr>
+</table>
+<br />
+
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Author:</strong>&nbsp;&nbsp;</td><td>Fabrizio Colonna</td>
+  </tr>
+</table>
+
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+	</div>
+		</div>
+	</div><br />
+
+        <div class="credit">
+		    <hr class="separator" />
+		    Documentation generated on Sat, 13 Oct 2007 23:46:43 +0200 by <a href="http://www.phpdoc.org">phpDocumentor 1.3.0RC3</a>
+	      </div>
+      </td></tr></table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
